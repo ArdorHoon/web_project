@@ -6,16 +6,6 @@ pageEncoding="utf-8"%>
 <html lang="ko">
 <head>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142101708-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '');
-</script>
-
 <meta charset="UTF-8">
 <title>조인</title>
 
@@ -26,8 +16,6 @@ pageEncoding="utf-8"%>
    
  
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<meta name="naver-site-verification" content="943d404100229274f2f660dd8fa8916e9e150e29"/>
-<meta name="google-site-verification" content="j6PsSD8D7Ti7GRO8KQv46DLD_v4bM71LPcfIZveGZRk" />
 <meta name="description" content="약속에  조인하라 - 약속은 언제나 변하고, 친구는 매일 까먹습니다. 조인과 함께라면 약속이 편리해집니다.">
 
 
@@ -230,8 +218,8 @@ pageEncoding="utf-8"%>
     <div class="footA">
         <h2>(주)매드멘쉬</h2>
         <p>
-        (주)매드멘쉬 | 사업자 등록번호 : 296-87-01222 | 대표 : 박승현<br> 통신판매업신고 : 2018-서울중구-1884 <br> E-mail : support@madmensch.co.kr<br>
-        서울특별시 중구 퇴계로 36길 2, 상생플러스스페이스 (필동 2가, 동국대학교 충무로영상센터) 
+        (주)매드멘쉬 | 사업자 등록번호 : 000-00-00000 | 대표 : 박승현<br> 통신판매업신고 : 0000-서울중구--0000 <br> E-mail : port@madmensch.co.kr<br>
+        ***** ** 퇴계로 *** *
         </p>
     </div>
 
