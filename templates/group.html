@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{% load staticfiles %}
+
 <html lang="en">
 
 <head>
@@ -11,17 +12,17 @@
     <title>Festival Together</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="css/agency.css" rel="stylesheet">
+    <link href="{% static 'css/agency.css' %}" rel="stylesheet">
 
 
 </head>
@@ -39,16 +40,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="./index.html">Home</a>
+                    <a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="">Festival</a>
+                    <a class="nav-link js-scroll-trigger" href="{% url 'festival' %}">Festival</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="">Group</a>
+                    <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="">SignUp</a>
+                    <a class="nav-link js-scroll-trigger" href="{% url 'signup' %}">SignUp</a>
                 </li>
 
             </ul>
@@ -58,103 +59,104 @@
 
 
 <!-- Group -->
-<section class="page-section" id="Group">
+<section class="page-section" id="group">
     <div class="group-container">
         <div class="row">
-            <ul class= "item-intro" >
+            <ul class= "group-list" >
                 <div class = "form-group">
-                <li class="timeline-inverted">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class = "col-md-9">
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>크루모집</h4>
-                                    <h4 class="subheading">해시태그 부분</h4>
+                    <li class="group-line-by">
+                        <div class = "row">
+                            <div class = "col-md-3">
+                                <div class="group-image">
+                                    <img class="rounded-circle img-fluid" src = "{% static 'img/group/1.jpg' %}" alt="">
                                 </div>
                             </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                </div>
-                <div class = "form-group">
-                <li class="timeline-inverted">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class = "col-md-9">
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>크루모집</h4>
-                                    <h4 class="subheading">해시태그 부분</h4>
+                            <div class = "col-md-9">
+                                <div class="group-panel">
+                                    <div class="group-heading">
+                                        <h4>크루모집</h4>
+                                        <h4 class="subheading">해시태그 부분</h4>
+                                    </div>
+                                </div>
+                                <div class="group-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
                                 </div>
                             </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
                 </div>
                 <div class = "form-group">
-                <li class="timeline-inverted">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class = "col-md-9">
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>크루모집</h4>
-                                    <h4 class="subheading">해시태그 부분</h4>
+                    <li class="group-line-by">
+                        <div class = "row">
+                            <div class = "col-md-3">
+                                <div class="group-image">
+                                    <img class="rounded-circle img-fluid" src = "{% static 'img/group/2.jpg' %}" alt="">
                                 </div>
                             </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <div class = "col-md-9">
+                                <div class="group-panel">
+                                    <div class="group-heading">
+                                        <h4>크루모집</h4>
+                                        <h4 class="subheading">해시태그 부분</h4>
+                                    </div>
+                                </div>
+                                <div class="group-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
                 </div>
                 <div class = "form-group">
-                <li class="timeline-inverted">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class = "col-md-9">
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>크루모집</h4>
-                                    <h4 class="subheading">해시태그 부분</h4>
+                    <li class="group-line-by">
+                        <div class = "row">
+                            <div class = "col-md-3">
+                                <div class="group-image">
+                                    <img class="rounded-circle img-fluid" src = "{% static 'img/group/3.jpg' %}" alt="">
                                 </div>
                             </div>
-                            <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                            <div class = "col-md-9">
+                                <div class="group-panel">
+                                    <div class="group-heading">
+                                        <h4>크루모집</h4>
+                                        <h4 class="subheading">해시태그 부분</h4>
+                                    </div>
+                                </div>
+                                <div class="group-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
                 </div>
-                </ul>
-            </div>
+                <div class = "form-group">
+                    <li class="group-line-by">
+                        <div class = "row">
+                            <div class = "col-md-3">
+                                <div class="group-image">
+                                    <img class="rounded-circle img-fluid" src = "{% static 'img/group/4.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <div class = "col-md-9">
+                                <div class="group-panel">
+                                    <div class="group-heading">
+                                        <h4>크루모집</h4>
+                                        <h4 class="subheading">해시태그 부분</h4>
+                                    </div>
+                                </div>
+                                <div class="group-body">
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            </ul>
         </div>
     </div>
 </section>
+
+
 
 
 <!-- Footer -->
@@ -178,18 +180,18 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 <!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
 <!-- Contact form JavaScript -->
-<script src="js/jqBootstrapValidation.js"></script>
-<script src="js/contact_me.js"></script>
+<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+<script src="{% static 'js/contact_me.js' %}"></script>
 
 <!-- Custom scripts for this template -->
-<script src="js/agency.min.js"></script>
+<script src="{% static 'js/agency.min.js' %}"></script>
 
 </body>
 
