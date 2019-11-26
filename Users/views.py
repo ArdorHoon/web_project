@@ -9,8 +9,8 @@ def signup(request):
       username = request.POST.get("username"," ")
       password = request.POST.get("password1"," ")
       email = request.POST.get("email", " ")
-      
-      user = User.objects.create_user(username, password, email)
+      print(username, password, email)
+      user = User.objects.create_user(username,email,password)
       user.save()
       #auth.login(user)
 
