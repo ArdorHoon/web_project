@@ -5,23 +5,23 @@ from django.contrib import auth
 
 def signup(request):
   if request.method == "POST":
-    if request.POST["password1"] == request.POST["password2"]:
-      username = request.POST["username"]
-      password = request.POST["password"]
-      email = request.POST["email"]
+    if request.POST.get("password1", " ") == request.POST.get("password2", " "):
+      username = request.POST.get("username"," ")
+      password = request.POST.get("password1"," ")
+      email = request.POST.get("email", " ")
       
       user = User.objects.create_user(username, password, email)
       user.save()
-      auth.login(user)
+      #auth.login(user)
 
       return redirect('/index/')
-    return redirect('signup.html')
+    return redirect('signup')
   return render(request, 'signup.html')
 
 def login(request):
   if request.method =="POST":
-    username = request.POST["username"]
-    password = request.POST["password"]
+    username = request.POST.get("username", " ")
+    password = request.POST.get("password", " ")
     
     user = auth.authenticate(username=username, password=password)
 
@@ -29,7 +29,7 @@ def login(request):
       auth.login(request, user)
       return redirect('/index')
     else:
-      return redirect('login.html')
+      return redirect('login')
   else:
     return render(request, 'login.html')
 

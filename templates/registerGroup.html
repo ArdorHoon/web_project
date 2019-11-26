@@ -1,0 +1,115 @@
+{% load staticfiles %}
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Festival Together</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/agency.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Festival Together</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'festival' %}">Festival</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'signup' %}">SignUp</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--register group-->
+
+<div class="mx-auto " style="margin-top: 170px; width:70%; border-radius:20px;">
+    <div style="margin-top:10px; margin-bottom: 30px;">
+        <h2 class="text-center">Register Group</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-register-group" method="POST" onSubmit="logincall();return false">
+                <div class="row" style = "height: auto">
+                    <div class="col-md-6" style = "height: auto">
+                        <label for="inputGroupName" class="sr-only">Group Name</label>
+                        <input type="text" id="gn" class="form-control" placeholder="그룹 이름을 입력하세요." required autofocus><br>
+
+                        <label for="inputDate" class="sr-only">Group Date</label>
+                        <input type="date" id="gd" class="form-control" value = "2019-00-00" placeholder="날짜를 입력하세요." required><br>
+
+                        <label for="inputGroupHastag" class="sr-only">Group Hastag</label>
+                        <input type="text" id="ght" class="form-control" placeholder="해시태그를 입력하세요." ><br>
+
+                        <label for="inputTicket" class="sr-only">Group Ticket</label>
+                        <input type="file" id="gtk" class="form-control" placeholder="티켓을 인증하세요." required><br>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputGroupContent" class="sr-only">Group Content</label>
+                        <input type="text" id="gct" class="form-control" placeholder="내용을 입력하세요." required style = "height: 90% "><br>
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12 text-center">
+                        <div id="success"></div>
+                        <button id="requestGroupRegister" class="btn btn-primary btn-xl" type="submit" style = "margin-top: 10px">그룹 등록 신청하기</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Contact form JavaScript -->
+<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+<script src="{% static 'js/contact_me.js' %}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{% static 'js/agency.min.js' %}"></script>
+
+</body>
+
+</html>

@@ -48,9 +48,15 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
-                </li>
+                        <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
+                    </li> 
+                {% endif %}
 
             </ul>
         </div>

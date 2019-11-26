@@ -100,6 +100,13 @@ img::-moz-selection {
   border-color: #fed136;
 }
 
+.btn-register-group{
+  padding: 15px;
+  margin-left: 48%;
+  margin-bottom: 10%;
+
+}
+
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
   background-color: #fec810 !important;
   border-color: #fec810 !important;
@@ -176,7 +183,7 @@ img::-moz-selection {
 header.masthead {
   text-align: center;
   color: white;
-  background-image: url("../img/header-bg.jpg");
+  background-image: url("../img/top4/header-bg.jpg");
   background-color: #b4cfe8;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
@@ -394,7 +401,7 @@ header.masthead .intro-text .intro-heading {
 }
 
 .group-container{
-  margin : 10% 15% 15% 10%;
+  margin : 10% 15% 5% 10%;
 
 }
 
@@ -402,19 +409,9 @@ header.masthead .intro-text .intro-heading {
   list-style: none;
 }
 
-.group-image{
-  padding-bottom: 10%;
-}
-
-.group:before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 40px;
-  width: 2px;
-  margin-left: -1.5px;
-  content: '';
-  background-color: #e9ecef;
+img.group-image{
+  display:block;
+  margin:auto;
 }
 
 .group > li {
@@ -475,9 +472,9 @@ header.masthead .intro-text .intro-heading {
 }
 
 .group-line-by{
-   margin-bottom: 50px;
-   height: 300px;
- }
+  margin-bottom: 50px;
+  height: 250px;
+}
 
 .group > li.group-line-by > .group-panel {
   float: right;
@@ -508,8 +505,9 @@ header.masthead .intro-text .intro-heading {
   color: inherit;
 }
 
-.group .group-heading h4.subheading {
+.group .group-heading h5.subheading {
   text-transform: none;
+  color: #5d656d;
 }
 
 .group .group-body > ul,
@@ -590,7 +588,6 @@ header.masthead .intro-text .intro-heading {
     padding: 0 100px 20px 20px;
   }
 }
-
 
 .team-member {
   margin-bottom: 50px;

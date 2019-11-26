@@ -7,6 +7,9 @@ def index(request):
 def group(request):
   return render(request, 'group.html')
 
+def registerGroup(request):
+   return render(request, 'registerGroup.html')
+
 def festival(request):
   return render(request, 'festival.html')
 

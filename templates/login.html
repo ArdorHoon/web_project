@@ -49,9 +49,15 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
-                    </li>
+                            <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                    <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
+                        </li> 
+                    {% endif %}
     
                 </ul>
             </div>
@@ -59,16 +65,18 @@
     </nav>
 
 <!--login-->
+{%block content %}
         <div class="mx-auto " style="margin-top: 170px; width:30%; border-radius:20px;">
             <div style="margin-top:30px; margin-bottom: 30px;">
                 <h2 class="text-center">Login</h2>
             </div>
            
-          <form class="form-signin" method="POST" onSubmit="logincall();return false">
+          <form method="POST" action ="{% url 'login' %}">
+            {%csrf_token %}
             <label for="inputEmail" class="sr-only">Your ID</label>
-            <input type="text" id="uid" class="form-control" placeholder="Your ID" required autofocus><BR>
+            <input type="text" name="username" id="uid" class="form-control" placeholder="Your ID" required autofocus><BR>
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="upw" class="form-control" placeholder="Password" required><br>
+            <input type="password" name="password" id="upw" class="form-control" placeholder="Password" required><br>
  
             <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">로 그 인</button>
           </form>
@@ -78,6 +86,7 @@
         </div>
 
 </div>
+{%endblock%}
 
 <!-- Bootstrap core JavaScript -->
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
