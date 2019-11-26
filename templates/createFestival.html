@@ -76,34 +76,49 @@
 <!-- Festival List -->
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
     <div class="container">
-        <table>
-            <tbody>
-                <tr>
-                    <br>
-                    <th>페스티벌 이름</th>
-                    <td colspan="5"><input class="form-control" name="fes_name" id="fes_name" ></td>
-                </tr>
-                <tr>
-                    <th>페스티벌 기간.</th>
-                    <td colspan="5"><input class="form-control" name="fes_date" id="fes_date" type="date"></td>
-                </tr>
-                <tr>
-                    <br>
-                    <th>페스티벌 장소.</th>
-                    <td colspan="5"><input class="form-control" name="fes_loca" id="fes_loca" ></td>
-                </tr>
-                <tr>
-                    <br>
-                    <th>페스티벌 가격.</th>
-                    <td colspan="5"><input class="form-control" name="fes_price" id="fes_price" ></td>
-                </tr>
-                <tr>
-                    <br>
-                    <th>첨부 사진</th>
-                    <td colspan="5"><input class="form-control" name="fes_pic" id="fes_pic" type="file" ></td>
-                </tr>
-            </tbody>
-        </table>
+        <form action="" method="post" id="setting" enctype="multipart/form-data">
+            <div class = "form-group mt-4"style ="padding-bottom  : 40px;">
+                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                    <tbody id="dataTableTBody">
+                        <tr role="row" class="odd">
+                            <th><center>페스티벌 이름</center></th>
+                            <td colspan="2"><input class="form-control" name="fes_name" id="fes_name" ></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <th><center>페스티벌 기간.</center></th>
+                            <td colspan="2"><input class="form-control" name="fes_date" id="fes_date" type="date"></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <th><center>페스티벌 장소.</center></th>
+                            <td colspan="2"><input class="form-control" name="fes_loca" id="fes_loca" ></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <th><center>페스티벌 가격.</center></th>
+                            <td colspan="2"><input class="form-control" name="fes_price" id="fes_price" ></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <th><center>첨부 사진</center></th>
+                            <td colspan="2"><input class="form-control" name="fes_pic" id="fes_pic" type="file" ></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class = "form-group mt-4">
+                <div class="form-row">
+                    <div class = "col-md-4">
+                        <label> </label>
+                    </div>
+                    <div class = "col-md-2">
+                        <center> <input type ="submit" class="btn btn-primary btn-block" name = "createFestival" value="페스티벌 등록"  /> </center>
+                    </div>
+
+                    <div class = "col-md-2">
+                        <center> <div class="btn btn-danger" name = "cancel" value="취소" onclick="history.back();">취소</div> </center>
+                    </div>
+
+                </div>
+            </div>
+        </form>
     </div>
 </section>
 
