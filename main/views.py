@@ -9,3 +9,13 @@ def group(request):
 
 def festival(request):
   return render(request, 'festival.html')
+
+def createFestival(request):
+  return render(request, 'createFestival.html')
+
+def manage(request):
+  return render(request, 'manage.html')
+
+
+def confirmTicket(request):
+  return render(request, 'confirmTicket.html')

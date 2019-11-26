@@ -23,5 +23,8 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('festival/', views.festival, name='festival'),
     path('group/', views.group, name='group'),
-    path('users/', include('users.urls'))
+    path('users/', include('users.urls')),
+    path('createFestival/', views.createFestival, name='createFestival'),
+    path('manage/', views.manage, name='manage'),
+    path('confirmTicket/', views.confirmTicket, name='confirmTicket')
 ]

@@ -28,6 +28,7 @@
 </head>
 
 <body id="page-top">
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -64,8 +65,8 @@
         <div class="intro-text">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h1 class="section-heading" style="font-size: 68px;">
-                        더 많은 Festival을 만나보세요 :)</h1>
+                    <h1 class="section-heading">
+                        더 많은 사용자를 위해 Festival을 등록해 주세요 :)</h1>
                 </div>
             </div>
         </div>
@@ -75,49 +76,34 @@
 <!-- Festival List -->
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
     <div class="container">
-
-        <div class="row text-center">
-            <div class="col-md-4 text-center">
-                <h2 class="section-heading">Festival</h2>
-            </div>
-        </div>
-        {% for i in '012345' %}
-            <div class="col-md-12">
-                <h4>2019년 4월,</h4>
-                <hr>
-            </div>
-
-            <div class="row text-center">
-                <div class="col-md-3">
-                  <span class="fa-stack fa-5x">
-                    <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img>
-                  </span>
-                    <h4 class="top4-heading" style ="font-size : 20px;">청춘페스티벌</h4>
-                    <p class="text-muted">일시 : 2019.02.11~2019.11.11</p>
-                </div>
-                <div class="col-md-3">
-                  <span class="fa-stack fa-5x">
-                     <img class="img-fluid" src = "{% static 'img/top4/top4-2.jpg' %}" ></img>
-                  </span>
-                    <h4 class="top4-heading" style ="font-size : 20px;">KASABIA</h4>
-                    <p class="text-muted">일시 : 2019.02.11~2019.11.11</p>
-                </div>
-                <div class="col-md-3">
-                  <span class="fa-stack fa-5x">
-                     <img class="img-fluid" src = "{% static 'img/top4/top4-3.jpg' %}" ></img>
-                  </span>
-                    <h4 class="top4-heading" style ="font-size : 20px;">EDC KOREA</h4>
-                    <p class="text-muted">일시 : 2019.02.11~2019.11.11</p>
-                </div>
-                <div class="col-md-3">
-                  <span class="fa-stack fa-5x">
-                    <img class="img-fluid" src = "{% static 'img/top4/top4-4.jpg' %}" ></img>
-                  </span>
-                    <h4 class="top4-heading" style ="font-size : 20px;">INCHEON PENTAPORT ROCK FESTIVAL</h4>
-                    <p class="text-muted">일시 : 2019.02.11~2019.11.11</p>
-                </div>
-            </div>
-        {% endfor %}
+        <table>
+            <tbody>
+                <tr>
+                    <br>
+                    <th>페스티벌 이름</th>
+                    <td colspan="5"><input class="form-control" name="fes_name" id="fes_name" ></td>
+                </tr>
+                <tr>
+                    <th>페스티벌 기간.</th>
+                    <td colspan="5"><input class="form-control" name="fes_date" id="fes_date" type="date"></td>
+                </tr>
+                <tr>
+                    <br>
+                    <th>페스티벌 장소.</th>
+                    <td colspan="5"><input class="form-control" name="fes_loca" id="fes_loca" ></td>
+                </tr>
+                <tr>
+                    <br>
+                    <th>페스티벌 가격.</th>
+                    <td colspan="5"><input class="form-control" name="fes_price" id="fes_price" ></td>
+                </tr>
+                <tr>
+                    <br>
+                    <th>첨부 사진</th>
+                    <td colspan="5"><input class="form-control" name="fes_pic" id="fes_pic" type="file" ></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
