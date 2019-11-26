@@ -16,6 +16,5 @@ def createFestival(request):
 def manage(request):
   return render(request, 'manage.html')
 
-
 def confirmTicket(request):
   return render(request, 'confirmTicket.html')
