@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
+    path('mypage/', views.mypage, name='mypage'),
     path('festival/', views.festival, name='festival'),
     path('group/', views.group, name='group'),
     path('registerGroup/', views.registerGroup, name='registerGroup'),
