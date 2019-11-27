@@ -39,9 +39,22 @@
           <form method="POST" action ="{% url 'signup' %}">
             {%csrf_token %}
             <label>Your ID</label>
-            <input type="text" name="username" id="uid" class="form-control" placeholder="Your ID" required autofocus><BR>
+            <input type="text" name="username" class="form-control" placeholder="Your ID" required autofocus><BR>
+              <label>name</label>
+              <input type="text" name="name" class="form-control" placeholder="Your name" required autofocus><BR>  
+              <label>Age</label>
+            <input type="text" name="age"  class="form-control" placeholder="Your age(ex. 25)" required autofocus><BR>
+            <label>Gender</label>
+            <div class="custom-control custom-radio">
+              <input type="radio" name="gender" id="jb-radio-1" class="custom-control-input" value ="남">
+              <label class="custom-control-label" for="jb-radio-1">남</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" name="gender" id="jb-radio-2" class="custom-control-input" value ="여">
+              <label class="custom-control-label" for="jb-radio-2">여</label>
+            </div>
             <label>E-mail</label>
-            <input type="text" name="email" id="uid" class="form-control" placeholder="E-mail" required autofocus><BR>
+            <input type="text" name="email" class="form-control" placeholder="E-mail" required autofocus><BR>
             <label >Password</label>
             <input type="password" name="password1" id="upw" class="form-control" placeholder="Password" required><br>
             <label>Confirm Password</label>
