@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from users import models
+from users.models import Data
 
 
 def signup(request):
@@ -20,8 +20,9 @@ def signup(request):
       user.save()
       #auth.login(user)
       
-      Data(name=name, uid=username, gender=gender, age=age)
-      
+      user_info = Data(name=name, uid=username, gender=gender, age=age)
+      user_info.save()
+
       return redirect('/index/')
     return redirect('signup')
   return render(request, 'signup.html')
