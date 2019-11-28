@@ -4,12 +4,6 @@ from django.shortcuts import render, redirect
 def index(request):
   return render(request, 'index.html')
 
-def group(request):
-  return render(request, 'group.html')
-
-def registerGroup(request):
-   return render(request, 'registerGroup.html')
-
 def festival(request):
   return render(request, 'festival.html')
 
@@ -20,7 +14,7 @@ def manage(request):
   return render(request, 'manage.html')
 
 def mypage(request):
-      return render(request, 'mypage.html')
+  return render(request, 'mypage.html')
 
 def confirmTicket(request):
   return render(request, 'confirmTicket.html')

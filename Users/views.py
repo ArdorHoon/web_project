@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib import auth
+from django.contrib import auth, messages
 from users.models import Data
 
 
@@ -36,6 +36,7 @@ def login(request):
 
     if user is not None:
       auth.login(request, user)
+      # messages.info(request, "로그인 성공")
       return redirect('/index')
     else:
       return redirect('login')
@@ -44,6 +45,7 @@ def login(request):
 
 def logout(request):
   auth.logout(request)
+  # messages.info(request, "로그아웃 되었습니다")
   return redirect('/index')
 
 # Create your views here.
