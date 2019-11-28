@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from groups.models import Groups
 from django.contrib import messages
-# from django.contrib.auth.models import User
 
 # Create your views here.
 def group(request):

@@ -1,12 +1,14 @@
 from django.db import models
+import datetime
 
 # Create your models here.
-class festival(models.Model):
+class Festival(models.Model):
   name = models.CharField(max_length=30, default="")
   # time = models.CharField(max_length=50, default="")
-  date = models.DateField(blank=True, null=True)
+  date = models.DateField(default=datetime.date.today)
   place = models.CharField(max_length=30, default="")
-  price = models.IntegerField(default="", blank=True, null=True)
+  price = models.IntegerField(default=0, blank=True, null=True)
   # lineup = models.TextField(default="")
-  pic = models.ImageField(blank=True)
+  pic = models.ImageField(blank=True, null=True)
+
   

@@ -85,6 +85,7 @@
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
     <div class="container">
         <form action="" method="post" id="setting" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class = "form-group mt-4"style ="padding-bottom  : 40px;">
                 <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                     <tbody id="dataTableTBody">
