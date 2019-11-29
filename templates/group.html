@@ -97,31 +97,31 @@
     <div class="group">
         <ul class= "group-list" >
             {% for group in AuthenticatedGroup %}
-            <div class = "form-group">
-                <li class="group-line-by">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <a href="{% url 'eachGroup' %}">
-                                <img class="rounded-circle img-fluid group-image" src = "{% static 'img/group/1.jpg' %}" alt="">
-                            </a>
-                        </div>
-                            <div class = "col-md-9">
+                <div class = "form-group">
+                    <li class="group-line-by">
+                        <div class = "row">
+                            <div class = "col-md-3">
                                 <a href="{% url 'eachGroup' %}">
-                                    <div class="group-panel">
-                                        <div class="group-heading">
-                                            <h4>{{group.name}}</h4>
-                                            <h5 class="subheading">{{group.hashtag}}</h5>
-                                            <h5 class="subheading">그룹 리더 : {{group.leader_id}}</h5>
-                                        </div>
-                                    </div>
-                                    <div class="group-body">
-                                        <p class="text-muted">{{group.description}}</p>
-                                    </div>
+                                    <img class="rounded-circle img-fluid group-image" src = "{% static 'img/group/1.jpg' %}" alt="">
                                 </a>
                             </div>
-                    </div>
-                </li>
-            </div>
+                                <div class = "col-md-9">
+                                    <a href="{% url 'eachGroup' %}">
+                                        <div class="group-panel">
+                                            <div class="group-heading">
+                                                <h4>{{group.name}}</h4>
+                                                <h5 class="subheading">{{group.hashtag}}</h5>
+                                                <h5 class="subheading">그룹 리더 : {{group.leader_id}}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="group-body">
+                                            <p class="text-muted">{{group.description}}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                        </div>
+                    </li>
+                </div>
             {% endfor %}
             <!-- <div class = "form-group">
                 <li class="group-line-by">
