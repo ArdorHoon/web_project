@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from users.models import Data
 
+
+
 def signup(request):
   if request.method == "POST":
     if request.POST.get("password1", " ") == request.POST.get("password2", " "):
