@@ -75,22 +75,10 @@
     </div>
 </nav>
 
-<!-- Header -->
-<header class="masthead">
-    <div class="container">
-        <div class="intro-text">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h1 class="section-heading" style="font-size: 68px;">
-                        더 많은 Festival을 만나보세요 :)</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 
 <!-- Festival List -->
-<section class="page-section" id="festival" style ="padding-top  : 40px;">
+
+<section class="page-section" id="festival" style ="margin-top: 30px;">
     <div class="container">
 
         <div class="row text-center">
@@ -98,6 +86,39 @@
                 <h2 class="section-heading">Festival</h2>
             </div>
         </div>
+         <!--검색 부분 시작-->
+        <form class="form-inline " method ="GET">
+                <input class="form-control mr-sm-2" type="search" name="q" value="{{ q }}" placeholder="제목 검색" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+          
+        {% for post in post_list %}
+        <table class="table">
+        <thead>
+              <tr>                
+                <th scope="col">id</th>
+                <th scope="col">title</th>
+                <th scope="col">date</th>
+                <th scope="col">place</th>
+                <th scope="col">price</th>
+             </tr>
+        </thead>
+        <tbody> 
+              <tr>
+
+            <td>{{post.id}}</td>
+            <td>{{post.name}}</td>
+            <td>{{post.date}}</td>
+            <td>{{post.place}}</td>
+            <td>{{post.price}}</td>
+
+            <!--<img src={{post.pic}}/>-->
+     
+        </tr>
+        </tbody>
+        </table>
+        {% endfor %}
+        <!--검색 부분 끝-->
         {% for i in '012345' %}
             <div class="col-md-12">
                 <h4>2019년 4월,</h4>

@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 from users.models import Data
+from festival.models import Festival
 
         
 # Create your views here.
+
+#  return render(request, 'search.html')
+
 def index(request):
   return render(request, 'index.html')
 
