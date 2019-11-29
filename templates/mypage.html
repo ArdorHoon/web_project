@@ -74,11 +74,11 @@
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>
       {% for data in Datas %}
-      
+        <div>
             <p class="card-text">{{data.name}} </p> <br>
             <p class="card-text">{{data.gender}} </p> <br>
             <p class="card-text">{{data.age}} </p> <br>
-      
+        </div>
       {% endfor %}
      
       <a href="#" class="btn btn-primary">내 정보 수정</a>
