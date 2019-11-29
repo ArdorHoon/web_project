@@ -4,12 +4,6 @@ from django.shortcuts import render, redirect
 def index(request):
   return render(request, 'index.html')
 
-def festival(request):
-  return render(request, 'festival.html')
-
-def createFestival(request):
-  return render(request, 'createFestival.html')
-
 def manage(request):
   return render(request, 'manage.html')
 
