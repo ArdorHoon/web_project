@@ -4,7 +4,9 @@ from django.contrib import messages
 
 # Create your views here.
 def group(request):
-  return render(request, 'group.html')
+  groups_in_authenticated = Groups.objects.filter(is_authenticated=1)
+  context = {"AuthenticatedGroup", groups_in_authenticated}
+  return render(request, 'group.html', context)
 
 def each(request):
     return render(request, 'eachGroup.html')
