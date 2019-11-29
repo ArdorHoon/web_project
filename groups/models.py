@@ -13,5 +13,4 @@ class Groups(models.Model):
   maxcount = models.IntegerField(default=1, null=True, blank=True)
   ticket = models.ImageField(null=True, blank=True)
   description = models.TextField(max_length=200, default="")
-
-
+  is_authenticated = models.IntegerField(default=0)

@@ -7,7 +7,7 @@ from festival.models import Festival
 
 # Create your views here.
 def group(request):
-    groups = Groups.objects.all()
+    groups = Groups.objects.filter(is_authenticated=1)
     context = {'groups':groups}
     return render(request, 'group.html',context)
 
