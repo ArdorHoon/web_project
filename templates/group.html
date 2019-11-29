@@ -31,51 +31,41 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Festival Together</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a>
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Festival Together</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'festival' %}">Festival</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'mypage' %}">Mypage</a>
+                </li>
+
+                <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url 'festival' %}">Festival</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
-                    </li>
-                    {% if user.is_superuser %}
-            
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Manage</a>
-                        <div class="dropdown-menu">
-                            <a class ="dropdown-item" href="{% url 'createFestival' %}">festival register</a> 
-                            <a class ="dropdown-item" href="{% url 'confirmTicket' %}">festival confrim</a> 
-                        </div>
-                    </li>
-                    {% endif %}
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url 'mypage' %}">Mypage</a>
-                    </li>
-    
-                    <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
-                        </li>
-                    {% else %}
-                    <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
-                        </li> 
-                    {% endif %}
-    
-                </ul>
-            </div>
+                {% else %}
+                <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
+                    </li> 
+                {% endif %}
+
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
 <!-- Header -->
 <header class="masthead">
@@ -96,129 +86,34 @@
 <div class="group-container">
     <div class="group">
         <ul class= "group-list" >
-            {% for group in AuthenticatedGroup %}
-                <div class = "form-group">
-                    <li class="group-line-by">
-                        <div class = "row">
-                            <div class = "col-md-3">
+            {% for group in groups %}
+            <div class = "form-group">
+                <li class="group-line-by">
+                    <div class = "row">
+                        <div class = "col-md-3">
+                            <a href="{% url 'eachGroup' %}">
+                                <img class="rounded-circle img-fluid group-image" src = {{ group.festival_pic }} alt="">
+                            </a>
+                        </div>
+                            <div class = "col-md-9" style = "margin-top: 2%">
                                 <a href="{% url 'eachGroup' %}">
-                                    <img class="rounded-circle img-fluid group-image" src = "{% static 'img/group/1.jpg' %}" alt="">
+                                    <div class="group-panel">
+                                        <div class="group-heading">
+                                            <h4>{{ group.name }} ({{ group.usercount}}/{{group.maxcount }})</h4>
+                                            <h5 class="subheading">{{ group.festival_name }}</h5>
+                                            <h5 class="subheading">{{ group.date }}</h5>
+                                            <h5 class="subheading">{{ group.hashtag }}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="group-body">
+                                        <p class="text-muted">{{group.description}}</p>
+                                    </div>
                                 </a>
                             </div>
-                                <div class = "col-md-9">
-                                    <a href="{% url 'eachGroup' %}">
-                                        <div class="group-panel">
-                                            <div class="group-heading">
-                                                <h4>{{group.name}}</h4>
-                                                <h5 class="subheading">{{group.hashtag}}</h5>
-                                                <h5 class="subheading">그룹 리더 : {{group.leader_id}}</h5>
-                                            </div>
-                                        </div>
-                                        <div class="group-body">
-                                            <p class="text-muted">{{group.description}}</p>
-                                        </div>
-                                    </a>
-                                </div>
-                        </div>
-                    </li>
-                </div>
+                    </div>
+                </li>
+            </div>
             {% endfor %}
-            <!-- <div class = "form-group">
-                <li class="group-line-by">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <a href="{% url 'eachGroup' %}">
-                                <img class="rounded-circle img-fluid group-image" src = "{% static 'img/group/2.jpg' %}" alt="">
-                            </a>
-                        </div>
-                        <div class = "col-md-9">
-                            <a href="{% url 'eachGroup' %}">
-                                <div class="group-panel">
-                                    <div class="group-heading">
-                                        <h4>크루모집</h4>
-                                        <h5 class="subheading">#해시태그 #올나잇 #2030</h5>
-                                    </div>
-                                </div>
-                                <div class="group-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            </div>
-            <div class = "form-group">
-                <li class="group-line-by">
-                    <div class = "row">
-                        <div class = "col-md-3 ">
-                            <a href="{% url 'eachGroup' %}">
-                                <img class="rounded-circle img-fluid group-image " src = "{% static 'img/group/3.jpg' %}" alt="">
-                            </a>
-                        </div>
-                        <div class = "col-md-9">
-                            <a href="{% url 'eachGroup' %}">
-                                <div class="group-panel">
-                                    <div class="group-heading">
-                                        <h4>크루모집</h4>
-                                        <h5 class="subheading">#해시태그 #알콜대환영</h5>
-                                    </div>
-                                </div>
-                                <div class="group-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            </div>
-            <div class = "form-group">
-                <li class="group-line-by">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <a href="{% url 'eachGroup' %}">
-                                <img class="rounded-circle img-fluid group-image" src = "{% static 'img/group/4.jpg' %}" alt="">
-                            </a>
-                        </div>
-                        <div class = "col-md-9">
-                            <a href="{% url 'eachGroup' %}">
-                                <div class="group-panel">
-                                    <div class="group-heading">
-                                        <h4>크루모집</h4>
-                                        <h5 class="subheading">#해시태그 #20 #뒷풀이</h5>
-                                    </div>
-                                </div>
-                                <div class="group-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            </div>
-            <div class = "form-group">
-                <li class="group-line-by">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <a href="{% url 'eachGroup' %}">
-                                <img class="rounded-circle img-fluid group-image" src = "{% static 'img/group/1.jpg' %}" alt="">
-                            </a>
-                        </div>
-                        <div class = "col-md-9">
-                            <a href="{% url 'eachGroup' %}">
-                                <div class="group-panel">
-                                    <div class="group-heading">
-                                        <h4>크루모집</h4>
-                                        <h5 class="subheading">#해시태그 #올나잇</h5>
-                                    </div>
-                                </div>
-                                <div class="group-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            </div> -->
         </ul>
     </div>
 </div>
@@ -229,25 +124,26 @@
 
 
 
-    <!-- Footer -->
-    <footer id ="footer" class="py-3 bg-dark">
-            <div class="container">
-              
-              </span>
-              <h3>Festival Together</h3>
-              <hr class="footerline">
-        
-              <div class="footercontents m-0 text-left text-white">
-        
-                    <p class="company_contents">
-                    팀원 : 양훈모, 이헤린, 서진원, 박주연 | 주소 : 서울특별시 중구 동국대학교 신공학관<br> 
-                    Festival Together은 최신 페스티벌 정보를 수집하기 위해 노력하고 있으며 정보 제공에 따른 법적 책임을 지지 않습니다.<br>
-                    </p>
-                </div>
-            
-              <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
-            </div>
-          </footer>
+  <!-- Footer -->
+  <footer id ="footer" class="py-3 bg-dark">
+    <div class="container">
+      
+      </span>
+      <h3>Festival Together</h3>
+      <hr class="footerline">
+
+      <div class="footercontents m-0 text-left text-white">
+
+            <p class="company_contents">
+            팀원 : 양훈모, 이헤린, 서진원, 박주연 | 주소 : 서울특별시 중구 동국대학교 신공학관<br> 
+            Festival Together은 최신 페스티벌 정보를 수집하기 위해 노력하고 있으며 정보 제공에 따른 법적 책임을 지지 않습니다.<br>
+            </p>
+        </div>
+    
+      <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
+    </div>
+  </footer>
+
 
 
 
