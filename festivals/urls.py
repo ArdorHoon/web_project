@@ -1,6 +1,5 @@
-
 from django.urls import path
-from festival import views
+from festivals import views
 
 urlpatterns = [
   path('', views.festival, name='festival'),

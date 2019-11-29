@@ -37,7 +37,7 @@ def login(request):
 
     if user is not None:
       auth.login(request, user)
-      # messages.info(request, "로그인 성공")
+      messages.info(request, "로그인 성공")
       return redirect('/index')
     else:
       return redirect('login')

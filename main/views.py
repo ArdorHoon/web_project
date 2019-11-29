@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from users.models import Data
-from festival.models import Festival
+# from festivals.models import Festival
 
         
 # Create your views here.

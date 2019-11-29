@@ -10,5 +10,3 @@ class Festival(models.Model):
   price = models.IntegerField(default=0, blank=True, null=True)
   # lineup = models.TextField(default="")
   pic = models.ImageField(blank=True, null=True)
-
-  

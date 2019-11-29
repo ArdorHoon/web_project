@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from festival.models import Festival
+from festivals.models import Festival
 from django.contrib import messages
 
 # Create your views here.
@@ -37,6 +37,3 @@ def register(request):
     return redirect('/festival')
   else:
     return render(request, 'createFestival.html')
-  
-  
-  

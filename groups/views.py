@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from groups.models import Groups
 from django.contrib import messages
 
-from festival.models import Festival
+from festivals.models import Festival
 
 
 # Create your views here.

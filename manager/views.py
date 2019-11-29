@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from festival.models import Festival
+from festivals.models import Festival
 from groups.models import Groups
 from django.contrib import messages
 
@@ -28,7 +28,7 @@ def confirm(request):
   if request.method=="POST":
     accept = request.POST.get("accept", None)
     denial = request.POST.get("denial", None)
-    
+
     if accept is not None and denial is None: 
       group = Groups.objects.get(name=accept)
       group.is_authenticated = 1
