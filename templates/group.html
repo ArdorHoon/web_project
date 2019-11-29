@@ -96,6 +96,7 @@
 <div class="group-container">
     <div class="group">
         <ul class= "group-list" >
+            {% for group in AuthenticatedGroup %}
             <div class = "form-group">
                 <li class="group-line-by">
                     <div class = "row">
@@ -108,19 +109,21 @@
                                 <a href="{% url 'eachGroup' %}">
                                     <div class="group-panel">
                                         <div class="group-heading">
-                                            <h4>크루모집</h4>
-                                            <h5 class="subheading">#해시태그 #논알콜 #올나잇</h5>
+                                            <h4>{{group.name}}</h4>
+                                            <h5 class="subheading">{{group.hashtag}}</h5>
+                                            <h5 class="subheading">그룹 리더 : {{group.leader_id}}</h5>
                                         </div>
                                     </div>
                                     <div class="group-body">
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                        <p class="text-muted">{{group.description}}</p>
                                     </div>
                                 </a>
                             </div>
                     </div>
                 </li>
             </div>
-            <div class = "form-group">
+            {% endfor %}
+            <!-- <div class = "form-group">
                 <li class="group-line-by">
                     <div class = "row">
                         <div class = "col-md-3">
@@ -215,7 +218,7 @@
                         </div>
                     </div>
                 </li>
-            </div>
+            </div> -->
         </ul>
     </div>
 </div>

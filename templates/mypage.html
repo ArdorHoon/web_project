@@ -82,16 +82,11 @@
 <div class="card mx-auto w-75" style ="margin-top : 120px;">
     <h5 class="card-header">내 정보</h5>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      {% for data in Datas %}
-        <div>
-            <p class="card-text">{{data.name}} </p> <br>
-            <p class="card-text">{{data.gender}} </p> <br>
-            <p class="card-text">{{data.age}} </p> <br>
-        </div>
-      {% endfor %}
-     
-      <a href="#" class="btn btn-primary">내 정보 수정</a>
+    
+            <p class="card-text">이름 : {{datas.name}} </p> 
+            <p class="card-text">성별 : {{datas.gender}} </p> 
+            <p class="card-text">나이 : {{datas.age}}세</p> 
+    
     </div>
   </div>
 </div>
