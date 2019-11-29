@@ -668,3 +668,58 @@ section#contact :-ms-input-placeholder {
 }
 
 
+/*********----------footer.html -------********/
+footer{
+
+  color:white; /*글씨 색깔 화이트*/
+
+}
+
+
+.footerhelp{
+
+  font-size : 12px;
+  text-decoration: none;
+  color : white;
+
+
+}
+
+
+
+.footerline{
+
+  border : solid 0.5px white;
+}
+
+.company_contents{
+
+  font-size : 12px;
+
+}
+
+.copyright{
+
+  font-size : 12px;
+}
+
+@media (min-width: 767.98px){ 
+ 
+  .helpme{
+
+    float: right;
+  }
+
+
+  .footerhelp{
+
+   
+    margin-right: 10px;
+    font-size : 12px;
+    text-decoration: none;
+    color : white;
+  
+  
+  }
+
+}/*web 용*/
