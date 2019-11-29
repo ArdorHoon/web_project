@@ -22,14 +22,9 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
     path('mypage/', views.mypage, name='mypage'),
-    # path('createFestival/', views.createFestival, name='createFestival'),
-    # path('festival/', views.festival, name='festival'),
     path('festival/', include('festival.urls')),
     path('group/', include('groups.urls')),
-    # path('group/', views.group, name='group'),
-    # path('registerGroup/', views.registerGroup, name='registerGroup'),
     path('users/', include('users.urls')),
-    path('manage/', views.manage, name='manage'),
+    path('manager/', include('manager.urls')),
     path('confirmTicket/', views.confirmTicket, name='confirmTicket')
-
 ]

@@ -85,30 +85,32 @@
 <!-- Festival List -->
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
     <div class="container">
-        {% for  e in '012345'%}
+        {% for group in GroupList %}
         <div class="row">
             <div class="col-md-2">
                   <span class="fa-stack fa-3x">
+                    <!-- <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img> -->
                     <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img>
-                  </span>
+                </span>
             </div>
             <div class="col-md-5">
                 <br>
-                <h4>청춘페스티벌</h4>
-                <h5>일시 : 2019.02.11~2019.11.11</h5>
-                <h5>카테고리 : #올나잇 #소규모 </h5>
-                <h5>출연진 : 빈지노, 지코,비와이,딘,슈퍼비 등등</h5>
+                <h4>그룹 이름 :{{group.name}}</h4>
+                <h5>만날 날짜 :{{group.date}}</h5>
+                <h5>그룹 leader : {{group.leader_id}}</h5>
+                <h5>그룹 설명 : {{group.description}}</h5>
             </div>
-            <div class="col-md-2">
-                <br>
-                <br>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#" >ACCEPT</a>
-            </div>
-            <div class="col-md-2">
-                <br>
-                <br>
-                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#" >DENIAL</a>
-            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="col-md-2">
+                    <br>
+                    <br>
+                    <button type="submit" name="accept" value={{group.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#">ACCEPT</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" name="denial" value={{group.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#">DENIAL</button>
+                </div>
+            </form>
         </div>
         <br>
         {% endfor %}
