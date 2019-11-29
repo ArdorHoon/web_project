@@ -26,29 +26,14 @@ def register(request):
 
 def confirm(request):
   if request.method=="POST":
-    accept = request.POST.get("accept", None)
-    denial = request.POST.get("denial", None)
+      accept = request.POST.get("accept", None)
+      denial = request.POST.get("denial", None)
     # print(accept)
-    if accept is not None and denial is None: 
-      group = Groups.objects.get(name=accept)
-      group.is_authenticated = 1
-      group.save()
-    else:
-      group = Groups.objects.get(name=denial)
-      group.is_authenticated = -1
-      group.save()
-
-    return redirect('/manager/confirm_ticket')
+  if accept is not None and denial is None: 
+        group = Groups.objects.get(name=accept)
+        group.is_authenticated = 1
+        group.save()
   else:
-    
-    #n = Groups.objects.filter(is_authenticated=0).count()
-
-    
-    #if(n==1):
-    GroupList = Groups.objects.get(is_authenticated=0)
-    #else:
-     # GroupList = Groups.objects.filter(is_authenticated=0)
-
-    context = {'GroupList': GroupList}
-
-    return render(request, 'confirmTicket.html', context)
+    group = Groups.objects.get(name=denial)
+    group.is_authenticated = -1
+    group.save()
