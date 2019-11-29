@@ -85,8 +85,9 @@
 <!-- Festival List -->
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
     <div class="container">
-            {% for group in GroupList %}
-                <div class="row">
+        <div class="row">
+            {% if GroupList.count > 1 %}
+                {% for group in GroupList %}
                     <div class="col-md-2">
                         <span class="fa-stack fa-3x">
                             <!-- <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img> -->
@@ -111,10 +112,40 @@
                             <button type="submit" name="denial" value={{group.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#">DENIAL</button>
                         </div>
                     </form>
-                </div>
-                <br>
-            <!-- {% empty %} -->
             {% endfor %}
+        </div>
+        <br>
+        {% elif GroupList.count == 1 %}
+            <div class="row">
+                <div class="col-md-2">
+                    <span class="fa-stack fa-3x">
+                        <!-- <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img> -->
+                        <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img>
+                    </span>
+                </div>
+                <div class="col-md-5">
+                    <br>
+                    <h4>그룹 이름 :{{GroupList.name}}</h4>
+                    <h5>만날 날짜 :{{GroupList.date}}</h5>
+                    <h5>그룹 leader : {{GroupList.leader_id}}</h5>
+                    <h5>그룹 설명 : {{GroupList.description}}</h5>
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="col-md-2">
+                        <br>
+                        <br>
+                        <button type="submit" name="accept" value={{GroupList.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#">ACCEPT</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" name="denial" value={{GroupList.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#">DENIAL</button>
+                    </div>
+                </form>
+            </div>
+            <br> 
+        {% else % }
+            <h1> 승인할 그룹이 없습니다 </h1>
+        {% endif %}
     </div>
 </section>
 

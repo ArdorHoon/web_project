@@ -45,7 +45,7 @@ def confirm(request):
 
     
     #if(n==1):
-    GroupList = Groups.objects.get(is_authenticated=0)
+    GroupList = Groups.objects.filter(is_authenticated=0)
     #else:
      # GroupList = Groups.objects.filter(is_authenticated=0)
 
