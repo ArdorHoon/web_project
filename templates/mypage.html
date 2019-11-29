@@ -67,7 +67,53 @@
     </div>
 </nav>
 
-<p style="margin-top: 100px; font-size : 90px;">양훈모 바보...</p>
+<!--내 정보-->
+<div calss="container">
+<div class="card mx-auto w-75" style ="margin-top : 120px;">
+    <h5 class="card-header">내 정보</h5>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      {% for data in Datas %}
+      
+            <p class="card-text">{{data.name}} </p> <br>
+            <p class="card-text">{{data.gender}} </p> <br>
+            <p class="card-text">{{data.age}} </p> <br>
+      
+      {% endfor %}
+     
+      <a href="#" class="btn btn-primary">내 정보 수정</a>
+    </div>
+  </div>
+</div>
+
+<!--내 등록 그룹-->
+<div calss="container">
+    <div class="card mx-auto w-75" style=" margin-top : 20px; ">
+        <div class="card-header">
+          내 등록 그룹
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+    </div>
+
+
+<!--내 가입 그룹-->
+    <div calss="container">
+        <div class="card mx-auto w-75 " style=" margin-top : 20px; margin-bottom : 30px;" >
+            <div class="card-header">
+              내 가입 그룹
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
+        </div>
 
 
   <!-- Footer -->
@@ -107,5 +153,3 @@
 <script src="{% static 'js/agency.min.js' %}"></script>
 
 </body>
-
-</html>
