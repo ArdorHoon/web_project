@@ -47,8 +47,13 @@
                     <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
                 </li>
                 {% if user.is_superuser %}
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{% url 'manage' %}">Manage</a>
+        
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Manage</a>
+                    <div class="dropdown-menu">
+                        <a class ="dropdown-item" href="{% url 'createFestival' %}">festival register</a> 
+                        <a class ="dropdown-item" href="{% url 'confirmTicket' %}">festival confrim</a> 
+                    </div>
                 </li>
                 {% endif %}
                 {% if user.is_authenticated %}
