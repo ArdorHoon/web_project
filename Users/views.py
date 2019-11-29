@@ -3,15 +3,6 @@ from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from users.models import Data
 
-# Create your views here.
-def mypage(request):
-    Datas = Data.objects.all()
-    context = {'Datas':Datas}
-        #context에 모든 어린이 정보를 저장
-    return render(request, 'mypage.html', context)
-        #context안에 있는 어린이 정보를 index.html로 전달
-
-
 def signup(request):
   if request.method == "POST":
     if request.POST.get("password1", " ") == request.POST.get("password2", " "):
