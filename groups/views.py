@@ -6,6 +6,9 @@ from django.contrib import messages
 def group(request):
   return render(request, 'group.html')
 
+def each(request):
+    return render(request, 'eachGroup.html')
+
 def register(request):
   if request.method == "POST":
     name = request.POST.get("gn", " ")
