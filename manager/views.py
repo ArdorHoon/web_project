@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from festival.models import Festival
+from groups.models import Groups
 from django.contrib import messages
 
 def register(request):
@@ -24,9 +25,22 @@ def register(request):
     return render(request, 'createFestival.html')
 
 def confirm(request):
-  if reqeust.method=="POST":
-  
+  if request.method=="POST":
+    accept = request.POST.get("accept", None)
+    denial = request.POST.get("denial", None)
+
+    if accept is not None and denial is None: 
+      group = Groups.objects.get(name=accept)
+      group.is_authenticated = 1
+      group.save()
+    else:
+      group = Groups.objects.get(name=denial)
+      group.is_authenticated = -1
+      group.save()
+
     return redirect('/manager/confirm_ticket')
   else:
-    
+    GroupList = Groups.objects.filter(is_authenticated=0)
+    context = {'GroupList': GroupList}
+
     return render(request, 'confirmTicket.html', context)
