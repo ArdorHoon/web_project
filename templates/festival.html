@@ -46,6 +46,11 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
                 </li>
+                {% if user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'manage' %}">Manage</a>
+                </li>
+                {% endif %}
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{% url 'mypage' %}">Mypage</a>
