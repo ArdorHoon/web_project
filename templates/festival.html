@@ -92,18 +92,23 @@
 <!-- Festival List -->
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
     <div class="container">
-
-
         <div class="col-md-12">
             <h2>2019</h2>
             <hr>
         </div>
+        <!--검색 부분 시작-->
+        <form class="form-inline " method ="POST">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" name="q" value="{{ q }}" placeholder="제목 검색" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
         <div class="row text-center">
         {% for festival in festivals %}
             <div class="col-md-3">
                 <a href="{% url 'detailFestival' festival.id %}">
                     <span class="fa-stack fa-6x">
-                        <img class="img-fluid" src = "{% static 'img/festival/top4-1.png' %}"></img>
+                        <img class="img-fluid" src = "{{festival.pic.url}}" alt=""></img>
                     </span>
                     <span>
                         <br>

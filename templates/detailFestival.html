@@ -92,24 +92,23 @@
 <!-- Festival List -->
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
     <div class="container">
-
         <div class="row text-center">
             <div class="col-md-4 text-center">
                 <h2 class="section-heading">Festival</h2>
             </div>
         </div>
-
-        <div class="row text-center">
-            <div class="col-md-12">
-                  <span class="fa-stack fa-5x">
-                    <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img>
-                  </span>
-                <h4 class="top4-heading" style ="font-size : 20px;">"{{festival.name}}"</h4>
-                <p class="text-muted">일시 : {{festival.date}}</p>
-                <p class="text-muted">장소 : {{festival.place}}</p>
-                <p class="text-muted">가격 : {{festival.price}}원</p>
+        <div class="row text-center" style="height: 400px;">
+            <div class="col-md-5" style="padding-top: 20px;">
+              <span class="fa-stack fa-7x">
+                <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img>
+              </span>
             </div>
-
+            <div class="col-md-4 text-left"style="padding-top: 20px;">
+                <h1>"{{festival.name}}"</h1>
+                <h3 class="text-muted">일시 : {{festival.date}}</h3>
+                <h3 class="text-muted">장소 : {{festival.place}}</h3>
+                <h3 class="text-muted">가격 : {{festival.price}}원</h3>
+            </div>
         </div>
     </div>
 </section>
