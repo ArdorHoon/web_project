@@ -77,6 +77,7 @@
     </div>
 </nav>
 
+
 <!-- Header -->
 <header class="masthead">
     <div class="container">
@@ -91,6 +92,8 @@
     </div>
 </header>
 
+
+
 <!-- Group -->
 <col class="page-section" id="group">
 <div class="group-container">
@@ -101,12 +104,12 @@
                 <li class="group-line-by">
                     <div class = "row">
                         <div class = "col-md-3">
-                            <a href="{{ group.name }}">
+                            <a href="{{ group.id }}">
                                 <img class="rounded-circle img-fluid group-image" src = {{ group.festival_pic }} alt="">
                             </a>
                         </div>
                             <div class = "col-md-9" style = "margin-top: 2%">
-                                <a href="{{ group.name }}">
+                                <a href="{{ group.id }}">
                                     <div class="group-panel">
                                         <div class="group-heading">
                                             <h4>{{ group.name }} ({{ group.usercount}}/{{group.maxcount }})</h4>
@@ -127,17 +130,18 @@
         </ul>
     </div>
 </div>
+{% if user.is_authenticated %}
 <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'registerGroup' %}" >그룹 등록하기</a>
+{% else %}
+<a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'login' %}" >그룹 등록하기</a>
+{% endif %}
 </section>
 
 
 
-
-
-  <!-- Footer -->
-  <footer id ="footer" class="py-3 bg-dark">
+<!-- Footer -->
+<footer id ="footer" class="py-3 bg-dark">
     <div class="container">
-      
       </span>
       <h3>Festival Together</h3>
       <hr class="footerline">
@@ -152,7 +156,7 @@
     
       <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
     </div>
-  </footer>
+</footer>
 
 
 

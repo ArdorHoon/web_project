@@ -86,15 +86,15 @@
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
     <div class="container">
         <div class="row">
-            {% if GroupList.count > 0 %}
-                {% for group in GroupList %}
-                    <div class="col-md-2">
+            {% if groups.count > 0 %}
+                {% for group in groups %}
+                    <div class="col-md-3">
                         <span class="fa-stack fa-3x">
                             <!-- <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img> -->
                             <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img>
                         </span>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <br>
                         <h4>그룹 이름 :{{group.name}}</h4>
                         <h5>만날 날짜 :{{group.date}}</h5>
@@ -103,11 +103,11 @@
                     </div>
                     <form method="POST">
                         {% csrf_token %}
-                        <div class="col-md-2">
-                            <button type="submit" name="accept" value={{group.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#">ACCEPT</button>
+                        <div class="col-md-3">
+                            <button type="submit" id="accept" name="accept" value={{group.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;">ACCEPT</button>
                         </div>
-                        <div class="col-md-2">
-                            <button type="submit" name="denial" value={{group.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;" href="#">DENIAL</button>
+                        <div class="col-md-3">
+                            <button type="submit" id="denial" name="denial" value={{group.name}} class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" style="weight:100px; height: 50px;">DENIAL</button>
                         </div>
                     </form>
                     <br>
