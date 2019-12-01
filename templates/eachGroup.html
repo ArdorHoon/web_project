@@ -75,15 +75,15 @@
         <div class = "form-group">
             <div class = "row">
                 <div class = "col-md-3">
-                    <img class="rounded-circle img-fluid group-image" src = "{% static 'img/group/1.jpg' %}" alt="">
+                    <img class="rounded-circle img-fluid group-image" src = "{{ group.festival_pic }}" alt="">
                 </div>
                 <div class = "col-md-6" style = "margin-top:4%">
                     <div class="group-panel">
                         <div class="group-heading">
-                            <h4>크루모집</h4>
-                            <h5 class="subheading">청춘 페스티벌</h5>
-                            <h5 class="subheading">2019.11.12</h5>
-                            <h5 class="subheading">#해시태그 #논알콜 #올나잇</h5>
+                            <h4>{{ group.name }}  {{ group.usercount }}/{{ group.maxcount }}</h4>
+                            <h5 class="subheading">{{ group.festival_name }}</h5>
+                            <h5 class="subheading">{{ group.date }}</h5>
+                            <h5 class="subheading">{{ group.hashtag }}</h5>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
             </div>
             <br><br>
             <div class = "row">
-                <p class="text-muted" style = "margin-left: 5% ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                <p class="text-muted" style = "margin-left: 5% ">{{ group.description }}</p>
             </div>
         </div>
     </div>

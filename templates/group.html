@@ -91,12 +91,12 @@
                 <li class="group-line-by">
                     <div class = "row">
                         <div class = "col-md-3">
-                            <a href="{% url 'eachGroup' %}">
+                            <a href="{{ group.name }}">
                                 <img class="rounded-circle img-fluid group-image" src = {{ group.festival_pic }} alt="">
                             </a>
                         </div>
                             <div class = "col-md-9" style = "margin-top: 2%">
-                                <a href="{% url 'eachGroup' %}">
+                                <a href="{{ group.name }}">
                                     <div class="group-panel">
                                         <div class="group-heading">
                                             <h4>{{ group.name }} ({{ group.usercount}}/{{group.maxcount }})</h4>

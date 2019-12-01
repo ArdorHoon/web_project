@@ -11,9 +11,10 @@ def group(request):
     context = {'groups':groups}
     return render(request, 'group.html',context)
 
-def each(request):
-    #groups = Groups.objects.get(name = name)
-    return render(request, 'eachGroup.html')
+def each(request,name):
+    group = Groups.objects.get(name = name)
+    context = {'group':group}
+    return render(request, 'eachGroup.html', context)
 
 def register(request):
   if request.method == "POST":

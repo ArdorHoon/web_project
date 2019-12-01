@@ -3,6 +3,6 @@ from groups import views
 
 urlpatterns = [
   path('', views.group, name='group'),
-  path('eachGroup', views.each, name= 'eachGroup'),
-  path('register/', views.register, name='registerGroup')
+  path('register/', views.register, name='registerGroup'),
+  path('<name>/', views.each)
 ]
