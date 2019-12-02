@@ -33,7 +33,8 @@ def register(request):
     date = request.POST.get("gd", " ")
     hashtag = request.POST.get("ght", " ")
     maxcount = request.POST.get("gmc", " ")
-    ticket = request.POST.get("gtk", " ")
+    # ticket = request.POST.get("gtk", " ")
+    ticket = request.FILES['gtk']
     description = request.POST.get("gds", " ")
 
     group_in_db = Groups.objects.filter(name=name)
