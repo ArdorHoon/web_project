@@ -13,12 +13,8 @@ def group(request):
 
 def each(request,name):
     group = Groups.objects.get(name = name)
-<<<<<<< HEAD
     groupusers = Groupusers.objects.filter(group_name = group.name)
     context = {'group':group, 'groupusers': groupusers}
-=======
-    context = {'group':group}
->>>>>>> 23081fe6ffd047fc3411bc745919ca5a9759066e
     return render(request, 'eachGroup.html', context)
 
 def register(request):
