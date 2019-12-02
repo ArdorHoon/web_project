@@ -99,7 +99,7 @@
                 </div>
                 <div class = "col-md-3" style = "margin-top: 7%">
                     {% if user.is_authenticated %}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'group' %}">참가하기</a>
+                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply">참가하기</a>
                     {% else %}
                     <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'login' %}" >참가하기</a>
                     {% endif %}
@@ -109,6 +109,7 @@
             <div class = "row">
                 <p class="text-muted" style = "margin-left: 5% ">{{ group.description }}</p>
             </div>
+
         </div>
     </div>
 </div>

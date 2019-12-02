@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'users',
     'festivals',
     'groups',
-    'manager',
+    'groupusers'
 ]
 
 MIDDLEWARE = [
