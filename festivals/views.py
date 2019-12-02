@@ -32,12 +32,12 @@ def register(request):
     name = request.POST.get("fes_name", " ")
     date = request.POST.get("fes_date", " ")
     place = request.POST.get("fes_loca", " ")
-    picture = request.FILES['fes_pic']
+    pic = request.FILES['fes_pic']
     price = request.POST.get("fes_price", " ")
 
     is_festival_in = Festival.objects.filter(name=name)
     if is_festival_in.count() == 0:
-        fest = Festival(name=name, date=date, place=place, price=price, pic=picture)
+        fest = Festival(name=name, date=date, place=place, price=price, pic=pic)
         fest.save()
 
         #messages.info(request, "등록되었습니다")
