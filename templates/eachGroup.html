@@ -97,6 +97,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class = "col-md-3" style = "margin-top: 7%">
                     {% if user.is_authenticated %}
                     <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply">참가하기</a>
@@ -104,11 +105,64 @@
                     <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'login' %}" >참가하기</a>
                     {% endif %}
                 </div>
+
             </div>
             <br><br>
             <div class = "row">
                 <p class="text-muted" style = "margin-left: 5% ">{{ group.description }}</p>
             </div>
+
+            <!--내 가입 그룹-->
+            <div calss="container">
+                <div class="card mx-auto w-75" style=" margin-top : 20px; ">
+                    <h5 class="card-header">
+                        그룹 가입자
+                    </h5>
+                    <ul class="list-group list-group-flush">
+                        {% for groupuser in groupusers %}
+                        {% if groupuser.status == 2 %}
+                        <li class="list-group-item">{{ groupuser.user_id }}님 (리더)</li>
+                        {% elif groupuser.status == 1 %}
+                        <li class="list-group-item">{{ groupuser.user_id }}님 </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            {% if group.leader_id == user.username %}
+            <!--내 등록 그룹-->
+            <div calss="container">
+                <div class="card mx-auto w-75 " style=" margin-top : 20px; margin-bottom : 30px;" >
+                    <h5 class="card-header">
+                        그룹 신청 현황
+                    </h5>
+                    <form method="POST" action = "confirm/">
+                        {% csrf_token %}
+                    <ul class="list-group list-group-flush">
+                        {% for groupuser in groupusers %}
+                        {% if groupuser.status == 0 %}
+                        <div class = "row">
+                            <div class="col-md-8">
+                                <li class="list-group-item">{{ groupuser.user_id }}</li>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style="margin-top: 10%;margin-left: 20%; weight:100px; height: 30px;">ACCEPT</button>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-secondary btn-sm text-uppercase " style="margin-top: 10%;weight:100px; height: 30px;">DENIAL</button>
+                            </div>
+                         </div>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+
+
+
 
         </div>
     </div>

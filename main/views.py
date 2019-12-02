@@ -48,3 +48,5 @@ def confirmTicket(request):
   #groups = Groups.objects.filter(is_authenticated=0)
   #context = {'groups': groups}
   #return render(request, 'confirmTicket.html', context)
+
+
