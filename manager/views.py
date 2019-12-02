@@ -40,13 +40,6 @@ def confirm(request): #main view 에서 응답 처리
     
     return redirect('/manager/confirm_ticket')
   else:
-    #n = Groups.objects.filter(is_authenticated=0).count()
-
-    
-    #if(n==1):
     groups = Groups.objects.filter(is_authenticated=0)
-    #else:
-    # GroupList = Groups.objects.filter(is_authenticated=0)
-
     context = {'groups': groups}
     return render(request, 'confirmTicket.html', context)

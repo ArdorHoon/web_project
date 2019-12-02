@@ -9,8 +9,9 @@ class Groups(models.Model):
   festival_pic = models.ImageField(blank=True, null=True)
   date = models.DateField(default=datetime.date.today)
   hashtag = models.CharField(max_length=30, default="")
-  usercount = models.IntegerField(default=0, null=True, blank=True)
-  maxcount = models.IntegerField(default=1, null=True, blank=True)
-  ticket = models.ImageField(null=True, blank=True)
+  usercount = models.IntegerField(default=1) # 얘를 없애구
+  maxcount = models.IntegerField(default=1)
+  # ticket = models.ImageField(null=True, blank=True)
+  ticket = models.ImageField(upload_to="image", null=True, blank=True)
   description = models.TextField(max_length=200, default="")
   is_authenticated = models.IntegerField(default=0)

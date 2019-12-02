@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from users.models import Data
 # from festivals.models import Festival
 from groups.models import Groups
+from groupusers.models import Groupusers
         
 # Create your views here.
 
@@ -13,10 +14,17 @@ def index(request):
 def manage(request):
   return render(request, 'manage.html')
 
+def each(request,name):
+    group = Groups.objects.get(name = name)
+    context = {'group':group}
+    return render(request, 'eachGroup.html', context)
+
 def mypage(request):
       
   datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
-  context = {'datas': datas}
+  Groups = Groupusers.objects.filter(user_id = request.user.username)
+
+  context = {'datas': datas , 'Groups' : Groups }
 
   return render(request, 'mypage.html', context)
 
