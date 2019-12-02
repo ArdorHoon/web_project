@@ -47,12 +47,12 @@
                     <a class="nav-link js-scroll-trigger" href="{% url 'group' %}">Group</a>
                 </li>
                 {% if user.is_superuser %}
-        
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Manage</a>
                     <div class="dropdown-menu">
-                        <a class ="dropdown-item" href="{% url 'createFestival' %}">festival register</a> 
-                        <a class ="dropdown-item" href="{% url 'confirmTicket' %}">festival confrim</a> 
+                        <a class ="dropdown-item" href="{% url 'createFestival' %}" style = "font-family: sans-serif;">festival register</a>
+                        <a class ="dropdown-item" href="{% url 'confirmTicket' %}" style = "font-family: sans-serif;">festival confrim</a>
                     </div>
                 </li>
                 {% endif %}
@@ -62,12 +62,12 @@
                 </li>
 
                 <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
-                    </li>
+                    <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
+                </li>
                 {% else %}
                 <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
-                    </li> 
+                    <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
+                </li>
                 {% endif %}
 
             </ul>
@@ -75,109 +75,77 @@
     </div>
 </nav>
 
-
-<!-- Festival List -->
-
-<section class="page-section" id="festival" style ="margin-top: 30px;">
+<!-- Header -->
+<header class="masthead">
     <div class="container">
-
-        <div class="row text-center">
-            <div class="col-md-4 text-center">
-                <h2 class="section-heading">Festival</h2>
+        <div class="intro-text">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="section-heading" style="font-size: 68px;">
+                        더 많은 Festival을 만나보세요 :)</h1>
+                </div>
             </div>
         </div>
-         <!--검색 부분 시작-->
-        <form class="form-inline " method ="GET">
-                <input class="form-control mr-sm-2" type="search" name="q" value="{{ q }}" placeholder="제목 검색" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </div>
+</header>
+
+<!-- Festival List -->
+<section class="page-section" id="festival" style ="padding-top  : 40px;">
+    <div class="container">
+        <div class="col-md-12">
+            <h2>2019</h2>
+            <hr>
+        </div>
+        <!--검색 부분 시작-->
+        <form class="form-inline " method ="POST">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" name="q" value="{{ q }}" placeholder="제목 검색" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-          
-        {% for post in post_list %}
-        <table class="table">
-        <thead>
-              <tr>                
-                <th scope="col">id</th>
-                <th scope="col">title</th>
-                <th scope="col">date</th>
-                <th scope="col">place</th>
-                <th scope="col">price</th>
-             </tr>
-        </thead>
-        <tbody> 
-              <tr>
 
-            <td>{{post.id}}</td>
-            <td>{{post.name}}</td>
-            <td>{{post.date}}</td>
-            <td>{{post.place}}</td>
-            <td>{{post.price}}</td>
-
-            <!--<img src={{post.pic}}/>-->
-     
-        </tr>
-        </tbody>
-        </table>
-        {% endfor %}
-        <!--검색 부분 끝-->
-        {% for i in '012345' %}
-            <div class="col-md-12">
-                <h4>2019년 4월,</h4>
-                <hr>
-            </div>
-
-            <div class="row text-center">
-                <div class="col-md-3">
-                  <span class="fa-stack fa-5x">
-                    <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img>
-                  </span>
-                    <h4 class="top4-heading" style ="font-size : 20px;">청춘페스티벌</h4>
-                    <p class="text-muted">일시 : 2019.02.11~2019.11.11</p>
-                </div>
-                <div class="col-md-3">
-                  <span class="fa-stack fa-5x">
-                     <img class="img-fluid" src = "{% static 'img/top4/top4-2.jpg' %}" ></img>
-                  </span>
-                    <h4 class="top4-heading" style ="font-size : 20px;">KASABIA</h4>
-                    <p class="text-muted">일시 : 2019.02.11~2019.11.11</p>
-                </div>
-                <div class="col-md-3">
-                  <span class="fa-stack fa-5x">
-                     <img class="img-fluid" src = "{% static 'img/top4/top4-3.jpg' %}" ></img>
-                  </span>
-                    <h4 class="top4-heading" style ="font-size : 20px;">EDC KOREA</h4>
-                    <p class="text-muted">일시 : 2019.02.11~2019.11.11</p>
-                </div>
-                <div class="col-md-3">
-                  <span class="fa-stack fa-5x">
-                    <img class="img-fluid" src = "{% static 'img/top4/top4-4.jpg' %}" ></img>
-                  </span>
-                    <h4 class="top4-heading" style ="font-size : 20px;">INCHEON PENTAPORT ROCK FESTIVAL</h4>
-                    <p class="text-muted">일시 : 2019.02.11~2019.11.11</p>
-                </div>
+        <div class="row text-center">
+        {% for festival in festivals %}
+            <div class="col-md-3">
+                <a href="{% url 'detailFestival' festival.id %}">
+                    <span class="fa-stack fa-6x">
+                        <img class="img-fluid" src = "{{festival.pic.url}}" alt=""></img>
+                    </span>
+                    <span>
+                        <br>
+                        <br>
+                        <h4 class="top4-heading text-center">{{festival.name}}</h4>
+                        <p class="text-muted text-left">일시 : {{festival.date}}</p>
+                        <p class="text-muted text-left">장소 : {{festival.place}}</p>
+                        <p class="text-muted text-left">가격 : {{festival.price}}원</p>
+                        <br>
+                    </span>
+                </a>
             </div>
         {% endfor %}
+        </div>
     </div>
 </section>
 
+
   <!-- Footer -->
   <footer id ="footer" class="py-3 bg-dark">
-        <div class="container">
-          
-          </span>
-          <h3>Festival Together</h3>
-          <hr class="footerline">
-    
-          <div class="footercontents m-0 text-left text-white">
-    
-                <p class="company_contents">
-                팀원 : 양훈모, 이헤린, 서진원, 박주연 | 주소 : 서울특별시 중구 동국대학교 신공학관<br> 
-                Festival Together은 최신 페스티벌 정보를 수집하기 위해 노력하고 있으며 정보 제공에 따른 법적 책임을 지지 않습니다.<br>
-                </p>
-            </div>
-        
-          <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
+    <div class="container">
+      
+      </span>
+      <h3>Festival Together</h3>
+      <hr class="footerline">
+
+      <div class="footercontents m-0 text-left text-white">
+
+            <p class="company_contents">
+            팀원 : 양훈모, 이헤린, 서진원, 박주연 | 주소 : 서울특별시 중구 동국대학교 신공학관<br> 
+            Festival Together은 최신 페스티벌 정보를 수집하기 위해 노력하고 있으며 정보 제공에 따른 법적 책임을 지지 않습니다.<br>
+            </p>
         </div>
-      </footer>
+    
+      <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
+    </div>
+  </footer>
 
 
 

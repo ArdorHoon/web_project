@@ -24,7 +24,7 @@ def register(request):
   else:
     return render(request, 'createFestival.html')
 
-def confirm(request):
+def confirm(request): #main view 에서 응답 처리
   if request.method=="POST":
     accept = request.POST.get("accept", None)
     denial = request.POST.get("denial", None)
@@ -44,10 +44,9 @@ def confirm(request):
 
     
     #if(n==1):
-    GroupList = Groups.objects.filter(is_authenticated=0)
+    groups = Groups.objects.filter(is_authenticated=0)
     #else:
     # GroupList = Groups.objects.filter(is_authenticated=0)
 
-    context = {'GroupList': GroupList}
-
+    context = {'groups': groups}
     return render(request, 'confirmTicket.html', context)

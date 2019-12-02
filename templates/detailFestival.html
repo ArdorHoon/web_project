@@ -24,15 +24,13 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
 
-
 </head>
 
 <body id="page-top">
-
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="{% url 'index' %}">Festival Together</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Festival Together</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -77,7 +75,6 @@
     </div>
 </nav>
 
-
 <!-- Header -->
 <header class="masthead">
     <div class="container">
@@ -85,79 +82,57 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h1 class="section-heading" style="font-size: 68px;">
-                        함께 갈 크루를 만나보세요!!</h1>
+                        Festival에서 당신을 기다립니다=3</h1>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-
-
-<!-- Group -->
-<col class="page-section" id="group">
-<div class="group-container">
-    <div class="group">
-        <ul class= "group-list" >
-            {% for group in groups %}
-            <div class = "form-group">
-                <li class="group-line-by">
-                    <div class = "row">
-                        <div class = "col-md-3">
-                            <a href="{{ group.id }}">
-                                <img class="rounded-circle img-fluid group-image" src = {{ group.festival_pic }} alt="">
-                            </a>
-                        </div>
-                            <div class = "col-md-9" style = "margin-top: 2%">
-                                <a href="{{ group.id }}">
-                                    <div class="group-panel">
-                                        <div class="group-heading">
-                                            <h4>{{ group.name }} ({{ group.usercount}}/{{group.maxcount }})</h4>
-                                            <h5 class="subheading">{{ group.festival_name }}</h5>
-                                            <h5 class="subheading">{{ group.date }}</h5>
-                                            <h5 class="subheading">{{ group.hashtag }}</h5>
-                                        </div>
-                                    </div>
-                                    <div class="group-body">
-                                        <p class="text-muted">{{group.description}}</p>
-                                    </div>
-                                </a>
-                            </div>
-                    </div>
-                </li>
+<!-- Festival List -->
+<section class="page-section" id="festival" style ="padding-top  : 40px;">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 text-center">
+                <h2 class="section-heading">Festival</h2>
             </div>
-            {% endfor %}
-        </ul>
+        </div>
+        <div class="row text-center" style="height: 400px;">
+            <div class="col-md-5" style="padding-top: 20px;">
+              <span class="fa-stack fa-7x">
+                <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img>
+              </span>
+            </div>
+            <div class="col-md-4 text-left"style="padding-top: 20px;">
+                <h1>"{{festival.name}}"</h1>
+                <h3 class="text-muted">일시 : {{festival.date}}</h3>
+                <h3 class="text-muted">장소 : {{festival.place}}</h3>
+                <h3 class="text-muted">가격 : {{festival.price}}원</h3>
+            </div>
+        </div>
     </div>
-</div>
-{% if user.is_authenticated %}
-<a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'registerGroup' %}" >그룹 등록하기</a>
-{% else %}
-<a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'login' %}" >그룹 등록하기</a>
-{% endif %}
 </section>
-
 
 
 <!-- Footer -->
 <footer id ="footer" class="py-3 bg-dark">
     <div class="container">
-      </span>
-      <h3>Festival Together</h3>
-      <hr class="footerline">
 
-      <div class="footercontents m-0 text-left text-white">
+        </span>
+        <h3>Festival Together</h3>
+        <hr class="footerline">
+
+        <div class="footercontents m-0 text-left text-white">
 
             <p class="company_contents">
-            팀원 : 양훈모, 이헤린, 서진원, 박주연 | 주소 : 서울특별시 중구 동국대학교 신공학관<br> 
-            Festival Together은 최신 페스티벌 정보를 수집하기 위해 노력하고 있으며 정보 제공에 따른 법적 책임을 지지 않습니다.<br>
+                팀원 : 양훈모, 이헤린, 서진원, 박주연 | 주소 : 서울특별시 중구 동국대학교 신공학관<br>
+                Festival Together은 최신 페스티벌 정보를 수집하기 위해 노력하고 있으며 정보 제공에 따른 법적 책임을 지지 않습니다.<br>
             </p>
         </div>
-    
-      <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
+
+        <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
     </div>
 </footer>
-
 
 
 

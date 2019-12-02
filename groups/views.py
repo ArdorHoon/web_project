@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from groups.models import Groups
 from django.contrib import messages
-
 from festivals.models import Festival
 
 
@@ -11,9 +10,10 @@ def group(request):
     context = {'groups':groups}
     return render(request, 'group.html',context)
 
-def each(request):
-    #groups = Groups.objects.get(name = name)
-    return render(request, 'eachGroup.html')
+def each(request,id):
+    group = Groups.objects.get(id = id)
+    context = {'group':group}
+    return render(request, 'eachGroup.html', context)
 
 def register(request):
   if request.method == "POST":
@@ -37,12 +37,12 @@ def register(request):
 
     group_in_db = Groups.objects.filter(name=name)
     if group_in_db.count() == 0:
-      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description)
+      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=0)
       group.save()
+      return redirect('/group')
     else:
-      # messages.info(request, "Same Group name in Database")
+      #messages.info(request, "Same Group name in Database")
       return redirect('/group/register')
-    return redirect('/group')
   else:
     festival = Festival.objects.all()
     context = {'festival':festival}
