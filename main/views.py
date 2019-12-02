@@ -16,7 +16,8 @@ def manage(request):
 
 def each(request,name):
     group = Groups.objects.get(name = name)
-    context = {'group':group}
+    groupusers = Groupusers.objects.filter(group_name = group.name)
+    context = {'group':group, 'groupusers': groupusers}
     return render(request, 'eachGroup.html', context)
 
 def mypage(request):
