@@ -42,7 +42,6 @@ def register(request):
         fest = Festival(name=name, date=date, place=place, price=price, pic=picture)
         fest.save()
 
-
         file = request.FILES['fes_pic']
         file_name = default_storage.save(file.name, file)
 
