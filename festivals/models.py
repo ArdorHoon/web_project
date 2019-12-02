@@ -9,4 +9,4 @@ class Festival(models.Model):
   place = models.CharField(max_length=30, default="")
   price = models.IntegerField(default=0, blank=True, null=True)
   # lineup = models.TextField(default="")
-  pic = models.ImageField(blank=True, null=True, upload_to="img/festival/")
+  pic = models.ImageField(blank=True, null=True)
