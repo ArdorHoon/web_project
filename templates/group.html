@@ -104,12 +104,17 @@
                 <li class="group-line-by">
                     <div class = "row">
                         <div class = "col-md-3">
+<<<<<<< HEAD
                             <a href="{{ group.id }}">
                                 <img class="rounded-circle img-fluid group-image" src = {{ group.ticket.url }} alt=""/>
+=======
+                            <a href="{{ group.name }}">
+                                <img class="rounded-circle img-fluid group-image" src = {{ group.festival_pic }} alt="">
+>>>>>>> 6feff3b2a3bedf2cc22f521c97b3ef1eab84ba10
                             </a>
                         </div>
                             <div class = "col-md-9" style = "margin-top: 2%">
-                                <a href="{{ group.id }}">
+                                <a href="{{ group.name }}">
                                     <div class="group-panel">
                                         <div class="group-heading">
                                             <h4>{{ group.name }} ({{ group.usercount}}/{{group.maxcount }})</h4>

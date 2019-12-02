@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
+    path('mypage/<name>/', views.each),
     path('mypage/', views.mypage, name='mypage'),
     path('festival/', include('festivals.urls')),
     path('group/', include('groups.urls')),
