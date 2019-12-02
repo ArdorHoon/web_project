@@ -101,7 +101,9 @@
         <ul class="list-group list-group-flush">
             {% for group in Groups %}
             {% if group.status  == 2 %}
-          <li class="list-group-item">{{ group.group_name }}</li>
+          <li class="list-group-item">{{ group.group_name }}
+              <a class="btn btn-dark btn-sm" style =" float : right" href="{{ group.group_name }}" role="button">상세보기</a></li>
+            
             {% endif %}
             {% endfor%}
        
@@ -118,7 +120,7 @@
             <ul class="list-group list-group-flush">
                 {% for group in Groups %}
                 {% if group.status == 1 %}
-              <li class="list-group-item">{{ group.group_name }}</li>
+              <li class="list-group-item">{{ group.group_name }}<a class="btn  btn-dark btn-sm " style =" float : right" href="{{ group.group_name }}" role="button">상세보기</a></li>
                 {% endif %}
                 {% endfor%}
            
@@ -134,9 +136,14 @@
             </h5>
             <ul class="list-group list-group-flush">
                 {% for group in Groups %}
-                {% if group.status == 0 %}
-              <li class="list-group-item">{{ group.group_name }}</li>
+                {% if group.status <= 0 %}
+              <li class="list-group-item">{{ group.group_name }}
+                 {% if group.status == 0 %}
+                  <a class="btn btn-info btn-sm" style =" float : right" href="{{ group.group_name }}" role="button">대기 중..</a></li>
+                 {%else%}
+                 <a class="btn btn-Danger btn-sm" style =" float : right" href="{{ group.group_name }}" role="button">거절</a></li>
                 {% endif %}
+                  {% endif %}
                 {% endfor%}
            
             </ul>
