@@ -120,7 +120,8 @@
             <ul class="list-group list-group-flush">
                 {% for group in Groups %}
                 {% if group.status == 1 %}
-              <li class="list-group-item">{{ group.group_name }}<a class="btn  btn-dark btn-sm " style =" float : right" href="{{ group.group_name }}" role="button">상세보기</a></li>
+                <li class="list-group-item">{{ group.group_name }}<a class="btn  btn-dark btn-sm " style =" float : right" href="{{ group.group_name }}" role="button">상세보기</a><a class="btn  btn-dark btn-sm " value = 'user.username' style =" float : right" href='{{ group.group_name }}/getout' role="button">탈퇴하기</a></li>
+
                 {% endif %}
                 {% endfor%}
            
@@ -143,9 +144,8 @@
                  {%else%}
                  <a class="btn btn-Danger btn-sm" style =" float : right" href="{{ group.group_name }}" role="button">거절</a></li>
                 {% endif %}
-                  {% endif %}
+                {% endif %}
                 {% endfor%}
-           
             </ul>
           </div>
         </div>
