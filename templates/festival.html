@@ -84,12 +84,17 @@
             <div class="container">
             <h2>2019년 페스티벌 목록</h2>
             </div>
-            <div class="container" style ="float :right;">
+            <div class="container">
+                <div class = "row">
+                    <div class="col-8"></div>
+                    <div class="col-4">
                     <form class="form-inline "  method ="POST">
                        {% csrf_token %}
                       <input class="form-control mr-sm-2 " type="search" name="q" value="{{ q }}" placeholder="제목 검색" aria-label="Search">
                       <button class="btn btn-outline-dark my-2 my-sm-0 " type="submit">Search</button>
                     </form>
+                </div>
+                </div>
             </div>
             
           
