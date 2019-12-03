@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from users.models import Data
-# from festivals.models import Festival
+from festivals.models import Festival
 from groups.models import Groups
 from groupusers.models import Groupusers
         
@@ -9,7 +9,9 @@ from groupusers.models import Groupusers
 #  return render(request, 'search.html')
 
 def index(request):
-  return render(request, 'index.html')
+  festivals = Festival.objects.filter(best=1)
+  context = {"festivals": festivals}
+  return render(request, 'index.html', context)
 
 def manage(request):
   return render(request, 'manage.html')
