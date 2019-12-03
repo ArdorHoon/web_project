@@ -37,14 +37,14 @@ def register(request):
 
     is_festival_in = Festival.objects.filter(name=name)
     if is_festival_in.count() == 0:
-        fest = Festival(name=name, date=date, place=place, price=price, pic=pic)
+        fest = Festival(name=name, date=date, place=place, price=price, poster=pic)
         fest.save()
 
         #messages.info(request, "등록되었습니다")
         return redirect('/festival')
     else:
       messages.info(request, "등록하려 하는 축제 정보가 이미 DB안에 존재합니다!")
-      return redirect('/festival/register')
+      return redirect('/index')
 
   else:
     return render(request, 'createFestival.html', context)
