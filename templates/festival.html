@@ -84,12 +84,17 @@
             <div class="container">
             <h2>2019년 페스티벌 목록</h2>
             </div>
-            <div class="container" style ="float :right;">
+            <div class="container">
+                <div class = "row">
+                    <div class="col-8"></div>
+                    <div class="col-4">
                     <form class="form-inline "  method ="POST">
                        {% csrf_token %}
                       <input class="form-control mr-sm-2 " type="search" name="q" value="{{ q }}" placeholder="제목 검색" aria-label="Search">
                       <button class="btn btn-outline-dark my-2 my-sm-0 " type="submit">Search</button>
                     </form>
+                </div>
+                </div>
             </div>
             
           
@@ -107,13 +112,12 @@
         
 
         <div class="card" style="width: 16rem; margin : 10 10 10 10 ">
-                <img class="card-img-top" src="{{festival.poster.url}}" alt="Card image cap">
+                <img class="card-img-top" src="{{festival.poster.url}}" style="height : 300px"alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">{{festival.name}}</h5>
-                  <p class="card-text">일시 : {{festival.date}}</p>
-                  <p class="card-text">장소 : {{festival.place}}</p>
-    
-                  <a href= "{% url 'detailFestival' festival.id %}" class="btn btn-dark">Go somewhere</a>
+                  <p class="card-text">일시 : {{festival.date}} <br> 장소 : {{festival.place}}</p>
+               
+                  <a href= "{% url 'detailFestival' festival.id %}" class="btn btn-dark">상세보기</a>
                 </div>
             </div>
 

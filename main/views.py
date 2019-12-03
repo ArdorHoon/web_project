@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from users.models import Data
-# from festivals.models import Festival
+from festivals.models import Festival
 from groups.models import Groups
 from groupusers.models import Groupusers
         
@@ -9,7 +9,9 @@ from groupusers.models import Groupusers
 #  return render(request, 'search.html')
 
 def index(request):
-  return render(request, 'index.html')
+  festivals = Festival.objects.filter(best=1)
+  context = {"festivals": festivals}
+  return render(request, 'index.html', context)
 
 def manage(request):
   return render(request, 'manage.html')
@@ -28,35 +30,6 @@ def mypage(request):
   context = {'datas': datas , 'Groups' : Groups }
 
   return render(request, 'mypage.html', context)
-
-def confirmTicket(request):
-  if request.method=="POST":
-    accept = request.POST.get("accept", None)
-    denial = request.POST.get("denial", None)
-
-    if accept is not None and denial is None:
-      group = Groups.objects.get(name=accept)
-      group.is_authenticated = 1
-      group.save()
-    else:
-      group = Groups.objects.get(name=denial)
-      group.is_authenticated = -1
-      group.save()
-
-    return redirect('/manager/confirm_ticket')
-  else:
-    #n = Groups.objects.filter(is_authenticated=0).count()
-    #if(n==1):
-    groups = Groups.objects.filter(is_authenticated=0)
-    #else:
-    # GroupList = Groups.objects.filter(is_authenticated=0)
-
-    context = {'groups': groups}
-    return render(request, 'confirmTicket.html', context)
-
-  #groups = Groups.objects.filter(is_authenticated=0)
-  #context = {'groups': groups}
-  #return render(request, 'confirmTicket.html', context)
 
 def confirmGroup(request,name):
   if request.method=="POST":

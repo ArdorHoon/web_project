@@ -91,6 +91,7 @@
         </div>
     </div>
     <div class="col-md-4">
+        <!--그룹 가입자 목록 -->
         <div calss="container">
             <div class="card mx-auto w-75" style=" width : 15px; ">
                 <h5 class="card-header">
@@ -107,6 +108,36 @@
                 </ul>
             </div>
         </div>
+        <!--내 등록 그룹-->
+        {% if group.leader_id == user.username %}
+        <div calss="container">
+            <div class="card mx-auto w-75 " style="width: 15px" >
+                <h5 class="card-header">
+                    그룹 신청 현황
+                </h5>
+                <form method="POST" action = "{{ group.name }}/confirm">
+                    {% csrf_token %}
+                    <ul class="list-group list-group-flush">
+                        {% for groupuser in groupusers %}
+                        {% if groupuser.status == 0 %}
+                        <div class = "row">
+                            <div class="col-md-8">
+                                <li class="list-group-item">{{ groupuser.user_id }}</li>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style="margin-top: 10%;margin-left: 20%; weight:100px; height: 30px;">ACCEPT</button>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-secondary btn-sm text-uppercase " style="margin-top: 10%;weight:100px; height: 30px;">DENIAL</button>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </form>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 

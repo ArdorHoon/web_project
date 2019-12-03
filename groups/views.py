@@ -4,6 +4,7 @@ from groupusers.models import Groupusers
 from django.contrib import messages
 from festivals.models import Festival
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # Create your views here.
 def group(request):
@@ -20,13 +21,16 @@ def group(request):
             return render(request, 'group.html')
     else:
         groups = Groups.objects.filter(is_authenticated=1).order_by('-date')
-        context = {'groups':groups}
-        return render(request, 'group.html',context)
+        paginator = Paginator(groups, 10)
+
+        page = request.GET.get('page')
+        contexts = paginator.get_page(page)
+        return render(request, 'group.html',{'contexts': contexts})
 
 def each(request,name):
     group = Groups.objects.get(name = name)
-    groupusers = Groupusers.objects.filter(group_name = group.name)
-    context = {'group':group, 'groupusers': groupusers}
+    groupuser = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+    context = {'group':group, 'groupuser': groupuser}
     return render(request, 'eachGroup.html', context)
 
 def register(request):
@@ -52,7 +56,7 @@ def register(request):
 
     group_in_db = Groups.objects.filter(name=name)
     if group_in_db.count() == 0:
-      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=1)
+      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=0)
       group.save()
       groupuser = Groupusers(group_name = name, user_id = leader, status = 2)
       groupuser.save()
@@ -105,4 +109,4 @@ def confirmGroup(request,name):
     groupusers = Groupusers.objects.filter(group_name = group.name)
     context = {'group':group, 'groupusers': groupusers}
     return render(request, 'eachGroup.html', context)
-
+ 
