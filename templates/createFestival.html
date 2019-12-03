@@ -54,7 +54,7 @@
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Manage</a>
                     <div class="dropdown-menu">
                         <a class ="dropdown-item" href="{% url 'createFestival' %}" style = "font-family: sans-serif;">festival register</a>
-                        <a class ="dropdown-item" href="{% url 'confirmTicket' %}" style = "font-family: sans-serif;">festival confrim</a>
+                        <a class ="dropdown-item" href="{% url 'confirmTicket' %}" style = "font-family: sans-serif;">group confirm</a>
                     </div>
                 </li>
                 {% endif %}
@@ -118,6 +118,11 @@
                         <tr role="row" class="odd">
                             <th><center>첨부 사진</center></th>
                             <td colspan="2"><input class="form-control" name="fes_pic" id="fes_pic" type="file" ></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <th><center>URL</center></th>
+                            <td colspan="2"><input class="form-control" name="fes_desc" id="fes_desc"></input>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
