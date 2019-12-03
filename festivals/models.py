@@ -8,3 +8,5 @@ class Festival(models.Model):
   place = models.CharField(max_length=30, default="")
   price = models.IntegerField(default=0, blank=True, null=True)
   poster = models.ImageField(upload_to="image", null=True, blank=True)
+  best = models.IntegerField(default=0)
+  desc = models.CharField(max_length=200, default="")
