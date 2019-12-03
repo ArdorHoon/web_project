@@ -29,35 +29,6 @@ def mypage(request):
 
   return render(request, 'mypage.html', context)
 
-def confirmTicket(request):
-  if request.method=="POST":
-    accept = request.POST.get("accept", None)
-    denial = request.POST.get("denial", None)
-
-    if accept is not None and denial is None:
-      group = Groups.objects.get(name=accept)
-      group.is_authenticated = 1
-      group.save()
-    else:
-      group = Groups.objects.get(name=denial)
-      group.is_authenticated = -1
-      group.save()
-
-    return redirect('/manager/confirm_ticket')
-  else:
-    #n = Groups.objects.filter(is_authenticated=0).count()
-    #if(n==1):
-    groups = Groups.objects.filter(is_authenticated=0)
-    #else:
-    # GroupList = Groups.objects.filter(is_authenticated=0)
-
-    context = {'groups': groups}
-    return render(request, 'confirmTicket.html', context)
-
-  #groups = Groups.objects.filter(is_authenticated=0)
-  #context = {'groups': groups}
-  #return render(request, 'confirmTicket.html', context)
-
 def confirmGroup(request,name):
   if request.method=="POST":
     accept = request.POST.get("accept", None)

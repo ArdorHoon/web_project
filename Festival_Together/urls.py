@@ -31,6 +31,5 @@ urlpatterns = [
     path('group/', include('groups.urls')),
     path('users/', include('users.urls')),
     path('manager/', include('manager.urls')),
-    path('confirmTicket/', views.confirmTicket, name='confirmTicket')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

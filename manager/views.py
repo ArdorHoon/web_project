@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from festivals.models import Festival
 from groups.models import Groups
 from django.contrib import messages
+from django.core.paginator import Paginator 
 
 def register(request):
   if request.user.is_superuser:
@@ -11,7 +12,7 @@ def register(request):
       place = request.POST.get("fes_loca", " ")
       price = request.POST.get("fes_price", " ")
       poster = request.FILES['fes_pic']
-      
+
       is_festival_in = Festival.objects.filter(name=name)
       if is_festival_in.count() == 0: 
         fest = Festival(name=name, date=date, place=place, price=price, poster=poster)
@@ -45,7 +46,12 @@ def confirm(request): #main view 에서 응답 처리
       return redirect('/manager/confirm_ticket')
     else:
       groups = Groups.objects.filter(is_authenticated=0)
-      context = {'groups': groups}
-      return render(request, 'confirmTicket.html', context)
+
+      paginator = Paginator(groups, 10)
+      page = request.GET.get('page')
+      contexts = paginator.get_page(page)
+
+      context = {'contexts': contexts}
+      return render(request, 'confirmTicket.html', contexts)
   else:
     return redirect('/index')
