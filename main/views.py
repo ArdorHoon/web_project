@@ -25,9 +25,10 @@ def room(request,name):
 def mypage(request):
       
   datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
-  Groups = Groupusers.objects.filter(user_id = request.user.username)
+  groupusers = Groupusers.objects.filter(user_id = request.user.username)
+  groups = Groups.objects.filter(leader_id = request.user.username) 
 
-  context = {'datas': datas , 'Groups' : Groups }
+  context = {'datas': datas , 'groupusers' : groupusers , 'groups' : groups}
 
   return render(request, 'mypage.html', context)
 
@@ -65,7 +66,7 @@ def getout(request,name):
     groupuser.delete()
 
     datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
-    Groups = Groupusers.objects.filter(user_id = request.user.username)
+    Groups = Groupusers.objects.filter(leader_id = request.user.username)
 
     context = {'datas': datas , 'Groups' : Groups }
 
