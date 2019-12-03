@@ -13,7 +13,8 @@ def group(request):
 
 def each(request,name):
     group = Groups.objects.get(name = name)
-    context = {'group':group}
+    groupusers = Groupusers.objects.filter(group_name = group.name)
+    context = {'group':group, 'groupusers': groupusers}
     return render(request, 'eachGroup.html', context)
 
 def register(request):
@@ -52,8 +53,9 @@ def register(request):
     context = {'festival':festival}
     return render(request, 'registerGroup.html',context)
 
-def apply(request,id):
-    group = Groups.objects.get(id = id)
+def apply(request,name):
+    group = Groups.objects.get(name = name)
+
     group_name = group.name
     user_id = request.user.username
     status = 0
@@ -63,3 +65,32 @@ def apply(request,id):
 
     context = {'group':group}
     return render(request, 'eachGroup.html', context)
+
+def confirmGroup(request,name):
+  if request.method=="POST":
+    accept = request.POST.get("accept", None)
+    denial = request.POST.get("denial", None)
+
+    group = Groups.objects.get(name=name)
+
+    if accept is not None and denial is None:
+      groupuser = Groupusers.objects.get(group_name=group.name, user_id=accept)
+      print(groupuser.group_name, groupuser.user_id)
+      groupuser.status = 1
+      groupuser.save()
+    else:
+      groupuser = Groupusers.objects.get(group_name=group.name, user_id=denial)
+      groupuser.status = -1
+      groupuser.save()
+
+    groupusers = Groupusers.objects.filter(group_name = group.name)
+
+    context = {'group':group, 'groupusers': groupusers}
+    return render(request, 'eachGroup.html', context)
+
+  else:
+    group = Groups.objects.get(name=name)
+    groupusers = Groupusers.objects.filter(group_name = group.name)
+    context = {'group':group, 'groupusers': groupusers}
+    return render(request, 'eachGroup.html', context)
+
