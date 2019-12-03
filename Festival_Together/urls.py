@@ -23,13 +23,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
-    path('mypage/<name>/', views.each),
     path('mypage/', views.mypage, name='mypage'),
+    path('mypage/<name>', views.each, name='each'),
+    path('mypage/<name>/getout', views.getout, name='getout'),
+    path('mypage/<name>/confirm', views.confirmGroup),
     path('festival/', include('festivals.urls')),
     path('group/', include('groups.urls')),
     path('users/', include('users.urls')),
     path('manager/', include('manager.urls')),
     path('confirmTicket/', views.confirmTicket, name='confirmTicket')
 ]
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
