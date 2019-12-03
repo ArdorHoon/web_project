@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from users.models import Data
 from festivals.models import Festival
 from groups.models import Groups
+from groups.models import Comment
 from groupusers.models import Groupusers
         
 # Create your views here.
@@ -17,9 +18,23 @@ def manage(request):
   return render(request, 'manage.html')
 
 def room(request,name):
+  if request.method == "POST":
+    notify = request.POST.get("notify", None)   # 오류날텐데..
+    comment = request.POST.get("comment", None) # 오류날텐데..
+    if notify is None:
+      group = Groups.objects.get(name = name)
+      comm = Comment(groupname=group.name, context=comment, user_id=request.user.username, date=datetime.date.today)
+      comm.save()
+    else:
+      group = Groups.objects.get(name = name)
+      group.notification = notify
+    
+    return redirect('/mypage/<group.name>')
+  else:
     group = Groups.objects.get(name = name)
     groupusers = Groupusers.objects.filter(group_name = group.name)
-    context = {'group':group, 'groupusers': groupusers}
+    comment = Comment.objects.filter(groupname=group.name)
+    context = {'group':group, 'groupusers': groupusers, 'comment':comment}
     return render(request, 'groupRoom.html', context)
 
 def mypage(request):
@@ -71,3 +86,4 @@ def getout(request,name):
 
     return render(request, 'mypage.html', context)
    
+  
