@@ -99,7 +99,9 @@
 <div class="group-container">
     <div class="group">
         <ul class= "group-list" >
-            {% for group in groups %}
+            <h1>그룹 리스트</h1>
+            <hr/>
+            {% for group in contexts %}
             <div class = "form-group">
                 <li class="group-line-by">
                     <div class = "row">
@@ -126,8 +128,26 @@
                     </div>
                 </li>
             </div>
+            <hr/>
             {% endfor %}
         </ul>
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if contexts.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{contexts.previoust_page_number}}">이전</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{contexts.number}} / {{contexts.paginator.num_pages}} .
+            </span>
+
+            {% if contexts.has_next %}
+                <a href="?page={{contexts.next_page_number}}">다음</a>
+                <a href="?page={{contexts.paginator.num_pages}}">last &raquo;</a>
+            {% endif %} 
+        </span>
     </div>
 </div>
 {% if user.is_authenticated %}
