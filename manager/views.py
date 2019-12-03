@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from festivals.models import Festival
 from groups.models import Groups
 from django.contrib import messages
+from django.core.paginator import Paginator 
 
 def register(request):
   if request.user.is_superuser:

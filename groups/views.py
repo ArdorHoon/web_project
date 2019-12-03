@@ -4,6 +4,7 @@ from groupusers.models import Groupusers
 from django.contrib import messages
 from festivals.models import Festival
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # Create your views here.
 def group(request):
