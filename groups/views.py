@@ -20,8 +20,11 @@ def group(request):
             return render(request, 'group.html')
     else:
         groups = Groups.objects.filter(is_authenticated=1).order_by('-date')
-        context = {'groups':groups}
-        return render(request, 'group.html',context)
+        paginator = Paginator(groups, 10)
+
+        page = request.GET.get('page')
+        contexts = paginator.get_page(page)
+        return render(request, 'group.html',{'contexts': contexts})
 
 def each(request,name):
     group = Groups.objects.get(name = name)
@@ -105,4 +108,4 @@ def confirmGroup(request,name):
     groupusers = Groupusers.objects.filter(group_name = group.name)
     context = {'group':group, 'groupusers': groupusers}
     return render(request, 'eachGroup.html', context)
-
+ 
