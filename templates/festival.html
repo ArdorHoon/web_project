@@ -107,13 +107,12 @@
         
 
         <div class="card" style="width: 16rem; margin : 10 10 10 10 ">
-                <img class="card-img-top" src="{{festival.poster.url}}" alt="Card image cap">
+                <img class="card-img-top" src="{{festival.poster.url}}" style="height : 300px"alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">{{festival.name}}</h5>
-                  <p class="card-text">일시 : {{festival.date}}</p>
-                  <p class="card-text">장소 : {{festival.place}}</p>
-    
-                  <a href= "{% url 'detailFestival' festival.id %}" class="btn btn-dark">Go somewhere</a>
+                  <p class="card-text">일시 : {{festival.date}} <br> 장소 : {{festival.place}}</p>
+               
+                  <a href= "{% url 'detailFestival' festival.id %}" class="btn btn-dark">상세보기</a>
                 </div>
             </div>
 
