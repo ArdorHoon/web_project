@@ -21,11 +21,8 @@ def group(request):
             return render(request, 'group.html')
     else:
         groups = Groups.objects.filter(is_authenticated=1).order_by('-date')
-        paginator = Paginator(groups, 10)
-
-        page = request.GET.get('page')
-        contexts = paginator.get_page(page)
-        return render(request, 'group.html',{'contexts': contexts})
+        content = {"groups":groups}
+        return render(request, 'group.html',content)
 
 def each(request,name):
     group = Groups.objects.get(name = name)

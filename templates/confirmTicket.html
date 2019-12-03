@@ -92,57 +92,39 @@
         <div class="container">
             <div class="row">
                 {% if groups.count > 0 %}
-                {% for group in contexts %}
-                <div class="col-md-3">
-                    <span class="fa-stack fa-5x">
-                        <!-- <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img> -->
-                        <img class="img-fluid" src="{{group.ticket.url}}"></img>
-                    </span>
-                </div>
-                <div class="col-md-6">
+                    {% for group in groups %}
+                    <div class="col-md-3">
+                        <span class="fa-stack fa-5x">
+                            <!-- <img class="img-fluid" src = "{% static 'img/top4/top4-1.png' %}"></img> -->
+                            <img class="img-fluid" src="{{group.ticket.url}}"></img>
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <br>
+                        <h4>그룹 이름 :{{group.name}}</h4>
+                        <h5>만날 날짜 :{{group.date}}</h5>
+                        <h5>그룹 leader : {{group.leader_id}}</h5>
+                        <h5>그룹 설명 : {{group.description}}</h5>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="col-md-3">
+                            <button type="submit" id="accept" name="accept" value={{group.name}}
+                                class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+                                style="weight:100px; height: 50px;">ACCEPT</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" id="denial" name="denial" value={{group.name}}
+                                class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+                                style="weight:100px; height: 50px;">DENIAL</button>
+                        </div>
+                    </form>
                     <br>
-                    <h4>그룹 이름 :{{group.name}}</h4>
-                    <h5>만날 날짜 :{{group.date}}</h5>
-                    <h5>그룹 leader : {{group.leader_id}}</h5>
-                    <h5>그룹 설명 : {{group.description}}</h5>
-                </div>
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="col-md-3">
-                        <button type="submit" id="accept" name="accept" value={{group.name}}
-                            class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-                            style="weight:100px; height: 50px;">ACCEPT</button>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="submit" id="denial" name="denial" value={{group.name}}
-                            class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-                            style="weight:100px; height: 50px;">DENIAL</button>
-                    </div>
-                </form>
-                <br>
-                <hr>
-                {% endfor %}
+                    <hr>
+                    {% endfor %}    
                 {% else %}
-                <h1> 승인할 그룹이 없습니다 </h1>
+                    <h1> 승인할 그룹이 없습니다 </h1>
                 {% endif %}
-            </div>
-
-            <div class="pagination">
-                <span class="step-links">
-                    {% if contexts.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{contexts.previoust_page_number}}">이전</a>
-                    {% endif %}
-        
-                    <span class="current">
-                        Page {{contexts.number}} / {{contexts.paginator.num_pages}}
-                    </span>
-        
-                    {% if contexts.has_next %}
-                        <a href="?page={{contexts.next_page_number}}">다음</a>
-                        <a href="?page={{contexts.paginator.num_pages}}">last &raquo;</a>
-                    {% endif %} 
-                </span>
             </div>
         </div>
     </section>

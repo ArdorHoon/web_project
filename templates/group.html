@@ -100,7 +100,7 @@
         <ul class= "group-list" >
           
             <hr/>
-            {% for group in contexts %}
+            {% for group in groups %}
             <div class = "form-group">
                 <li class="group-line-by">
                     <div class = "row">
@@ -131,26 +131,6 @@
             {% endfor %}
         </ul>
     </div>
-
-   
-    <div class="pagination">
-        <span class="step-links">
-            {% if contexts.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{contexts.previoust_page_number}}">이전</a>
-            {% endif %}
-
-            <span class="current">
-                Page {{contexts.number}} / {{contexts.paginator.num_pages}}
-            </span>
-
-            {% if contexts.has_next %}
-                <a href="?page={{contexts.next_page_number}}">다음</a>
-                <a href="?page={{contexts.paginator.num_pages}}">last &raquo;</a>
-            {% endif %} 
-        </span>
-  
-</div>
 </div>
 {% if user.is_authenticated %}
 <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'registerGroup' %}" >그룹 등록하기</a>

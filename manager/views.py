@@ -46,12 +46,7 @@ def confirm(request): #main view 에서 응답 처리
       return redirect('/manager/confirm_ticket')
     else:
       groups = Groups.objects.filter(is_authenticated=0)
-
-      paginator = Paginator(groups, 10)
-      page = request.GET.get('page')
-      contexts = paginator.get_page(page)
-
-      context = {'contexts': contexts}
-      return render(request, 'confirmTicket.html', contexts)
+      content = {"groups": groups}
+      return render(request, 'confirmTicket.html', content)
   else:
     return redirect('/index')
