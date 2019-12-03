@@ -14,11 +14,11 @@ def index(request):
 def manage(request):
   return render(request, 'manage.html')
 
-def each(request,name):
+def room(request,name):
     group = Groups.objects.get(name = name)
     groupusers = Groupusers.objects.filter(group_name = group.name)
     context = {'group':group, 'groupusers': groupusers}
-    return render(request, 'eachGroup.html', context)
+    return render(request, 'groupRoom.html', context)
 
 def mypage(request):
       

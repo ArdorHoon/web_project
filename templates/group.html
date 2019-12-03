@@ -93,11 +93,16 @@
 </header>
 
 
-
 <!-- Group -->
 <col class="page-section" id="group">
 <div class="group-container">
     <div class="group">
+        <!--검색 부분 시작-->
+        <form class="form-inline " method ="POST">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" name="q" value="{{ q }}" placeholder="제목 검색" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
         <ul class= "group-list" >
             <h1>그룹 리스트</h1>
             <hr/>

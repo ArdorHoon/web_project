@@ -24,7 +24,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('index/', views.index, name='index'),
     path('mypage/', views.mypage, name='mypage'),
-    path('mypage/<name>', views.each, name='each'),
+    path('mypage/<name>/room', views.room, name='room'),
     path('mypage/<name>/getout', views.getout, name='getout'),
     path('mypage/<name>/confirm', views.confirmGroup),
     path('festival/', include('festivals.urls')),
