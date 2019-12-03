@@ -3,13 +3,25 @@ from groups.models import Groups
 from groupusers.models import Groupusers
 from django.contrib import messages
 from festivals.models import Festival
-
+from django.db.models import Q
 
 # Create your views here.
 def group(request):
-    groups = Groups.objects.filter(is_authenticated=1)
-    context = {'groups':groups}
-    return render(request, 'group.html',context)
+    if request.method =="POST" :
+        groups = Groups.objects.filter(is_authenticated=1).order_by('-date')
+        q = request.POST.get('q', '') # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
+        if q: # q가 있으면
+            groups = groups.filter(Q(name__contains=q) | Q(hashtag__contains=q)) # 제목에 q가 포함되어 있는 레코드만 필터링
+            return render(request, 'group.html', {
+            'groups' : groups,
+            'q' : q,
+         })
+        else:
+            return render(request, 'group.html')
+    else:
+        groups = Groups.objects.filter(is_authenticated=1).order_by('-date')
+        context = {'groups':groups}
+        return render(request, 'group.html',context)
 
 def each(request,name):
     group = Groups.objects.get(name = name)
