@@ -11,11 +11,12 @@ def register(request):
       date = request.POST.get("fes_date", " ")
       place = request.POST.get("fes_loca", " ")
       price = request.POST.get("fes_price", " ")
+      desc = request.POST.get("fes_desc", " ")
       poster = request.FILES['fes_pic']
 
       is_festival_in = Festival.objects.filter(name=name)
       if is_festival_in.count() == 0: 
-        fest = Festival(name=name, date=date, place=place, price=price, poster=poster)
+        fest = Festival(name=name, date=date, place=place, price=price, poster=poster, desc=desc)
         fest.save()
       else:
         messages.info(request, "등록하려 하는 축제 정보가 이미 DB안에 존재합니다!")
