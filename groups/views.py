@@ -25,8 +25,8 @@ def group(request):
 
 def each(request,name):
     group = Groups.objects.get(name = name)
-    groupusers = Groupusers.objects.filter(group_name = group.name)
-    context = {'group':group, 'groupusers': groupusers}
+    groupuser = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+    context = {'group':group, 'groupuser': groupuser}
     return render(request, 'eachGroup.html', context)
 
 def register(request):
@@ -52,7 +52,7 @@ def register(request):
 
     group_in_db = Groups.objects.filter(name=name)
     if group_in_db.count() == 0:
-      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=1)
+      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=0)
       group.save()
       groupuser = Groupusers(group_name = name, user_id = leader, status = 2)
       groupuser.save()
