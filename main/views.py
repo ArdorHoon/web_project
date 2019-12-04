@@ -29,6 +29,7 @@ def room(request,name):
     else:
       group = Groups.objects.get(name = name)
       group.notification = notify
+      group.save()
     
     return redirect('/mypage/'+name+'/room')
   else:
