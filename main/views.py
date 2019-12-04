@@ -18,8 +18,9 @@ def manage(request):
 
 def room(request,name):
     group = Groups.objects.get(name = name)
+    fes = Festival.objects.get(name = group.festival_name)
     groupusers = Groupusers.objects.filter(group_name = group.name)
-    context = {'group':group, 'groupusers': groupusers}
+    context = {'group':group, 'festival': fes, 'groupusers': groupusers}
     return render(request, 'groupRoom.html', context)
 
 def mypage(request):

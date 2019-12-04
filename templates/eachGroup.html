@@ -85,7 +85,7 @@
         <div class = "form-group">
             <div class = "row">
                 <div class = "col-md-3">
-                    <img class="rounded-circle img-fluid group-image" src = "{{ group.ticket.url }}" alt="">
+                    <img class="rounded-circle img-fluid group-image" src = "/media/{{ group.poster }}" alt="">
                 </div>
                 <div class = "col-md-6" style = "margin-top:4%">
                     <div class="group-panel">
@@ -94,26 +94,13 @@
                             <h5 class="subheading">{{ group.festival_name }}</h5>
                             <h5 class="subheading">{{ group.date }}</h5>
                             <h5 class="subheading">{{ group.hashtag }}</h5>
+                            <h5 class="subheading">{{ name }}</h5>
                         </div>
                     </div>
                 </div>
 
                 <div class = "col-md-3" style = "margin-top: 7%">
-                    {% if user.is_authenticated %}
-                    {% if groupuser.count()==0 %}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply" >참가하기</a>
-                    {% elif groupuser[0].status==-1 %}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="#" >승인거절됨</a>
-                    {% elif groupuser[0].status==0 %}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="#" >대기중..</a>
-                    {% elif groupuser[0].status==1 %}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="#" >가입완료</a>
-                    {% elif groupuser[0].status==2 %}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="#" >가입완료</a>
-                    {% endif %}
-                    {% else %}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply" >참가하기</a>
-                    {% endif %}
+
                 </div>
             </div>
             <br><br>
