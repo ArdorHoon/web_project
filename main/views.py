@@ -5,6 +5,7 @@ from groups.models import Groups
 from groups.models import Comment
 from groupusers.models import Groupusers
 from django.utils import timezone
+from django.contrib import messages
 
 # Create your views here.
 
@@ -85,11 +86,13 @@ def getout(request,name):
     groupuser.delete()
 
     datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
-    Groups = Groupusers.objects.filter(leader_id = request.user.username)
+    groupusers = Groupusers.objects.filter(user_id = request.user.username)
+    groups = Groups.objects.filter(leader_id = request.user.username)
 
-    context = {'datas': datas , 'Groups' : Groups }
-
+    context = {'datas': datas , 'groupusers' : groupusers , 'groups' : groups}
+    messages.info(request, name+"그룹을 탈퇴했습니다.")
     return render(request, 'mypage.html', context)
+
 
 
 def each(request,name):

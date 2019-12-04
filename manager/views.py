@@ -19,10 +19,10 @@ def register(request):
         fest = Festival(name=name, date=date, place=place, price=price, poster=poster, desc=desc)
         fest.save()
       else:
-        messages.info(request, "등록하려 하는 축제 정보가 이미 DB안에 존재합니다!")
+        #messages.info(request, "등록하려 하는 축제 정보가 이미 DB안에 존재합니다!")
         return redirect('/manager/register_festival')
 
-      messages.info(request, "등록되었습니다")
+      #messages.info(request, "등록되었습니다")
       return redirect('/index')
     else:
       return render(request, 'createFestival.html')
