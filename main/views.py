@@ -35,19 +35,16 @@ def room(request,name):
     group = Groups.objects.get(name = name)
     fes = Festival.objects.get(name = group.festival_name)
     groupusers = Groupusers.objects.filter(group_name = group.name)
-<<<<<<< HEAD
-    context = {'group':group, 'festival': fes, 'groupusers': groupusers}
-=======
     comments = Comment.objects.filter(groupname=group.name)
+    # context = {'group':group, 'festival': fes, 'groupusers': groupusers}
     context = {'group':group, 'groupusers': groupusers, 'comments':comments}
->>>>>>> b27b7bfeb5e7ac4abbabd550def1aeb26cc03c4e
     return render(request, 'groupRoom.html', context)
 
 def mypage(request):
-      
+
   datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
   groupusers = Groupusers.objects.filter(user_id = request.user.username)
-  groups = Groups.objects.filter(leader_id = request.user.username) 
+  groups = Groups.objects.filter(leader_id = request.user.username)
 
   context = {'datas': datas , 'groupusers' : groupusers , 'groups' : groups}
 
@@ -94,6 +91,7 @@ def getout(request,name):
 
 
 def each(request,name):
+    print("main's")
     group = Groups.objects.get(name = name)
     try:
        queryset = Groupusers.objects.get(group_name = group.name, user_id = request.user.username)
@@ -106,5 +104,3 @@ def each(request,name):
     context = {'group':group, 'groupusers': groupusers}
 
     return redirect('/group/'+name+'/')
-
-
