@@ -13,7 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="./../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="./../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
 
     <!-- Custom fonts for this template -->
@@ -25,7 +25,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
-    <link href="./../static/css/agency.css" rel="stylesheet">
+    <!-- <link href="./../static/css/agency.css" rel="stylesheet"> -->
 
 </head>
 
@@ -79,10 +79,12 @@
 </nav>
 
 
+
 <col class="page-section" id="group">
 <div class="row" style = "margin: 10% 15% ; height: 100%">
     <div class="col-md-8">
         <div class="row" style=" height: 50%;">
+<<<<<<< HEAD
             <div class = "col-md-3">
                 <img class="rounded-circle img-fluid group-image" src = "{{ festival.poster.url }}" alt="">
             </div>
@@ -100,6 +102,10 @@
                             </h5>
                             <div>
                                 {{group.notification}}
+=======
+            공지
+            
+>>>>>>> b27b7bfeb5e7ac4abbabd550def1aeb26cc03c4e
 
                             </div>
                         </div>
@@ -107,11 +113,43 @@
                 </div>
             </div>
         </div>
-        <div class="row" style=" height: 50%";>
-            댓글
+        <div class="container"> <h5>댓글</h5></div>
+        <div class="row overflow-auto" style=" height: 50%;">
+            
+            <div class="container">
+            <ul>
+                {% for comment in comments %}
+                    <li>
+                        <hr width = "100%">
+                       <h6>{{comment.user_id}}</h6> 
+                        {{comment.context}}<br>
+                        <small class="text-muted">{{comment.date}}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+           
+            </div>
+
+           
+         
         </div>
+        <div class="container" style ="margin-top : 20px;">
+                <form class="form-inline" method="POST">
+                        {% csrf_token %}
+                        <input type="text" class="col-10 form-control " name="comment" placeholder="댓글 입력">
+                        <input type="submit" value="입력" class="col-2 btn btn-dark">
+                    </form>
+    
+                </div>
+
+
     </div>
     <div class="col-md-4">
+
+
+
+
+
         <!--그룹 가입자 목록 -->
         <div calss="container">
             <div class="card mx-auto w-75" style=" width : 15px; ">
@@ -136,7 +174,7 @@
                 <h5 class="card-header">
                     그룹 신청 현황
                 </h5>
-                <form method="POST" action = "{{ group.name }}/confirm">
+                <form method="POST" action = "room/confirm">
                     {% csrf_token %}
                     <ul class="list-group list-group-flush">
                         {% for groupuser in groupusers %}
@@ -146,10 +184,10 @@
                                 <li class="list-group-item">{{ groupuser.user_id }}</li>
                             </div>
                             <div class="col-md-2">
-                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style="margin-top: 10%;margin-left: 20%; weight:100px; height: 30px;">ACCEPT</button>
+                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style="margin-top: 10%;  height: 30px;">ACCEPT</button>
                             </div>
                             <div class="col-md-2">
-                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-secondary btn-sm text-uppercase " style="margin-top: 10%;weight:100px; height: 30px;">DENIAL</button>
+                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-secondary btn-sm text-uppercase " style="margin-top: 10%; height: 30px;">DENIAL</button>
                             </div>
                         </div>
                         {% endif %}

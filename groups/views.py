@@ -25,10 +25,27 @@ def group(request):
         return render(request, 'group.html',content)
 
 def each(request,name):
+<<<<<<< HEAD
     group = Groups.objects.raw("SELECT g.id, g.name, g.usercount, g.maxcount, g.festival_name, g.date, g.hashtag, g.description, f.poster from groups_groups as g left outer join festivals_festival as f on g.festival_name = f.name where g.name = %s",name)
     groupuser = Groupusers.objects.filter(group_name = name, user_id = request.user.username)
     context = {'group':group, 'groupuser': groupuser,'name': name}
     return render(request, 'eachGroup.html', context)
+=======
+    group = Groups.objects.get(name = name)
+
+    try:
+        queryset = Groupusers.objects.get(group_name = group.name, user_id = request.user.username)
+        if queryset.status == -1 :
+            queryset.delete()
+    except:
+        groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+        context = {'group':group, 'groupusers': groupusers}
+        return render(request, 'eachGroup.html', context)
+
+    groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+    context = {'group':group, 'groupusers': groupusers}
+    return redirect('/group/'+name+'/')
+>>>>>>> b27b7bfeb5e7ac4abbabd550def1aeb26cc03c4e
 
 def register(request):
   if request.method == "POST":
@@ -76,7 +93,8 @@ def apply(request,name):
     groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
     groupuser.save()
 
-    context = {'group':group}
+    groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+    context = {'group':group, 'groupusers': groupusers}
     return render(request, 'eachGroup.html', context)
 
 def confirmGroup(request,name):
@@ -91,6 +109,8 @@ def confirmGroup(request,name):
       print(groupuser.group_name, groupuser.user_id)
       groupuser.status = 1
       groupuser.save()
+      group.usercount = group.usercount + 1
+      group.save()
     else:
       groupuser = Groupusers.objects.get(group_name=group.name, user_id=denial)
       groupuser.status = -1
