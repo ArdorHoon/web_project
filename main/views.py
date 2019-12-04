@@ -65,6 +65,8 @@ def confirmGroup(request,name):
       print(groupuser.group_name, groupuser.user_id)
       groupuser.status = 1
       groupuser.save()
+      group.usercount = group.usercount + 1
+      group.save()
     else:
       groupuser = Groupusers.objects.get(group_name=group.name, user_id=denial)
       groupuser.status = -1

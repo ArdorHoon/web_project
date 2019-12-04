@@ -65,11 +65,11 @@ def register(request):
 
     group_in_db = Groups.objects.filter(name=name)
     if group_in_db.count() == 0:
-      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=0)
+      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=1)
       group.save()
       groupuser = Groupusers(group_name = name, user_id = leader, status = 2)
       groupuser.save()
-      messages.info(request, "그룹 등록을 완료하였습니다.\n승인을 기다려주세요...")
+      #messages.info(request, "그룹 등록을 완료하였습니다.\n승인을 기다려주세요...")
       return redirect('/group')
     else:
       messages.info(request, "같은 이름의 그룹이 존재합니다.")
@@ -87,13 +87,15 @@ def apply(request,name):
     status = 0
 
     groupuser_in_db = Groupusers.objects.filter(group_name = group_name, user_id = user_id)
-    if groupuser_in_db.count() == 0:
+    if groupuser_in_db.count() == 0 and group.maxcount > group.usercount:
         groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
         groupuser.save()
+        messages.info(request, name+"그룹 가입이 신청되셨습니다.")
+    if group.maxcount <= group.usercount:
+        messages.info(request, "그룹 최대 인원을 초과하였습니다.")
 
     groupusers=Groupusers.objects.filter(group_name = group_name, user_id = user_id)
     context = {'group':group, 'groupusers':groupusers}
-    messages.info(request, name+"그룹 가입이 신청되셨습니다.")
     return render(request, 'eachGroup.html',context)
 
 def confirmGroup(request,name):

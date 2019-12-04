@@ -105,24 +105,32 @@
 
                     {% if user.is_authenticated %}
 
-                    {% if groupusers.count < 1%}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply" >참가하기</a>
+                        {% if groupusers.count > 0 %}
+
+                            {% for groupuser in groupusers %}
+                                {% if groupuser.status == 0 %}
+                                    <a class="btn btn-sm btn-info js-scroll-trigger btn-register-group" href="#" >대기중..</a>
+                                {% elif groupuser.status == 1 %}
+                                    <a class="btn btn-sm btn-dark js-scroll-trigger btn-register-group" href="#" >가입완료</a>
+                                {% elif groupuser.status == 2 %}
+                                    <a class="btn btn-sm btn-dark js-scroll-trigger btn-register-group" href="#" >가입완료</a>
+                                {% endif %}
+                            {% endfor %}
+
+                        {% else %}
+                            {% if group.usercount < group.maxcount %}
+                                <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply" >참가하기</a>
+                            {% else %}
+                                <a class="btn btn-sm btn-danger js-scroll-trigger btn-register-group" href="apply" >모집마감</a>
+                            {% endif %}
+                        {% endif %}
 
                     {% else %}
-                    {% for groupuser in groupusers %}
-                    {% if groupuser.status == 0 %}
-                    <a class="btn btn-sm btn-info js-scroll-trigger btn-register-group" href="#" >대기중..</a>
-                    {% elif groupuser.status == 1 %}
-                    <a class="btn btn-sm btn-dark js-scroll-trigger btn-register-group" href="#" >가입완료</a>
-                    {% elif groupuser.status == 2 %}
-                    <a class="btn btn-sm btn-dark js-scroll-trigger btn-register-group" href="#" >가입완료</a>
-                    {% endif %}
-                    {% endfor %}
-
-                    {% endif %}
-
-                    {% else %}
-                    <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply" >참가하기</a>
+                        {% if group.usercount < group.maxcount %}
+                            <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="{% url 'login' %}" >참가하기</a>
+                        {% else %}
+                            <a class="btn btn-sm btn-danger js-scroll-trigger btn-register-group" href="#" >모집마감</a>
+                        {% endif %}
                     {% endif %}
 
 
