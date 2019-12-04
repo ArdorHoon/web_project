@@ -33,7 +33,7 @@ def confirm(request):
   if request.user.is_superuser:
     if request.method=="POST":
       accept = request.POST.get("accept", None)
-      # denial = request.POST.get("denial", None)
+      denial = request.POST.get("denial", None)
       print(accept, denial)
       if accept is not None and denial is None: 
         group = Groups.objects.get(name=accept)

@@ -1,4 +1,5 @@
 from django.db import models
+# from django.utils import timezone
 import datetime
 
 # Create your models here.
@@ -15,3 +16,10 @@ class Groups(models.Model):
   ticket = models.ImageField(upload_to="image", null=True, blank=True)
   description = models.TextField(max_length=200, default="")
   is_authenticated = models.IntegerField(default=0)
+  notification = models.TextField(max_length=1024, default="")
+
+class Comment(models.Model):
+  groupname = models.CharField(max_length=30, default="")
+  context = models.CharField(max_length=50, default="")
+  user_id = models.CharField(max_length=20, default="")
+  date = models.DateTimeField(auto_now_add=True)

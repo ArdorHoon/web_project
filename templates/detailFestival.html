@@ -75,50 +75,40 @@
     </div>
 </nav>
 
-<!-- Header -->
-<header class="masthead">
-    <div class="container">
-        <div class="intro-text">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h1 class="section-heading" style="font-size: 68px;">
-                        Festival에서 당신을 기다립니다=3</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
 <!-- Festival List -->
 <section class="page-section" id="festival" style ="padding-top  : 40px;">
-    <div class="container">
+    <div class="container" style="margin-top : 100px;">
         <div class="row text-center">
-            <div class="col-md-4 text-center">
-                <h2 class="section-heading">Festival</h2>
+            <div class="col-md-5 text-center">
+                <h2 class="section-heading" style="font-size : 32px;">Festival 상세 정보</h2>
             </div>
         </div>
         <div class="row text-center" style="height: 400px;">
             <div class="col-md-5" style="padding-top: 20px;">
               <span class="fa-stack fa-7x">
-                <img class="img-fluid" src = "{{festival.poster.url}}"></img>
+                <img class="img-fluid img-thumbnail" src = "{{festival.poster.url}}"></img>
               </span>
             </div>
-            <div class="col-md-4 text-left"style="padding-top: 20px;">
+            <div class="col-md-5 text-left"style="padding-top: 20px;">
                 <h1>{{festival.name}}</h1>
-                <h3 class="text-muted">일시 : {{festival.date}}</h3>
-                <h3 class="text-muted">장소 : {{festival.place}}</h3>
+                <h5 style="margin-top : 20px;" >일시 : {{festival.date}}</h5>
+                <h5>장소 : {{festival.place}}</h5>
                 {% if festival.price == -1 %}
-                <h3 class="text-muted">가격 : 추후공지</h3>
+                <h5 style="margin-bottom : 20px;">가격 : 추후공지</h3>
                 {% else %}
-                <h3 class="text-muted">가격 : {{festival.price}}원</h3>
+                <h5 style="margin-bottom : 20px;">가격 : {{festival.price}}원</h3>
                 {% endif %}
                 {% if festival.desc == NULL %}
                 <h3>등록된 url이 없습니다.</h3>
                 {% elif  festival.desc == "" %}
                 <h3>등록된 url이 없습니다.</h3>
                 {% else %}
-                <input type ="button" class="btn btn-primary btn-block" name = "createFestival" value="홈페이지 가기" onClick="location.href= '{{festival.desc}}'" />
+                <input type ="button" class="btn btn-dark btn-block" name = "createFestival" value="홈페이지 가기" onClick="location.href= '{{festival.desc}}'" />
                 {% endif %}
+
+                <p class="text-muted " style="margin-top : 20px; font-size : 10px;">(주의 ) 추후 공지에 대해서는 공지가 된후 바로 업데이트가 안될 수 있습나다. 자세한 사항은 본 페스티벌에 관한 자세한 사항은 홈페이지에서 확인할 수 있습니다.</p>
+
+
             </div>
 
             

@@ -13,7 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="./../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="./../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
 
     <!-- Custom fonts for this template -->
@@ -25,7 +25,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
-    <link href="./../static/css/agency.css" rel="stylesheet">
+    <!-- <link href="./../static/css/agency.css" rel="stylesheet"> -->
 
 </head>
 
@@ -79,18 +79,48 @@
 </nav>
 
 
+
 <col class="page-section" id="group">
 <div class="row" style = "margin: 10% 15% ; height: 100%">
     <div class="col-md-8">
         <div class="row" style=" height: 50%;">
             공지
+            
 
         </div>
-        <div class="row" style=" height: 50%";>
-            댓글
+        <div class="row" style=" height: 50%;">
+            <div class="container"> <h5>댓글</h5></div>
+            <div class="container">
+            <ul>
+                {% for comment in comments %}
+                    <li>
+                        <hr width = "100%">
+                       <h6>{{comment.user_id}}</h6> 
+                        {{comment.context}}<br>
+                        <small class="text-muted">{{comment.date}}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+           
+            </div>
+
+            <div class="container">
+            <form class="form-inline" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="col-10 form-control " name="comment" placeholder="댓글 입력">
+                    <input type="submit" value="입력" class="col-2 btn btn-dark">
+                </form>
+
+            </div>
+         
         </div>
     </div>
     <div class="col-md-4">
+
+
+
+
+
         <!--그룹 가입자 목록 -->
         <div calss="container">
             <div class="card mx-auto w-75" style=" width : 15px; ">

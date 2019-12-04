@@ -99,10 +99,10 @@
           내 등록한 그룹
         </h5>
         <ul class="list-group list-group-flush">
-            {% for group in Groups %}
-            {% if group.status  == 2 %}
-          <li class="list-group-item">{{ group.group_name }}
-              <a class="btn btn-dark btn-sm" style =" float : right" href="{{ group.group_name }}/room" role="button">상세보기</a></li>
+                {% for lg in groups %}
+                {% if lg.is_authenticated == 1 %}
+          <li class="list-group-item">{{ lg.name }}
+              <a class="btn btn-dark btn-sm" style =" float : right" href="{{ lg.name }}/room" role="button">상세보기</a></li>
             {% endif %}
             {% endfor%}
        
@@ -117,7 +117,7 @@
               내가 가입한 그룹
             </h5>
             <ul class="list-group list-group-flush">
-                {% for group in Groups %}
+                {% for group in groupusers %}
                 {% if group.status == 1 %}
                 <li class="list-group-item">{{ group.group_name }}<a class="btn btn-dark btn-sm " style =" float : right" href="{{ group.group_name }}/room" role="button">상세보기</a><a class="btn  btn-dark btn-sm " value = 'user.username' style =" float : right" href='{{ group.group_name }}/getout' role="button">탈퇴하기</a></li>
 
@@ -127,7 +127,24 @@
             </ul>
           </div>
         </div>
-
+<!--내가 등록한 그룹 (리더)-->
+<div calss="container">
+        <div class="card mx-auto w-75" style=" margin-top : 20px; ">
+            <h5 class="card-header">
+              내가 등록한 그룹 승인 대기 목록
+            </h5>
+            <ul class="list-group list-group-flush">
+                {% for lg in groups %}
+                {% if lg.is_authenticated == 0 %}
+              <li class="list-group-item">{{ lg.name }}
+                  <a class="btn btn-info btn-sm" style =" float : right" href="#" role="button">승인 대기 중...</a></li>
+                {% endif %}
+                {% endfor%}
+           
+            </ul>
+          </div>
+        </div> 
+      
 <!--신청 대기 그룹-->
 <div calss="container">
         <div class="card mx-auto w-75" style=" margin-top : 20px; margin-bottom: 20px; ">
@@ -135,7 +152,7 @@
               가입 신청 현황
             </h5>
             <ul class="list-group list-group-flush">
-                {% for group in Groups %}
+                {% for group in groupusers %}
                 {% if group.status <= 0 %}
               <li class="list-group-item">{{ group.group_name }}
                  {% if group.status == 0 %}

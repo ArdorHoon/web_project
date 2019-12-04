@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from users.models import Data
 from festivals.models import Festival
 from groups.models import Groups
+from groups.models import Comment
 from groupusers.models import Groupusers
-        
+from django.utils import timezone
+
 # Create your views here.
 
 #  return render(request, 'search.html')
@@ -17,17 +19,32 @@ def manage(request):
   return render(request, 'manage.html')
 
 def room(request,name):
+  if request.method == "POST":
+    notify = request.POST.get("notify", None) 
+    comment = request.POST.get("comment", None)
+    if notify is None:
+      group = Groups.objects.get(name = name)
+      comm = Comment(groupname=group.name, context=comment, user_id=request.user.username)
+      comm.save()
+    else:
+      group = Groups.objects.get(name = name)
+      group.notification = notify
+    
+    return redirect('/mypage/'+name+'/room')
+  else:
     group = Groups.objects.get(name = name)
     groupusers = Groupusers.objects.filter(group_name = group.name)
-    context = {'group':group, 'groupusers': groupusers}
+    comments = Comment.objects.filter(groupname=group.name)
+    context = {'group':group, 'groupusers': groupusers, 'comments':comments}
     return render(request, 'groupRoom.html', context)
 
 def mypage(request):
       
   datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
-  Groups = Groupusers.objects.filter(user_id = request.user.username)
+  groupusers = Groupusers.objects.filter(user_id = request.user.username)
+  groups = Groups.objects.filter(leader_id = request.user.username) 
 
-  context = {'datas': datas , 'Groups' : Groups }
+  context = {'datas': datas , 'groupusers' : groupusers , 'groups' : groups}
 
   return render(request, 'mypage.html', context)
 
@@ -64,11 +81,12 @@ def getout(request,name):
     groupuser.delete()
 
     datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
-    Groups = Groupusers.objects.filter(user_id = request.user.username)
+    Groups = Groupusers.objects.filter(leader_id = request.user.username)
 
     context = {'datas': datas , 'Groups' : Groups }
 
     return render(request, 'mypage.html', context)
+<<<<<<< HEAD
 
 def each(request,name):
     group = Groups.objects.get(name = name)
@@ -84,3 +102,7 @@ def each(request,name):
 
     return redirect('/group/'+name+'/')
 
+=======
+   
+  
+>>>>>>> d6feb2baa81f67259fa9213f413aa4d56fda4cbb
