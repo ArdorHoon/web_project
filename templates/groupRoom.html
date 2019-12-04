@@ -83,21 +83,24 @@
 <col class="page-section" id="group">
 <div class="row" style = "margin: 10% 15% ; height: 100%">
     <div class="col-md-8">
-        <div class = "col-md-3">
-            <img class="img-rounded img-fluid group-image" src = "{{ festival.poster.url }}" style="height:250px; width:200px;"alt="">
-        </div>
-        <div class = "col-md-6" style = "margin-top:4%">
+            <div class = "card" style ="margin-bottom: 20px;">
+       
+            <img class="img-rounded img-fluid group-image" src = "{{ festival.poster.url }}" style="height:200px; width:150px;"alt="">
+            <h4 class="card-header">{{ group.name }} ({{ group.usercount }}/{{ group.maxcount }})</h4>
+        
             <div class="group-panel">
-                <div class="group-heading">
-                    <h4>{{ group.name }} ({{ group.usercount }}/{{ group.maxcount }})</h4>
-                    <h5 class="subheading">{{ group.festival_name }}</h5>
-                    <h5 class="subheading">{{ group.date }}</h5>
-                    <h5 class="subheading">{{ group.hashtag }}</h5>
-                    <h5 class="subheading">{{ name }}</h5>
+                    <div class="card-body">
+                            
+                            <p class="card-text">페스티벌: {{ group.festival_name }}<br> 날짜: {{ group.date }} <br>태그: {{ group.hashtag }}  <br>{{ name }} </p>
+                            
                 </div>
             </div>
-        </div>
-       <div class = "card" style ="margin-bottom: 30px;">
+      
+            </div>
+
+
+
+       <div class = "card" style ="margin-bottom: 20px;">
         <div class="card-header">
             <div class="row">
                 <div class="col-md-10">
@@ -120,7 +123,7 @@
 
        
         <div class="card mx-auto w-70"> <h5 class="card-header">댓글</h5></div>
-        <div class="row overflow-auto" style=" height: 60%;">
+        <div class="row overflow-auto" style=" height: 25%;">
 
             <div class="container">
                 <ul>
