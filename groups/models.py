@@ -1,4 +1,5 @@
 from django.db import models
+# from django.utils import timezone
 import datetime
 
 # Create your models here.
@@ -21,4 +22,4 @@ class Comment(models.Model):
   groupname = models.CharField(max_length=30, default="")
   context = models.CharField(max_length=50, default="")
   user_id = models.CharField(max_length=20, default="")
-  date = models.DateTimeField(default=datetime.date.today)
+  date = models.DateTimeField(auto_now_add=True)

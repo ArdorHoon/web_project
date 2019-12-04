@@ -26,8 +26,12 @@ def group(request):
 
 def each(request,name):
     group = Groups.objects.get(name = name)
-    groupuser = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
-    context = {'group':group, 'groupuser': groupuser}
+    try:
+        groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+        context = {'group':group, 'groupusers': groupusers}
+    except:
+        context = {'group':group, 'groupusers': None}
+
     return render(request, 'eachGroup.html', context)
 
 def register(request):
@@ -91,6 +95,8 @@ def confirmGroup(request,name):
       print(groupuser.group_name, groupuser.user_id)
       groupuser.status = 1
       groupuser.save()
+      group.usercount = group.usercount + 1
+      group.save()
     else:
       groupuser = Groupusers.objects.get(group_name=group.name, user_id=denial)
       groupuser.status = -1

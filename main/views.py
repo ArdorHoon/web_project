@@ -4,7 +4,8 @@ from festivals.models import Festival
 from groups.models import Groups
 from groups.models import Comment
 from groupusers.models import Groupusers
-        
+from django.utils import timezone
+
 # Create your views here.
 
 #  return render(request, 'search.html')
@@ -19,30 +20,31 @@ def manage(request):
 
 def room(request,name):
   if request.method == "POST":
-    notify = request.POST.get("notify", None)   # 오류날텐데..
-    comment = request.POST.get("comment", None) # 오류날텐데..
+    notify = request.POST.get("notify", None) 
+    comment = request.POST.get("comment", None)
     if notify is None:
       group = Groups.objects.get(name = name)
-      comm = Comment(groupname=group.name, context=comment, user_id=request.user.username, date=datetime.date.today)
+      comm = Comment(groupname=group.name, context=comment, user_id=request.user.username)
       comm.save()
     else:
       group = Groups.objects.get(name = name)
       group.notification = notify
     
-    return redirect('/mypage/<group.name>')
+    return redirect('/mypage/'+name+'/room')
   else:
     group = Groups.objects.get(name = name)
     groupusers = Groupusers.objects.filter(group_name = group.name)
-    comment = Comment.objects.filter(groupname=group.name)
-    context = {'group':group, 'groupusers': groupusers, 'comment':comment}
+    comments = Comment.objects.filter(groupname=group.name)
+    context = {'group':group, 'groupusers': groupusers, 'comments':comments}
     return render(request, 'groupRoom.html', context)
 
 def mypage(request):
       
   datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
-  Groups = Groupusers.objects.filter(user_id = request.user.username)
+  groupusers = Groupusers.objects.filter(user_id = request.user.username)
+  groups = Groups.objects.filter(leader_id = request.user.username) 
 
-  context = {'datas': datas , 'Groups' : Groups }
+  context = {'datas': datas , 'groupusers' : groupusers , 'groups' : groups}
 
   return render(request, 'mypage.html', context)
 
@@ -80,7 +82,7 @@ def getout(request,name):
     groupuser.delete()
 
     datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
-    Groups = Groupusers.objects.filter(user_id = request.user.username)
+    Groups = Groupusers.objects.filter(leader_id = request.user.username)
 
     context = {'datas': datas , 'Groups' : Groups }
 

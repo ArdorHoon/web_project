@@ -89,7 +89,22 @@
 
         </div>
         <div class="row" style=" height: 50%";>
-            댓글
+            <div>
+                댓글
+            </div>
+            <ul>
+                {% for comment in comments %}
+                    <li>
+                        {{comment.context}}
+                        <small>작성자: {{comment.user_id}} 날짜: {{comment.date}}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+            <form class="form-inline" method="POST">
+                {% csrf_token %}
+                <input type="text" class="form-control width100" name="comment" placeholder="Comment...">
+                <input type="submit" value="POST" class="btn btn-dark">
+            </form>
         </div>
     </div>
     <div class="col-md-4">
@@ -127,10 +142,10 @@
                                 <li class="list-group-item">{{ groupuser.user_id }}</li>
                             </div>
                             <div class="col-md-2">
-                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style="margin-top: 10%;margin-left: 20%; weight:100px; height: 30px;">ACCEPT</button>
+                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style="margin-top: 10%;  height: 30px;">ACCEPT</button>
                             </div>
                             <div class="col-md-2">
-                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-secondary btn-sm text-uppercase " style="margin-top: 10%;weight:100px; height: 30px;">DENIAL</button>
+                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-secondary btn-sm text-uppercase " style="margin-top: 10%; height: 30px;">DENIAL</button>
                             </div>
                         </div>
                         {% endif %}
