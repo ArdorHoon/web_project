@@ -68,13 +68,12 @@ def confirmGroup(request,name):
     groupusers = Groupusers.objects.filter(group_name = group.name)
 
     context = {'group':group, 'groupusers': groupusers}
-    return render(request, 'eachGroup.html', context)
-
+    return redirect('/mypage/'+name+'/room')
   else:
     group = Groups.objects.get(name=name)
     groupusers = Groupusers.objects.filter(group_name = group.name)
     context = {'group':group, 'groupusers': groupusers}
-    return render(request, 'eachGroup.html', context)
+    return render(request, 'groupRoom.html', context)
 
 
 def getout(request,name):
@@ -87,5 +86,20 @@ def getout(request,name):
     context = {'datas': datas , 'Groups' : Groups }
 
     return render(request, 'mypage.html', context)
-   
-  
+
+
+def each(request,name):
+    group = Groups.objects.get(name = name)
+    try:
+       queryset = Groupusers.objects.get(group_name = group.name, user_id = request.user.username)
+       if queryset.status == -1 :
+           queryset.delete()
+    except:
+       print("no queryset")
+
+    groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+    context = {'group':group, 'groupusers': groupusers}
+
+    return redirect('/group/'+name+'/')
+
+

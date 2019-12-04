@@ -149,7 +149,7 @@
                 <h5 class="card-header">
                     그룹 신청 현황
                 </h5>
-                <form method="POST" action = "{{ group.name }}/confirm">
+                <form method="POST" action = "room/confirm">
                     {% csrf_token %}
                     <ul class="list-group list-group-flush">
                         {% for groupuser in groupusers %}

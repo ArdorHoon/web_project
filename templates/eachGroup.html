@@ -101,14 +101,12 @@
                 <div class = "col-md-3" style = "margin-top: 7%">
                     {% if user.is_authenticated %}
 
-                    {% if groupusers is None %}
+                    {% if groupusers.count < 1%}
                     <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply" >참가하기</a>
 
                     {% else %}
                     {% for groupuser in groupusers %}
-                    {% if groupuser.status == -1 %}
-                    <a class="btn btn-danger btn-sm  js-scroll-trigger btn-register-group" href="#" >승인거절됨</a>
-                    {% elif groupuser.status == 0 %}
+                    {% if groupuser.status == 0 %}
                     <a class="btn btn-sm btn-info js-scroll-trigger btn-register-group" href="#" >대기중..</a>
                     {% elif groupuser.status == 1 %}
                     <a class="btn btn-sm btn-dark js-scroll-trigger btn-register-group" href="#" >가입완료</a>

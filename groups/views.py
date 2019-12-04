@@ -26,13 +26,19 @@ def group(request):
 
 def each(request,name):
     group = Groups.objects.get(name = name)
+
     try:
+        queryset = Groupusers.objects.get(group_name = group.name, user_id = request.user.username)
+        if queryset.status == -1 :
+            queryset.delete()
+    except:
         groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
         context = {'group':group, 'groupusers': groupusers}
-    except:
-        context = {'group':group, 'groupusers': None}
+        return render(request, 'eachGroup.html', context)
 
-    return render(request, 'eachGroup.html', context)
+    groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+    context = {'group':group, 'groupusers': groupusers}
+    return redirect('/group/'+name+'/')
 
 def register(request):
   if request.method == "POST":
@@ -80,8 +86,10 @@ def apply(request,name):
     groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
     groupuser.save()
 
+    groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
+    name = group_name
     context = {'group':group}
-    return render(request, 'eachGroup.html', context)
+    return redirect('/group/'+name)
 
 def confirmGroup(request,name):
   if request.method=="POST":
