@@ -20,7 +20,7 @@ def group(request):
         else:
             return render(request, 'group.html')
     else:
-        groups = Groups.objects.raw("SELECT g.id, g.name, g.usercount, g.maxcount, g.festival_name, g.date, g.hashtag, g.description, f.poster from groups_groups as g left outer join festivals_festival as f on g.festival_name = f.name where g.is_authenticated = 1 order by date")
+        groups = Groups.objects.raw("SELECT g.id, g.name, g.usercount, g.maxcount, g.festival_name, g.date, g.hashtag, g.description, f.poster from groups_groups as g left outer join festivals_festival as f on g.festival_name = f.name where g.is_authenticated = 1  order by date")
         content = {"groups":groups}
         return render(request, 'group.html',content)
 
@@ -65,7 +65,7 @@ def register(request):
 
     group_in_db = Groups.objects.filter(name=name)
     if group_in_db.count() == 0:
-      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=1)
+      group = Groups(name=name, leader_id=leader, festival_name = festival_name, festival_pic = festival_pic, date=date, hashtag=hashtag, maxcount = maxcount, ticket=ticket, description=description, is_authenticated=0)
       group.save()
       groupuser = Groupusers(group_name = name, user_id = leader, status = 2)
       groupuser.save()

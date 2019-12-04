@@ -91,6 +91,9 @@ def getout(request,name):
     groupusers = Groupusers.objects.filter(user_id = request.user.username)
     groups = Groups.objects.filter(leader_id = request.user.username)
 
+    group = Groups.objects.get(name=name)
+    group.usercount = group.usercount - 1
+
     context = {'datas': datas , 'groupusers' : groupusers , 'groups' : groups}
     messages.info(request, name+"그룹을 탈퇴했습니다.")
     return render(request, 'mypage.html', context)
