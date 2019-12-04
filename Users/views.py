@@ -46,7 +46,7 @@ def login(request):
 
 def logout(request):
   auth.logout(request)
-  # messages.info(request, "로그아웃 되었습니다")
+  messages.info(request, "로그아웃 되었습니다")
   return redirect('/index')
 
 # Create your views here.

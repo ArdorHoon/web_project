@@ -20,7 +20,7 @@ def manage(request):
 
 def room(request,name):
   if request.method == "POST":
-    notify = request.POST.get("notify", None) 
+    notify = request.POST.get("notify", "없음") 
     comment = request.POST.get("comment", None)
     if notify is None:
       group = Groups.objects.get(name = name)
