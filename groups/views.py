@@ -93,6 +93,7 @@ def apply(request,name):
 
     groupusers=Groupusers.objects.filter(group_name = group_name, user_id = user_id)
     context = {'group':group, 'groupusers':groupusers}
+    messages.info(request, name+"그룹 가입이 신청되셨습니다.")
     return render(request, 'eachGroup.html',context)
 
 def confirmGroup(request,name):
