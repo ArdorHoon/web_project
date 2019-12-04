@@ -85,12 +85,12 @@
         <div class = "form-group">
             <div class = "row">
                 <div class = "col-md-3">
-                    <img class="rounded-circle img-fluid group-image" src = "/media/{{ group.poster }}" alt="">
+                    <img class="img-rounded img-fluid group-image" src = "/media/{{ group.poster }}" style="height:250px; width:200px;"alt=""> 
                 </div>
                 <div class = "col-md-6" style = "margin-top:4%">
                     <div class="group-panel">
                         <div class="group-heading">
-                            <h4>{{ group.name }}  {{ group.usercount }}/{{ group.maxcount }}</h4>
+                            <h4>{{ group.name }} ({{ group.usercount }}/{{ group.maxcount }})</h4>
                             <h5 class="subheading">{{ group.festival_name }}</h5>
                             <h5 class="subheading">{{ group.date }}</h5>
                             <h5 class="subheading">{{ group.hashtag }}</h5>
@@ -127,9 +127,17 @@
                 </div>
             </div>
             <br><br>
+
             <div class = "row">
-                <hr>
-                <p class="text-muted" style = "margin-left: 5% ">{{ group.description }}</p>
+
+                    <div class="card w-100">
+                            <h5 class="card-header">내용</h5>
+                            <div class="card-body">
+                              <p class="card-text">{{ group.description }}</p>
+                              <p class="card-text float-right"><small class="text-muted">본 작성 내용에 대한 책임은 작성자에게 있습니다.</small></p>
+                            </div>
+                          </div>
+            
             </div>
         </div>
     </div>
