@@ -86,7 +86,7 @@ def getout(request,name):
     context = {'datas': datas , 'Groups' : Groups }
 
     return render(request, 'mypage.html', context)
-<<<<<<< HEAD
+
 
 def each(request,name):
     group = Groups.objects.get(name = name)
@@ -102,7 +102,4 @@ def each(request,name):
 
     return redirect('/group/'+name+'/')
 
-=======
-   
-  
->>>>>>> d6feb2baa81f67259fa9213f413aa4d56fda4cbb
+
