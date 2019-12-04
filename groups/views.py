@@ -85,12 +85,15 @@ def apply(request,name):
     user_id = request.user.username
     status = 0
 
-    groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
-    groupuser.save()
+    groupuser_in_db = Groupusers.objects.filter(group_name = group_name, user_id = user_id)
+    if groupuser_in_db.count() == 0:
+        groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
+        groupuser.save()
 
-    groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
-    context = {'group':group, 'groupusers': groupusers}
-    return render(request, 'eachGroup.html', context)
+    groupusers=Groupusers.objects.filter(group_name = group_name, user_id = user_id)
+    context = {'group':group, 'groupusers':groupusers}
+    messages.info(request, name+"그룹 가입이 신청되셨습니다.")
+    return render(request, 'eachGroup.html',context)
 
 def confirmGroup(request,name):
   if request.method=="POST":

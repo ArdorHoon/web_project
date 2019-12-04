@@ -128,10 +128,13 @@
         
           <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
         </div>
-      </footer>
+    </footer>
 
-
-
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
 
 <!-- Bootstrap core JavaScript -->
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>

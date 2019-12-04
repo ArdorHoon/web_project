@@ -83,14 +83,31 @@
 <col class="page-section" id="group">
 <div class="row" style = "margin: 10% 15% ; height: 100%">
     <div class="col-md-8">
-        <div class="card mx-auto w-70"><h5 class="card-header">공지<button>+</button></h5></div>
-        <div class="row" style=" height: 50%;">
-            <div>
-                {{group.notification}}
+
+       <div class = "card" style ="margin-bottom: 30px;">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-10">
+                    <h5>공지</h5>
+                </div>
+                {% if user.username == group.leader_id %}
+                    <div class="col-md-2 float-right">
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#notify_modal">Add</button>
+                    </div>
+                {% endif %}
             </div>
+
         </div>
+        <div class="card-body">
+                
+                <p class="card-text" style="font-size : 20px;">  {{group.notification}}</p>
+               
+              </div>
+      </div>
+
+       
         <div class="card mx-auto w-70"> <h5 class="card-header">댓글</h5></div>
-        <div class="row overflow-auto" style=" height: 50%;">
+        <div class="row overflow-auto" style=" height: 60%;">
 
             <div class="container">
                 <ul>
@@ -105,8 +122,6 @@
                 </ul>
 
             </div>
-
-
 
         </div>
         <div style ="margin-top : 20px;">
@@ -125,7 +140,7 @@
 
         <!--그룹 가입자 목록 -->
         <div calss="container">
-            <div class="card mx-auto w-75" style=" width : 15px; ">
+            <div class="card mx-auto w-100">
                 <h5 class="card-header">
                     그룹 가입자
                 </h5>
@@ -143,7 +158,7 @@
         <!--내 등록 그룹-->
         {% if group.leader_id == user.username %}
         <div calss="container">
-            <div class="card mx-auto w-75 " style="width: 15px" >
+            <div class="card mx-auto w-100 "  >
                 <h5 class="card-header">
                     그룹 신청 현황
                 </h5>
@@ -152,17 +167,13 @@
                     <ul class="list-group list-group-flush">
                         {% for groupuser in groupusers %}
                         {% if groupuser.status == 0 %}
-                        <div class = "row">
-                            <div class="col-md-8">
-                                <li class="list-group-item">{{ groupuser.user_id }}</li>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style="margin-top: 10%;  height: 30px;">ACCEPT</button>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-secondary btn-sm text-uppercase " style="margin-top: 10%; height: 30px;">DENIAL</button>
-                            </div>
-                        </div>
+                    
+                    
+                                <li class="list-group-item">{{ groupuser.user_id }}
+                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style=" height: 30px;">ACCEPT</button>
+                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-danger btn-sm text-uppercase " style=" height: 30px;">DENIAL</button>
+                            </li>
+                        
                         {% endif %}
                         {% endfor %}
                     </ul>
@@ -213,4 +224,5 @@
 <!— Custom scripts for this template —>
 <script src="{% static 'js/agency.min.js' %}"></script>
 
+{% include "notifyform.html" %}
 </body>
