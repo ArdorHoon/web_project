@@ -105,15 +105,15 @@
                 <li class="group-line-by">
                     <div class = "row">
                         <div class = "col-md-3">
-                            <a href="{{ group.name }}">
-                                <img class="rounded-circle img-fluid group-image" src = /media/{{ group.poster }} alt="">
-                            </a>
+                    
+                                <img class="img-rounded img-fluid group-image" style="width : 200px; height: 250px; "src = /media/{{ group.poster }} alt="">
+                          
                         </div>
                             <div class = "col-md-9" style = "margin-top: 2%">
-                                <a href="{{ group.name }}">
+                              
                                     <div class="group-panel">
                                         <div class="group-heading">
-                                            <h4>{{ group.name }} ({{ group.usercount}}/{{group.maxcount }})</h4>
+                                            <a href="{{ group.name }}">  <h4>{{ group.name }} ({{ group.usercount}}/{{group.maxcount }})</h4> </a>
                                             <h5 class="subheading">{{ group.festival_name }}</h5>
                                             <h5 class="subheading">{{ group.date }}</h5>
                                             <h5 class="subheading">{{ group.hashtag }}</h5>
@@ -122,7 +122,7 @@
                                     <div class="group-body">
                                         <p class="text-muted">{{group.description}}</p>
                                     </div>
-                                </a>
+                               
                             </div>
                     </div>
                 </li>

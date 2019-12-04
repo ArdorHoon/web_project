@@ -134,7 +134,7 @@
 
         <!--그룹 가입자 목록 -->
         <div calss="container">
-            <div class="card mx-auto w-75" style=" width : 15px; ">
+            <div class="card mx-auto w-100">
                 <h5 class="card-header">
                     그룹 가입자
                 </h5>
@@ -152,7 +152,7 @@
         <!--내 등록 그룹-->
         {% if group.leader_id == user.username %}
         <div calss="container">
-            <div class="card mx-auto w-75 " style="width: 15px" >
+            <div class="card mx-auto w-100 "  >
                 <h5 class="card-header">
                     그룹 신청 현황
                 </h5>
@@ -161,17 +161,13 @@
                     <ul class="list-group list-group-flush">
                         {% for groupuser in groupusers %}
                         {% if groupuser.status == 0 %}
-                        <div class = "row">
-                            <div class="col-md-8">
-                                <li class="list-group-item">{{ groupuser.user_id }}</li>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style="margin-top: 10%;  height: 30px;">ACCEPT</button>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-secondary btn-sm text-uppercase " style="margin-top: 10%; height: 30px;">DENIAL</button>
-                            </div>
-                        </div>
+                    
+                    
+                                <li class="list-group-item">{{ groupuser.user_id }}
+                                <button type="submit" id="accept" name="accept" value={{ groupuser.user_id }} class="btn btn-primary btn-sm text-uppercase " style=" height: 30px;">ACCEPT</button>
+                                <button type="submit" id="denial" name="denial" value={{ groupuser.user_id }}  class="btn btn-danger btn-sm text-uppercase " style=" height: 30px;">DENIAL</button>
+                            </li>
+                        
                         {% endif %}
                         {% endfor %}
                     </ul>
