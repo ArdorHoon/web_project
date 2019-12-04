@@ -69,9 +69,10 @@ def register(request):
       group.save()
       groupuser = Groupusers(group_name = name, user_id = leader, status = 2)
       groupuser.save()
+      messages.info(request, "그룹 등록을 완료하였습니다.\n승인을 기다려주세요...")
       return redirect('/group')
     else:
-      #messages.info(request, "Same Group name in Database")
+      messages.info(request, "같은 이름의 그룹이 존재합니다.")
       return redirect('/group/register')
   else:
     festival = Festival.objects.all()

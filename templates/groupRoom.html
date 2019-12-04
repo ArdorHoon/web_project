@@ -83,7 +83,20 @@
 <col class="page-section" id="group">
 <div class="row" style = "margin: 10% 15% ; height: 100%">
     <div class="col-md-8">
-
+        <div class = "col-md-3">
+            <img class="img-rounded img-fluid group-image" src = "{{ festival.poster.url }}" style="height:250px; width:200px;"alt="">
+        </div>
+        <div class = "col-md-6" style = "margin-top:4%">
+            <div class="group-panel">
+                <div class="group-heading">
+                    <h4>{{ group.name }} ({{ group.usercount }}/{{ group.maxcount }})</h4>
+                    <h5 class="subheading">{{ group.festival_name }}</h5>
+                    <h5 class="subheading">{{ group.date }}</h5>
+                    <h5 class="subheading">{{ group.hashtag }}</h5>
+                    <h5 class="subheading">{{ name }}</h5>
+                </div>
+            </div>
+        </div>
        <div class = "card" style ="margin-bottom: 30px;">
         <div class="card-header">
             <div class="row">

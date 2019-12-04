@@ -132,13 +132,13 @@
 
             <div class = "row">
 
-                <div class="card w-100">
-                    <h5 class="card-header">내용</h5>
-                    <div class="card-body">
-                        <p class="card-text">{{ group.description }}</p>
-                        <p class="card-text float-right"><small class="text-muted">본 작성 내용에 대한 책임은 작성자에게 있습니다.</small></p>
-                    </div>
-                </div>
+                    <div class="card w-100">
+                            <h5 class="card-header">내용</h5>
+                            <div class="card-body">
+                              <p class="card-text">{{ group.description }}</p>
+                              <p class="card-text float-right"><small class="text-muted">본 작성 내용에 대한 책임은 작성자에게 있습니다.</small></p>
+                            </div>
+                          </div>
 
             </div>
         </div>
@@ -166,6 +166,11 @@
     </div>
 </footer>
 
+{% if messages %}
+{% for message in messages %}
+{% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+{% endfor %}
+{% endif %}
 
 <!-- Bootstrap core JavaScript -->
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
