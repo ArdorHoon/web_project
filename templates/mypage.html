@@ -99,10 +99,10 @@
           내 등록한 그룹
         </h5>
         <ul class="list-group list-group-flush">
-            {% for group in groupusers %}
-            {% if group.status  == 2 %}
-          <li class="list-group-item">{{ group.group_name }}
-              <a class="btn btn-dark btn-sm" style =" float : right" href="{{ group.group_name }}/room" role="button">상세보기</a></li>
+                {% for lg in groups %}
+                {% if lg.is_authenticated == 1 %}
+          <li class="list-group-item">{{ lg.name }}
+              <a class="btn btn-dark btn-sm" style =" float : right" href="{{ lg.name }}/room" role="button">상세보기</a></li>
             {% endif %}
             {% endfor%}
        
