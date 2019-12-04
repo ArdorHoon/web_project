@@ -22,11 +22,12 @@ def room(request,name):
   if request.method == "POST":
     notify = request.POST.get("notify", "없음") 
     comment = request.POST.get("comment", None)
-    if notify is None:
+    
+    if comment is not None:
       group = Groups.objects.get(name = name)
       comm = Comment(groupname=group.name, context=comment, user_id=request.user.username)
       comm.save()
-    else:
+    if notify is not "없음":
       group = Groups.objects.get(name = name)
       group.notification = notify
       group.save()

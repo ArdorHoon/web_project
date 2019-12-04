@@ -40,7 +40,8 @@ def login(request):
       messages.info(request, "로그인 성공")
       return redirect('/index')
     else:
-      return redirect('login')
+      messages.info(request, "회원 정보가 다릅니다. ID/Password를 확인하십시오.")
+      return redirect('/login')
   else:
     return render(request, 'login.html')
 

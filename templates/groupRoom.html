@@ -89,9 +89,11 @@
                 <div class="col-md-10">
                     <h5>공지</h5>
                 </div>
-                <div class="col-md-2 float-right">
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#notify_modal">Add</button>
-                </div>
+                {% if user.username == group.leader_id %}
+                    <div class="col-md-2 float-right">
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#notify_modal">Add</button>
+                    </div>
+                {% endif %}
             </div>
 
         </div>
