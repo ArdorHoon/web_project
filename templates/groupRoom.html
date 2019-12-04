@@ -83,6 +83,20 @@
 <col class="page-section" id="group">
 <div class="row" style = "margin: 10% 15% ; height: 100%">
     <div class="col-md-8">
+        <div class = "col-md-3">
+            <img class="img-rounded img-fluid group-image" src = "{{ festival.poster.url }}" style="height:250px; width:200px;"alt="">
+        </div>
+        <div class = "col-md-6" style = "margin-top:4%">
+            <div class="group-panel">
+                <div class="group-heading">
+                    <h4>{{ group.name }} ({{ group.usercount }}/{{ group.maxcount }})</h4>
+                    <h5 class="subheading">{{ group.festival_name }}</h5>
+                    <h5 class="subheading">{{ group.date }}</h5>
+                    <h5 class="subheading">{{ group.hashtag }}</h5>
+                    <h5 class="subheading">{{ name }}</h5>
+                </div>
+            </div>
+        </div>
        <div class = "card" style ="margin-bottom: 30px;">
         <div class="card-header">
             <div class="row">
@@ -107,23 +121,21 @@
        
         <div class="card mx-auto w-70"> <h5 class="card-header">댓글</h5></div>
         <div class="row overflow-auto" style=" height: 60%;">
-            
+
             <div class="container">
-            <ul>
-                {% for comment in comments %}
+                <ul>
+                    {% for comment in comments %}
                     <li>
                         <hr width = "100%">
-                        <h6>{{comment.user_id}}</h6> 
+                        <h6>{{comment.user_id}}</h6>
                         {{comment.context}}<br>
                         <small class="text-muted">{{comment.date}}</small>
                     </li>
-                {% endfor %}
-            </ul>
-           
+                    {% endfor %}
+                </ul>
+
             </div>
 
-           
-         
         </div>
         <div style ="margin-top : 20px;">
             <form class="form-inline" method="POST">
@@ -215,16 +227,15 @@
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-<!-- Plugin JavaScript -->
+<!— Plugin JavaScript —>
 <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-<!-- Contact form JavaScript -->
+<!— Contact form JavaScript —>
 <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
 <script src="{% static 'js/contact_me.js' %}"></script>
 
-<!-- Custom scripts for this template -->
+<!— Custom scripts for this template —>
 <script src="{% static 'js/agency.min.js' %}"></script>
 
 {% include "notifyform.html" %}
 </body>
-

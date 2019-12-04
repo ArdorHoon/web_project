@@ -85,7 +85,9 @@
         <div class = "form-group">
             <div class = "row">
                 <div class = "col-md-3">
-                    <img class="img-rounded img-fluid group-image" src = "/media/{{ group.poster }}" style="height:250px; width:200px;"alt=""> 
+
+                    <img class="img-rounded img-fluid group-image" src = "{{ festival.poster.url }}" style="height:250px; width:200px;"alt="">
+
                 </div>
                 <div class = "col-md-6" style = "margin-top:4%">
                     <div class="group-panel">
@@ -137,32 +139,32 @@
                               <p class="card-text float-right"><small class="text-muted">본 작성 내용에 대한 책임은 작성자에게 있습니다.</small></p>
                             </div>
                           </div>
-            
+
             </div>
         </div>
     </div>
 </div>
 
 
-  <!-- Footer -->
-  <footer id ="footer" class="py-3 bg-dark">
+<!-- Footer -->
+<footer id ="footer" class="py-3 bg-dark">
     <div class="container">
 
-      </span>
-      <h3>Festival Together</h3>
-      <hr class="footerline">
+        </span>
+        <h3>Festival Together</h3>
+        <hr class="footerline">
 
-      <div class="footercontents m-0 text-left text-white">
+        <div class="footercontents m-0 text-left text-white">
 
             <p class="company_contents">
-            팀원 : 양훈모, 이헤린, 서진원, 박주연 | 주소 : 서울특별시 중구 동국대학교 신공학관<br>
-            Festival Together은 최신 페스티벌 정보를 수집하기 위해 노력하고 있으며 정보 제공에 따른 법적 책임을 지지 않습니다.<br>
+                팀원 : 양훈모, 이헤린, 서진원, 박주연 | 주소 : 서울특별시 중구 동국대학교 신공학관<br>
+                Festival Together은 최신 페스티벌 정보를 수집하기 위해 노력하고 있으며 정보 제공에 따른 법적 책임을 지지 않습니다.<br>
             </p>
         </div>
 
-      <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
+        <p class="copyright m-0 text-left text-white">Copyright Festival Together LK Corp. &copy; All rights Reserved</p>
     </div>
-  </footer>
+</footer>
 
 {% if messages %}
 {% for message in messages %}
@@ -177,11 +179,11 @@
 <!-- Plugin JavaScript -->
 <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-<!-- Contact form JavaScript -->
+<!— Contact form JavaScript —>
 <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
 <script src="{% static 'js/contact_me.js' %}"></script>
 
-<!-- Custom scripts for this template -->
+<!— Custom scripts for this template —>
 <script src="{% static 'js/agency.min.js' %}"></script>
 
 </body>

@@ -99,9 +99,9 @@
                 <h5 style="margin-bottom : 20px;">가격 : {{festival.price}}원</h3>
                 {% endif %}
                 {% if festival.desc == NULL %}
-                <h3>등록된 url이 없습니다.</h3>
+                <h5 class="text-muted">등록된 url이 없습니다.</h5>
                 {% elif  festival.desc == "" %}
-                <h3>등록된 url이 없습니다.</h3>
+                <h5 class="text-muted">등록된 url이 없습니다.</h5>
                 {% else %}
                 <input type ="button" class="btn btn-dark btn-block" name = "createFestival" value="홈페이지 가기" onClick="location.href= '{{festival.desc}}'" />
                 {% endif %}
