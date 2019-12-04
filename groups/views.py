@@ -9,10 +9,10 @@ from django.core.paginator import Paginator
 # Create your views here.
 def group(request):
     if request.method =="POST" :
-        groups = Groups.objects.filter(is_authenticated=1).order_by('-date')
         q = request.POST.get('q', '') # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
         if q: # q가 있으면
-            groups = groups.filter(Q(name__contains=q) | Q(hashtag__contains=q)) # 제목에 q가 포함되어 있는 레코드만 필터링
+            groups = list(Groups.objects.raw('SELECT g.id, g.name, g.usercount, g.maxcount, g.festival_name, g.date, g.hashtag, g.description, f.poster from groups_groups as g left outer join festivals_festival as f on g.festival_name = f.name where g.is_authenticated = 1 and (g.name like "%%%s%%" or g.hashtag like "%%%s%%" ) order by date',q,q)
+            )
             return render(request, 'group.html', {
             'groups' : groups,
             'q' : q,
@@ -20,13 +20,16 @@ def group(request):
         else:
             return render(request, 'group.html')
     else:
-        groups = Groups.objects.filter(is_authenticated=1).order_by('-date')
+        groups = Groups.objects.raw("SELECT g.id, g.name, g.usercount, g.maxcount, g.festival_name, g.date, g.hashtag, g.description, f.poster from groups_groups as g left outer join festivals_festival as f on g.festival_name = f.name where g.is_authenticated = 1 order by date")
         content = {"groups":groups}
         return render(request, 'group.html',content)
 
 def each(request,name):
     group = Groups.objects.get(name = name)
-
+    # group = Groups.objects.raw("SELECT g.id, g.name, g.usercount, g.maxcount, g.festival_name, g.date, g.hashtag, g.description, f.poster from groups_groups as g left outer join festivals_festival as f on g.festival_name = f.name where g.name = %s",name)
+    # groupuser = Groupusers.objects.filter(group_name = name, user_id = request.user.username)
+    # context = {'group':group, 'groupuser': groupuser,'name': name}
+    # return render(request, 'eachGroup.html', context)
     try:
         queryset = Groupusers.objects.get(group_name = group.name, user_id = request.user.username)
         if queryset.status == -1 :
@@ -86,10 +89,9 @@ def apply(request,name):
     groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
     groupuser.save()
 
-    groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
-    name = group_name
-    context = {'group':group}
-    return redirect('/group/'+name)
+    groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+    context = {'group':group, 'groupusers': groupusers}
+    return render(request, 'eachGroup.html', context)
 
 def confirmGroup(request,name):
   if request.method=="POST":

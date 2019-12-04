@@ -85,7 +85,7 @@
         <div class = "form-group">
             <div class = "row">
                 <div class = "col-md-3">
-                    <img class="rounded-circle img-fluid group-image" src = "{{ group.ticket.url }}" alt="">
+                    <img class="rounded-circle img-fluid group-image" src = "/media/{{ group.poster }}" alt="">
                 </div>
                 <div class = "col-md-6" style = "margin-top:4%">
                     <div class="group-panel">
@@ -94,11 +94,14 @@
                             <h5 class="subheading">{{ group.festival_name }}</h5>
                             <h5 class="subheading">{{ group.date }}</h5>
                             <h5 class="subheading">{{ group.hashtag }}</h5>
+                            <h5 class="subheading">{{ name }}</h5>
                         </div>
                     </div>
                 </div>
 
                 <div class = "col-md-3" style = "margin-top: 7%">
+<<<<<<< HEAD
+=======
                     {% if user.is_authenticated %}
 
                     {% if groupusers.count < 1%}
@@ -120,6 +123,7 @@
                     {% else %}
                     <a class="btn btn-sm btn-primary js-scroll-trigger btn-register-group" href="apply" >참가하기</a>
                     {% endif %}
+>>>>>>> b27b7bfeb5e7ac4abbabd550def1aeb26cc03c4e
 
                 </div>
             </div>

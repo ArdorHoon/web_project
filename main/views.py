@@ -33,8 +33,10 @@ def room(request,name):
     return redirect('/mypage/'+name+'/room')
   else:
     group = Groups.objects.get(name = name)
+    fes = Festival.objects.get(name = group.festival_name)
     groupusers = Groupusers.objects.filter(group_name = group.name)
     comments = Comment.objects.filter(groupname=group.name)
+    # context = {'group':group, 'festival': fes, 'groupusers': groupusers}
     context = {'group':group, 'groupusers': groupusers, 'comments':comments}
     return render(request, 'groupRoom.html', context)
 

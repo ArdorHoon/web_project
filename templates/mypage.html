@@ -119,7 +119,7 @@
             <ul class="list-group list-group-flush">
                 {% for group in groupusers %}
                 {% if group.status == 1 %}
-                <li class="list-group-item">{{ group.group_name }}<a class="btn btn-dark btn-sm " style =" float : right" href="{{ group.group_name }}/room" role="button">상세보기</a><a class="btn  btn-dark btn-sm " value = 'user.username' style =" float : right" href='{{ group.group_name }}/getout' role="button">탈퇴하기</a></li>
+                <li class="list-group-item">{{ group.group_name }}<a class="btn btn-dark btn-sm " style =" float : right" href="{{ group.group_name }}/room" role="button">상세보기</a><a class="btn  btn-danger btn-sm " value = 'user.username' style ="margin-right: 10px; float : right" href='{{ group.group_name }}/getout' role="button">탈퇴하기</a></li>
 
                 {% endif %}
                 {% endfor%}

@@ -15,8 +15,8 @@ class Groups(models.Model):
   # ticket = models.ImageField(null=True, blank=True)
   ticket = models.ImageField(upload_to="image", null=True, blank=True)
   description = models.TextField(max_length=200, default="")
-  is_authenticated = models.IntegerField(default=0)
   notification = models.TextField(max_length=1024, default="")
+  is_authenticated = models.IntegerField(default=0)
 
 class Comment(models.Model):
   groupname = models.CharField(max_length=30, default="")
