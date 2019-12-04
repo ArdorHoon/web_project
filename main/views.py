@@ -87,12 +87,13 @@ def getout(request,name):
     groupuser = Groupusers.objects.get(group_name=name, user_id=request.user.username)
     groupuser.delete()
 
+    group = Groups.objects.get(name=name)
+    group.usercount = group.usercount - 1
+    group.save()
+
     datas = Data.objects.get(uid=request.user.username) #단일 행 가져오기
     groupusers = Groupusers.objects.filter(user_id = request.user.username)
     groups = Groups.objects.filter(leader_id = request.user.username)
-
-    group = Groups.objects.get(name=name)
-    group.usercount = group.usercount - 1
 
     context = {'datas': datas , 'groupusers' : groupusers , 'groups' : groups}
     messages.info(request, name+"그룹을 탈퇴했습니다.")
