@@ -86,10 +86,9 @@ def apply(request,name):
     groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
     groupuser.save()
 
-    groupuser = Groupusers(group_name = group_name, user_id = user_id, status = status)
-    name = group_name
-    context = {'group':group}
-    return redirect('/group/'+name)
+    groupusers = Groupusers.objects.filter(group_name = group.name, user_id = request.user.username)
+    context = {'group':group, 'groupusers': groupusers}
+    return render(request, 'eachGroup.html', context)
 
 def confirmGroup(request,name):
   if request.method=="POST":
