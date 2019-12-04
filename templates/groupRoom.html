@@ -88,26 +88,39 @@
             
 
         </div>
-        <div class="row" style=" height: 50%";>
-            <div>
-                댓글
-            </div>
+        <div class="row" style=" height: 50%;">
+            <div class="container"> <h5>댓글</h5></div>
+            <div class="container">
             <ul>
                 {% for comment in comments %}
                     <li>
-                        {{comment.context}}
-                        <small>작성자: {{comment.user_id}} 날짜: {{comment.date}}</small>
+                        <hr width = "100%">
+                       <h6>{{comment.user_id}}</h6> 
+                        {{comment.context}}<br>
+                        <small class="text-muted">{{comment.date}}</small>
                     </li>
                 {% endfor %}
             </ul>
+           
+            </div>
+
+            <div class="container">
             <form class="form-inline" method="POST">
-                {% csrf_token %}
-                <input type="text" class="form-control width100" name="comment" placeholder="Comment...">
-                <input type="submit" value="POST" class="btn btn-dark">
-            </form>
+                    {% csrf_token %}
+                    <input type="text" class="col-10 form-control " name="comment" placeholder="댓글 입력">
+                    <input type="submit" value="입력" class="col-2 btn btn-dark">
+                </form>
+
+            </div>
+         
         </div>
     </div>
     <div class="col-md-4">
+
+
+
+
+
         <!--그룹 가입자 목록 -->
         <div calss="container">
             <div class="card mx-auto w-75" style=" width : 15px; ">
