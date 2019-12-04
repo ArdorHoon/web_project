@@ -39,7 +39,7 @@ def room(request,name):
     groupusers = Groupusers.objects.filter(group_name = group.name)
     comments = Comment.objects.filter(groupname=group.name)
     # context = {'group':group, 'festival': fes, 'groupusers': groupusers}
-    context = {'group':group, 'groupusers': groupusers, 'comments':comments}
+    context = {'group':group, 'festival': fes, 'groupusers': groupusers, 'comments':comments}
     return render(request, 'groupRoom.html', context)
 
 def mypage(request):
