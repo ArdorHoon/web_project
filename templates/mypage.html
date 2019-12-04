@@ -119,7 +119,7 @@
             <ul class="list-group list-group-flush">
                 {% for group in Groups %}
                 {% if group.status == 1 %}
-                <li class="list-group-item">{{ group.group_name }}<a class="btn  btn-dark btn-sm " style =" float : right" href="{{ group.group_name }}/room" role="button">상세보기</a><a class="btn  btn-dark btn-sm " value = 'user.username' style =" float : right" href='{{ group.group_name }}/getout' role="button">탈퇴하기</a></li>
+                <li class="list-group-item">{{ group.group_name }}<a class="btn btn-dark btn-sm " style =" float : right" href="{{ group.group_name }}/room" role="button">상세보기</a><a class="btn  btn-dark btn-sm " value = 'user.username' style =" float : right" href='{{ group.group_name }}/getout' role="button">탈퇴하기</a></li>
 
                 {% endif %}
                 {% endfor%}
@@ -132,7 +132,7 @@
 <div calss="container">
         <div class="card mx-auto w-75" style=" margin-top : 20px; margin-bottom: 20px; ">
             <h5 class="card-header">
-              신청 현황
+              가입 신청 현황
             </h5>
             <ul class="list-group list-group-flush">
                 {% for group in Groups %}
@@ -141,7 +141,7 @@
                  {% if group.status == 0 %}
                   <a class="btn btn-info btn-sm" style =" float : right" href="{{ group.group_name }}" role="button">대기 중..</a></li>
                  {%else%}
-                 <a class="btn btn-Danger btn-sm" style =" float : right" href="{{ group.group_name }}" role="button">거절</a></li>
+                 <a class="btn btn-Danger btn-sm" style =" float : right" href="{{ group.group_name }}" role="button">가입거절</a></li>
                 {% endif %}
                 {% endif %}
                 {% endfor%}
