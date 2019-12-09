@@ -1,5 +1,9 @@
-# Festival_Together
+# Festival Together
 Web Project by Team Fortuneer
+
+# OpenSource
+- Django
+- Bootstrap
 
 # 코드 테스트
 (Terminal) - python3 manage.py runserver
