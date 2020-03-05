@@ -12,6 +12,6 @@ Web Project by Team Fortuneer
 - Environment - Amazon RDS Database (MySQL)
 - Database Name - festival_together
 - User - admin
-- Password - vhcnsldj(포추니어)
+- Password - *
 - EndPoint - db-festival.crw70xingeqx.us-east-1.rds.amazonaws.com
 - Port - 3306
