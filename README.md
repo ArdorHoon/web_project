@@ -1,17 +1,6 @@
 # Festival Together
-Web Project by Team Fortuneer
+&#127911; EDM Festival 그룹 모집 사이트 make by Team Fortuneer
 
-# OpenSource
-- Django
-- Bootstrap
-
-# 코드 테스트
+# Testing Code
 (Terminal) - python3 manage.py runserver
 
-# Database
-- Environment - Amazon RDS Database (MySQL)
-- Database Name - festival_together
-- User - admin
-- Password - *
-- EndPoint - db-festival.crw70xingeqx.us-east-1.rds.amazonaws.com
-- Port - 3306
