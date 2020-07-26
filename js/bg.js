@@ -12,7 +12,7 @@ function handleImgLoad(){
 function paintImage(){
  
     const image = new Image();
-    image.src = `https://source.unsplash.com/featured/?water,mountain`; //물/산 위주로 출력
+    image.src = `https://source.unsplash.com/featured/?dark`; //물/산 위주로 출력
     image.classList.add("bgImage");
     body.prepend(image);
     image.addEventListener("loadend", handleImgLoad);
