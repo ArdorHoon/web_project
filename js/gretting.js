@@ -7,11 +7,13 @@ const form = document.querySelector(".js-form"),
 const USER_LS = "currentUser",
       SHOWING_CN = "showing";
 
+//save name in local Storage
 function saveName(text){
 
     localStorage.setItem(USER_LS, text);
 }
 
+//handle of submit event
 function handleSubmit(event){
 
     event.preventDefault(); // event의 가본 동작을 막는다. evnet가 documet노드까지 가고 난 후 새로고침이 되어져 버림
@@ -30,7 +32,7 @@ function askForName(){
 function paintGreeting(text){
     form.classList.remove(SHOWING_CN);
     greeting.classList.add(SHOWING_CN);
-    greeting.innerText = `Hello ${text}`;
+    greeting.innerText = `Hello ${text}!`;
 
 }
 
