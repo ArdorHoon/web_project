@@ -89,11 +89,16 @@ function handleModeClick() {
 
 function handleColorClick(event) {
     const color = event.target.style.backgroundColor;
+    const cursorColor = event.target.id;
     
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
 
+    canvas.style.cursor = `url(/img/${cursorColor}.png), auto`;
+    
+
 }
+
 
 Array.from(colors).forEach(color =>
     color.addEventListener("click", handleColorClick)
