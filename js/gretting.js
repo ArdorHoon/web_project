@@ -16,7 +16,7 @@ function saveName(text){
 //handle of submit event
 function handleSubmit(event){
 
-    event.preventDefault(); // event의 가본 동작을 막는다. evnet가 documet노드까지 가고 난 후 새로고침이 되어져 버림
+    event.preventDefault(); // event의 기본 동작을 막는다. event가 documet노드까지 가고 난 후 새로고침이 되어져 버림
     const currentValue = input.value;
     paintGreeting(currentValue);
     saveName(currentValue);

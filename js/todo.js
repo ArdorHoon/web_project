@@ -9,11 +9,11 @@ let toDos = []; //toDolist 저장하는 목록
 
 function deleteToDo(event){
 
-   const btn = event.target;
+   const btn = event.target; 
    const li = btn.parentNode;
    toDoList.removeChild(li);
 
-    const cleanToDos = toDos.filter(function(toDo){
+   const cleanToDos = toDos.filter(function(toDo){
 
         return toDo.id !== parseInt(li.id);
     });
