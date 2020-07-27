@@ -4,6 +4,6 @@ Make a canvas can be drawn
 # Feature
 
 - [X] save image
-- [ ] change color
-- [ ] range my brush
-- [ ] drawing picture
+- [X] change color
+- [X] range my brush
+- [X] drawing picture
