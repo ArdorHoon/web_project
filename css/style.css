@@ -43,7 +43,7 @@ button {
 
 .main{
     
-    margin-top: 160px;
+    padding-top: 160px;
 
 }
 
@@ -72,7 +72,73 @@ button {
     text-align: center;
 }
 
+/*search bar*/
+
+.js-navi-box{
+
+    display : flex;
+    float: left;
+    width : 100%;
+
+    
+}
+
+.js-search-icon {
+
+    cursor: pointer;
+}
+
+.part1{
+
+    width : 50%;
+    float: left;
+    
+}
+
+.part2{
+
+    width : 50%;
+    text-align: right;
+}
+
+.js-search input{
+
+    width: 150px;
+    padding-top: 4px;
+    background: 0;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    font-size : 20px;
+    font-weight: 500;
+    outline: 0;
+    text-align: center;
+    transition: border-color .2s ease;
+
+}
+
+.opacity {
+
+    opacity: 0;
+
+}
+
+.unopacity {
+
+    opacity: 0.4;
+}
+
+.do_opacity { /*클릭시 투명도 1*/
+
+    opacity: 1;
+
+}
+
+
+
+
 /*input box design*/
+
 
 .js-form input,
 .js-toDoForm input {
@@ -97,16 +163,7 @@ input::placeholder{
 
 }
 
-.js-weather{
 
-    position: absolute;
-    top: 10px;
-    right: 20px;
-
-
-
-
-}
 
 @keyframes fadeIn{
     from {

@@ -9,12 +9,26 @@
 
   
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
 
 </head>
 <body>
+    <div class="js-navi-box">
+        <div class="part1">   
+        <span>
+            <form class="js-search">
+                <i class="js-search-icon fas fa-search" style ="color: white;"></i>
+                <input type="text" class="js-search-bar opacity" autocomplete="off"/>
+             </form>
+            </span>
+        </div>
+        <div class ="part2">
+        <span class ="js-weather"></span>
+        </div>
+    </div>
 
-  <div class="main">
+  <div class="main">   
     <div class= "js-clock">
         <h1 class = "js-title"></h1>
     </div>
@@ -26,11 +40,12 @@
     <h4 class = "js-greetings greetings"></h4>	
     
     <form class ="js-toDoForm">
+     
         <input type="text" placeholder="Write a to do"/>
     </form>
     <ul class="js-toDoList"></ul>
 
-    <span class ="js-weather"></span>
+    
 </div>
 
 <script src="js/clock.js"></script>
@@ -38,6 +53,7 @@
 <script src="js/bg.js"></script> 
 <script src="js/todo.js"></script>
 <script src="js/weather.js"></script>
+<script src="js/search.js"></script>
 
 
 </body>
