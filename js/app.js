@@ -1,7 +1,7 @@
 
 const canvas = document.querySelector(".js-canvas"),
       ctx = canvas.getContext("2d"),
-      colors = document.querySelector("#jsColor"),
+      colors = document.querySelectorAll(".jsColor"),
       range = document.querySelector("#jsRange"),
       mode = document.querySelector("#jsMode"),
       saveBtn = document.querySelector("#jsSave");
@@ -20,6 +20,92 @@ ctx.fillStyle = "white";
 ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
 
+let painting = false; //그리고 있는지 판단
+let filling = false ; //채우기 위해서
+
+canvas.addEventListener("mousemove",e => {
+
+    const x = e.offsetX;
+    const y = e.offsetY;
+
+    if(!painting) {
+        ctx.beginPath();
+        ctx.moveTo(x,y);
+    } else {
+        ctx.lineTo(x,y);
+        ctx.stroke();
+    }
+
+
+});
+
+canvas.addEventListener("mousedown",e => {
+
+    painting = true;
+
+});
+
+
+canvas.addEventListener("mouseup",e => {
+
+    painting = false;
+
+});
+
+canvas.addEventListener("mouseleave",e => {
+
+    painting = false;
+
+});
+
+//배경색 채우기
+canvas.addEventListener("click",e => {
+
+    if(filling){
+
+        ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);   
+    }
+
+});
+
+//마우스 오른쪽 버튼 클릭 시
+canvas.addEventListener("contextmenu",e => {
+    e.preventDefault();
+});
+
+
+function handleModeClick() {
+    if (filling === true) {
+      filling = false;
+      mode.innerText = "Fill";
+     
+    } else {
+      filling = true;
+      mode.innerText = "Paint";
+     
+    }
+
+}
+
+function handleColorClick(event) {
+    const color = event.target.style.backgroundColor;
+    
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+
+}
+
+Array.from(colors).forEach(color =>
+    color.addEventListener("click", handleColorClick)
+    //Array.from(배열) 배열의 요소를 하나씩 꺼낸다. 
+  );
+
+function handleRangeChange(event) {
+
+    const size = event.target.value;
+    ctx.lineWidth = size;
+
+}
 
 function handleSaveClick(){
 
@@ -30,13 +116,15 @@ function handleSaveClick(){
     link.download = "MyPaint";
     link.click();
 
-
 }
+
 
 
 function init(){
 
-    saveBtn.addEventListener("click", handleSaveClick);
+    saveBtn.addEventListener("click", handleSaveClick); //save 시
+    range.addEventListener("input", handleRangeChange); //range 변경 시 
+    mode.addEventListener("click", handleModeClick); //fill모드 선택 시 
 
 }
 
