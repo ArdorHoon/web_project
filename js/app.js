@@ -7,7 +7,7 @@ const canvas = document.querySelector(".js-canvas"),
       saveBtn = document.querySelector("#jsSave");
 
 
-const INITIAL_COLOR = "2c2c2c";
+const INITIAL_COLOR = "2c2c2c"; 
 const CANVAS_SIZE = 500;
 
 canvas.width = CANVAS_SIZE;
@@ -118,7 +118,7 @@ function handleSaveClick(){
     const link = document.createElement("a");
 
     link.href = image;
-    link.download = "MyPaint";
+    link.download = "myPaint"; //download file name
     link.click();
 
 }
