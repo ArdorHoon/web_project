@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css\join_css.css">   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js">
+</script>
+<title>회원가입</title>
+</head>
+<body>
+<div id="homepage">
+    <nav id = "NavigationBar" style="background-color: white;">
+        <div id="BOX" style="left: -300px; top: 20px; width: 87px; font-size: 32px;">
+           <span>&BOX</span>
+        </div>
+        <div id="font_menu" style="left: -200px; width: 106px; top: 25px;">
+           <span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">Build a Box</span>   
+        </div>
+        <div id="font_menu" style="left: -150px; width: 58px; top: 25px;">
+           <span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">About</span>
+        </div>
+        <div id="font_menu" style="left: -100px; width: 44px; top: 25px;">
+           <span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">Q&A</span>
+        </div>
+        <div id="font" style="left: 330px; width: 60px; top: 13px;">
+           <span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">로그인</span>
+        </div>
+        <div id="font" style="left: 330px; width: 19px; top: 13px;">
+           <span>ㅣ</span>
+        </div>
+        <div id="font" style="left: 330px; width: 73px; top: 13px;">
+           <span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">회원가입</span>
+        </div>
+     </nav>
+
+     <div id = "BOX" style="left:-420px; top: 200px; width: 87px; font-size: 32px;">
+        <span>&BOX</span>   
+    </div>
+    <div id = "font" style="top : 200px; left : -415px; width:fit-content; height:fit-content; font-size: 28px; font-weight: bold;">
+    <span>회원가입</span>
+    </div><br>
+
+        <div id = "font" style="left: -180px; top: 210px; font-size: 18px;">
+            <span>앤드박스에 가입하시고 프리미엄 맞춤형 선물 서비스를 이용해보세요.</span>
+        </div>
+        <div id = "font" style="left: 200px; top: 210px;  font-size: 20px; color: rgb(107, 107, 107);">
+            <span style="color: red;">* </span><span>필수입력항목</span>
+        </div><br>
+        <div id = "input_form">
+            <div id = "font" style="left: 70px; top: 10px;  font-size: 20px; font-weight: bold; float: left;">
+                <span>이름</span><span style="color: red;"> *</span>
+            </div>
+            <div class="input_box" style="top: 0px; left: 100px; width: 300px; height: 50px; float: left;">
+                <div class="textbox" style="top: 4px; left: -10px;"> 
+                    <input type="text" id="name"> 
+                </div>
+            </div>
+            <div id = "font" style="left: 130px; top: 17px; font-size: 15px; color: rgb(155, 155, 155); float: left;">
+                <span>최대 8자까지 입력 가능합니다.</span>
+            </div>
+            <div id = "font" style="left: -490px; top: 120px;  font-size: 20px; font-weight: bold; float: left;">
+                <span>이메일</span><span style="color: red;"> *</span>
+            </div><br>
+            <div class="input_box" style="top: 140px; left: -295px; width: 600px; height: 50px; float: left;">
+                <div class="textbox" style="top: 4px; left: -30px;"> 
+                    <input type="text" id="email" placeholder="Ex) name@Andbox.com" onfocus="this.placeholder=''" onblur="this.placeholder='Ex) name@Andbox.com'"> 
+                </div>
+            </div>
+            <div id="button" style="top: 140px; left: -250px; color: white; font-weight: bold;"" onclick ="location.href='https://www.naver.com'">중복확인</div>
+            <div id="font" style="left: 75px; top: 190px; font-size: 20px; font-weight: bold; float: left;">
+                <span>비밀번호</span><span style="color: red;"> *</span>
+            </div>
+            <div class="input_box" style="top: 235px; left: -33px; width: 600px; height: 50px; float: left;">
+                <div class="textbox" style="top: 4px; left: -30px;"> 
+                    <input type="password" id="password"> 
+                </div>
+            </div>
+            <div id = "font" style="left: -5px; top: 250px; font-size: 15px; color: rgb(155, 155, 155); float: left;">
+                <span>비밀번호는 6~18자로 설정해주세요.</span>
+            </div>
+            <div id = "font" style="left: -865px; top: 330px;  font-size: 20px; font-weight: bold; float: left;">
+                <span>비밀번호확인</span><span style="color: red;"> *</span>
+            </div>
+            <div class="input_box" style="top: 330px; left: 65px; width: 600px; height: 50px; float: left;">
+                <div class="textbox" style="top: 4px; left: -30px;"> 
+                   <input type="password" id="password" placeholder="비밀번호 재입력" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호 재입력'"> 
+               </div>
+            </div>
+            <div class="checkbox" style="top: 550px; left: -750px;">
+                <input type="checkbox" name="check1" value="check1" style=" width: 20px; height: 20px;"><label for="check1" style="font-size: 20px; font-weight: bold;"> 약관에 모두 동의합니다.</label>
+            </div><br>
+            <div class="checkbox" style="top: 600px; left: -562px;">
+                <input type="checkbox" name="check2" value="check2" style=" width: 20px; height: 20px;"><label for="check2" style="font-size: 20px;"> <u>이용약관과 개인정보 수집 및 이용에 동의합니다. (필수)</u></label>
+            </div><br>
+            <div class="checkbox" style="top: 650px; left: -690px;">
+                <input type="checkbox" name="check3" value="check3" style=" width: 20px; height: 20px;"><label for="check3" style="font-size: 20px;"> 만 14세 이상입니다. (필수)</label>
+            </div><br>
+            <div class="checkbox" style="top: 700px; left: -384px;">
+                <input type="checkbox" name="check4" value="check4" style=" width: 20px; height: 20px;"><label for="check4" style="font-size: 20px;"> 마케팅 정보 수신동의 (선택)</label>
+            </div>
+            <div id="button" style="top: 450px; left: 850px; color: white; font-weight: bold; border-radius: 30px 30px; background-color: rgb(180, 180, 180);" onclick="location.href='https://www.naver.com'">가입완료</div>
+        
+        </div><br><br>
+    
+    </div>
+<footer id="footer_div"></footer>
+</body>
+</html>
