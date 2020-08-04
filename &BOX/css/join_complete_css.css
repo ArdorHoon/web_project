@@ -1,0 +1,122 @@
+html{
+
+}
+body{
+    min-width: 800px;
+    margin: 0px;
+}
+footer{
+}
+#homepage {
+    position: relative;
+    width: 1190px;
+    height: 1350px;
+    background-color: rgba(255,255,255,1);
+    text-align: center;
+    margin: 0 auto;
+    --web-view-name: 회원가입 완료;
+}
+.background {
+    position: relative;
+    background-color: rgba(211,211,211,1);
+    top: 88px;
+    width: 1190px;
+    height: 500px;
+    display: inline-block;
+    margin: 0 auto;
+}
+#banner {
+    position: relative;
+    height: 1190px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#Join_Image{
+    position: absolute;
+    margin: 0 auto;
+    display: inline-block;
+}
+#NavigationBar {
+    position: fixed;
+    box-shadow: 0px 2px 3px rgb(168, 168, 168);
+    z-index: 1;
+    left: 0px;
+    height: 75px;
+    right: 0px;
+    top: 0px;
+}
+#BOX {
+    position: relative;
+    font-family: THEFACESHOP INKLIPQUID;
+    color: rgba(112,112,112,1);
+    display: inline-block;
+}
+#font_menu {
+    position: relative;
+    font-family: Noto Sans;
+    font-size: 20px;
+    color: rgba(25,25,25,1);
+    display: inline-block;
+}
+#font {
+    position: relative;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-size: 18px;
+    color: rgba(25,25,25,1);
+    display: inline-block;
+}
+#login_button {
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    background-color: black;
+    border: 0px;
+
+}
+
+#middle_text {
+    top: 165px;
+    position: relative;
+    font-family: Noto Sans;
+    font-weight: bold;
+    font-size: 22px;
+    display: block;
+}
+#icon {
+    top: 250px;
+    position: relative;
+    font-family: Noto Sans;
+    color: rgba(25,25,25,1);
+    display: inline-block;
+    margin: 10px;
+}
+#Img_Insta{
+    position:relative;
+    width: 364px;
+    height: 346px;
+    top: 500px;
+    margin-right: 20px;
+    float: left;
+    display: inline-flex;
+}
+#bottom {
+    fill: rgba(28,28,28,1);
+    stroke: rgba(112,112,112,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+#footer_div {
+    position: absolute;
+    background-color: rgba(28,28,28,1);
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100px;
+    margin-bottom: 0px;
+    top: 1500px;
+}
