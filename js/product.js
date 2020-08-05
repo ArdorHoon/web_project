@@ -1,21 +1,36 @@
 
-const change_btn = document.querySelector(".change_product"),
-     delete_btn = document.querySelector(".delete_product"),
-     allProductList = document.querySelector(".all-product-list");
 
 //변경하기 버튼 클릭 시
-function clickChangeBtn(){
+function clickChangeBtn(product_id){
 
-    console.log("chage_btn");
+    console.log(product_id);
 
 }
 
-//삭제 버튼 클릭 시
-function clickDeleteBtn(){
+//modal click 시 상품 이름 상단에 노출
+$("#productModal").on('show.bs.modal', function(event){
 
-    console.log("delete_btn");
-}
+    const button = $(event.relatedTarget); // Button that triggered the modal
+    const recipient = button.data('whatever'); // Extract info from data-* attributes
+    const dataid = button.data('pids'); //삭제하기 위한 ID 
 
+    const modal = $(this);
+    modal.find('.modal-title').text(recipient);
+    modal.find('.modal-footer .deleteBtn').attr("id", dataid);
+
+
+});
+
+//modal에서 삭제 버튼 클릭시 
+$(".deleteBtn").on("click", function(event){
+
+    const button = event.currentTarget;
+    const dataid = button.id; //id 값이 삭제할 product_number , string 타입
+    $("tbody").empty("tr");
+    init(); //다시 그림 
+
+
+});
 
 function getAllProductData(){
 
@@ -50,16 +65,30 @@ function init(){
                 color = "#BE1717";
             }
 
-            $(allProductList).append(
+            $(".all-product-list").append(
                 `<tr>
-                <th scope="row">${item.product_id}</th>
+                <th class="item_id" scope="row">${item.product_id}</th>
                 <td>${item.product_name}</td>
                 <td>${item.product_op}</td>
                 <td>${item.product_sp}</td>
                 <td style ="color : ${color};">${state}</td>
                 <td><div class="row">
-                    <button class="change_product" onclick="clickChangeBtn()"><img src="/imgs/chage_btn.png"></button> 
-                    <button class="delete_product" onclick="clickDeleteBtn()"><img src="/imgs/delete_btn.png"/></button>
+                    <button class="change_product" onclick="clickChangeBtn(${item.product_id})"><img src="/imgs/chage_btn.png"></button> 
+                    <button class="delete_product" data-pids="${item.product_id}" data-toggle="modal" data-target ="#productModal" data-whatever = "${item.product_name}"><img src="/imgs/delete_btn.png"/></button>
+                </div></td>
+              </tr>`
+            );
+
+            $(".normal-product-list").append(
+                `<tr>
+                <th class="item_id" scope="row">${item.product_id}</th>
+                <td>${item.product_name}</td>
+                <td>${item.product_op}</td>
+                <td>${item.product_sp}</td>
+                <td style ="color : ${color};">${state}</td>
+                <td><div class="row">
+                    <button class="change_product" onclick="clickChangeBtn(${item.product_id})"><img src="/imgs/chage_btn.png"></button> 
+                    <button class="delete_product" data-pids="${item.product_id}" data-toggle="modal" data-target ="#productModal" data-whatever = "${item.product_name}"><img src="/imgs/delete_btn.png"/></button>
                 </div></td>
               </tr>`
             );
