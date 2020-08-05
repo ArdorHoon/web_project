@@ -34,13 +34,44 @@ html, body{
 }
 
 
-/*logout*/
+/*button(logout, addproduct)*/
+
+
+
+.change_product{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+    padding-right: 0;
+
+}
+
+.delete_product{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+    padding-left: 1px;
+
+}
 
 .logout{
 
     text-decoration: none;
     border : none;
     background-color: #fff;
+
+}
+
+.addProduct{
+
+
+    float: right;
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+    margin-bottom: 20px;;
 
 }
 
@@ -79,6 +110,12 @@ html, body{
 
     font-size : 20px;
 }
+
+.submenu-minititle{
+
+    font-size : 24px;
+    margin-bottom: 50px;
+}
 .submenu-list{
 
     padding-left: 15px;
@@ -86,6 +123,43 @@ html, body{
 
 .page-content-wrapper{
 
-    margin-left: 250px;
+    margin-left: 300px;
+    margin-top : 126px;
+    width : 100%;
+
+}
+
+/*product table*/
+
+.coloring{
+    width: 5%;
+
+}
+
+.product_name{
+
+    width: 40%;
+}
+
+.list_price{
+
+    width : 15%
+
+}
+
+.price {
+    
+    width : 15%
+}
+
+.status{
+
+    width : 15%
+
+}
+
+.chage_button{
+
+    width: 25%;
 
 }

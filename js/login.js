@@ -22,6 +22,7 @@ function login_admin() {
             
                 } else {
                     //로그인 실패 시
+                    console.log(result);
                     alert("잘못된 정보입니다.");
                     
                     login.querySelector("#admin-id").value ="";
