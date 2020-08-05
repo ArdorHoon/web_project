@@ -14,17 +14,16 @@ function login_admin() {
         xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) {
             const result = JSON.parse(xhr.responseText);
-                if ((xhr.status === 200 || xhr.status === 201) && result.result === "complete") 
+                if ((xhr.status === 200 || xhr.status === 201) && result.result !== "failed") 
                 {
                     //로그인 성공 시
-                    alert("why");
-                    //sessionStorage.setItem("id", result.user_id);
-                    //location.href="admin.html";
+                    sessionStorage.setItem("key", "ADB1245AD493943");
+                    location.href="admin.html";
             
                 } else {
                     //로그인 실패 시
                     alert("잘못된 정보입니다.");
-                  
+                    
                     login.querySelector("#admin-id").value ="";
                     login.querySelector("#admin-password").value="";
                     login.querySelector("#admin-id").focus();
