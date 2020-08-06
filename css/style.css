@@ -44,6 +44,7 @@ html, body{
     border : none;
     background-color: #fff;
     padding-right: 0;
+   
 
 }
 
@@ -53,6 +54,7 @@ html, body{
     border : none;
     background-color: #fff;
     padding-left: 1px;
+   
 
 }
 
@@ -138,28 +140,28 @@ html, body{
 
 .product_name{
 
-    width: 40%;
+    width: 45%;
 }
 
 .list_price{
 
-    width : 15%
+    width : 10%
 
 }
 
 .price {
     
-    width : 15%
+    width : 10%
 }
 
 .status{
 
-    width : 15%
+    width : 10%
 
 }
 
 .chage_button{
 
-    width: 25%;
+    width: 35%;
 
 }

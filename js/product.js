@@ -26,8 +26,19 @@ $(".deleteBtn").on("click", function(event){
 
     const button = event.currentTarget;
     const dataid = button.id; //id 값이 삭제할 product_number , string 타입
-    $("tbody").empty("tr");
-    init(); //다시 그림 
+    console.log(dataid);
+    $.post("http://13.209.181.48:3000/product/delete", { _id : dataid }, function(data){
+        console.log(data);
+
+        if(data.result === "complete"){
+
+                $("tbody").empty("tr");
+                init(); //다시 그림 
+
+        }
+    });
+
+
 
 
 });
@@ -73,26 +84,11 @@ function init(){
                 <td>${item.product_sp}</td>
                 <td style ="color : ${color};">${state}</td>
                 <td><div class="row">
-                    <button class="change_product" onclick="clickChangeBtn(${item.product_id})"><img src="/imgs/chage_btn.png"></button> 
+                    <button class="change_product" onclick="clickChangeBtn(${item.product_id})"><img src="/imgs/chage_btn.png"/></button> 
                     <button class="delete_product" data-pids="${item.product_id}" data-toggle="modal" data-target ="#productModal" data-whatever = "${item.product_name}"><img src="/imgs/delete_btn.png"/></button>
                 </div></td>
               </tr>`
             );
-
-            $(".normal-product-list").append(
-                `<tr>
-                <th class="item_id" scope="row">${item.product_id}</th>
-                <td>${item.product_name}</td>
-                <td>${item.product_op}</td>
-                <td>${item.product_sp}</td>
-                <td style ="color : ${color};">${state}</td>
-                <td><div class="row">
-                    <button class="change_product" onclick="clickChangeBtn(${item.product_id})"><img src="/imgs/chage_btn.png"></button> 
-                    <button class="delete_product" data-pids="${item.product_id}" data-toggle="modal" data-target ="#productModal" data-whatever = "${item.product_name}"><img src="/imgs/delete_btn.png"/></button>
-                </div></td>
-              </tr>`
-            );
-     
             
         });
    });

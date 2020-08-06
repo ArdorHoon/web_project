@@ -21,7 +21,6 @@ logout.addEventListener("click" , e=>{
 function init(){
 
     checkSession();
-    
 
 }
 

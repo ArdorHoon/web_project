@@ -8,23 +8,11 @@ allproducts.addEventListener("click", e=>{
     e.preventDefault();
 
     $(pageContents).empty(); //자식 요소 삭제 
-    $(pageContents).load("/contents/allProduct.html");  
+    $(pageContents).load("/contents/product.html");  
 
     setTimeout(function(){
         $.getScript("/js/product.js");
     }, 300);
-
-});
-
-//상품 --> 일반 
-normalproducts.addEventListener("click", e=>{
-    
-    e.preventDefault();
-
-    $(pageContents).empty(); //자식 요소 삭제 
-    $(pageContents).load("/contents/normalProduct.html");
-
-  
 
 });
 
