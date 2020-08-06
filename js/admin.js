@@ -1,3 +1,5 @@
+
+
 const logout = document.querySelector(".logout");
 
 //session check
@@ -11,16 +13,19 @@ function checkSession(){
 }
 
 //logout
-logout.addEventListener("click" , e=>{
+
+$(".logout").click(function(){
 
     sessionStorage.clear();
     location.href = "index.html";
 
 });
 
+
 function init(){
 
     checkSession();
+
 
 }
 
