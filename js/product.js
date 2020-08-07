@@ -7,6 +7,26 @@ function clickChangeBtn(product_id){
 
 }
 
+
+function classifyType(){
+
+    const type = $(".classify-type option:selected").val();
+   
+    if(type ==="normal"){
+            $(".normal").show();
+            $(".package").hide();
+        
+    } else if(type ==="package"){
+        $(".normal").hide();
+        $(".package").show();
+
+   
+    } else{
+        $(".normal").show();
+        $(".package").show();
+    }
+}
+
 //modal click 시 상품 이름 상단에 노출
 $("#productModal").on('show.bs.modal', function(event){
 
@@ -77,7 +97,7 @@ function init(){
             }
 
             $(".all-product-list").append(
-                `<tr>
+                `<tr class="${item.product_type}">
                 <th class="item_id" scope="row">${item.product_id}</th>
                 <td>${item.product_name}</td>
                 <td>${item.product_op}</td>
