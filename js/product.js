@@ -4,6 +4,7 @@
 //변경하기 버튼 클릭 시
 function clickChangeBtn(product_id){
 
+    
     sessionStorage.setItem('product_id', product_id);
     location.href = "/changeProduct.html";
 }
@@ -48,10 +49,8 @@ $(".deleteBtn").on("click", function(event){
 
     const button = event.currentTarget;
     const dataid = button.id; //id 값이 삭제할 product_number , string 타입
-    console.log(dataid);
     $.post("http://13.209.181.48:3000/product/delete", { _id : dataid }, function(data){
-        console.log(data);
-
+      
         if(data.result === "complete"){
 
                 $("tbody").empty("tr");
@@ -78,9 +77,10 @@ function getAllProductData(){
 
 function init(){
 
+
    getAllProductData().then(function(dataset){
 
-        console.log(dataset);
+        
         $.each(dataset, function(index, item){
 
             let state;
@@ -101,7 +101,7 @@ function init(){
             $(".all-product-list").append(
                 `<tr class="${item.product_type}">
                 <th class="item_id" scope="row">${item.product_id}</th>
-                <td>${item.product_name}</td>
+                <td><img src=${item.product_thumbnail === "exam" ? "/imgs/exam.png"  : item.product_thumbnail} class="rounded" style="width : 56px; height : 56px; margin-right : 8px;"/> ${item.product_name}</td>
                 <td>${item.product_op}</td>
                 <td>${item.product_sp}</td>
                 <td style ="color : ${color};">${state}</td>

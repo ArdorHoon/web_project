@@ -18,6 +18,7 @@ AWS.config.update({
 //<!-- 파일 추가 -->
 function addFile(albumName) {
         var files = document.getElementById('host_file').files;
+
         if (!files.length) {
             return alert('업로드할 파일을 선택해주세요.');
         }
@@ -40,7 +41,7 @@ function addFile(albumName) {
     }
 
 
-
+//이미지 업로드
 function readInputFile(e){
     let sel_files = [];
     
@@ -82,9 +83,7 @@ $(".backProduct").click(function(){
     
     history.go(-1);
 
-
    
-
 });
 
 $(".regProduct").click(function(){
@@ -119,7 +118,7 @@ $(".regProduct").click(function(){
             }
         }
 
-        addFile(albumBucketName);
+        //addFile(albumBucketName);
 
         
         
