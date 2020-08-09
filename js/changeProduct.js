@@ -108,7 +108,7 @@ function init(){
 
     getAllCategoryData().then(function(dataset){
 
-        console.log(dataset);
+       
         $.each(dataset, function(index, item){
 
             $(".category").append(
@@ -122,7 +122,7 @@ function init(){
 
    getAllColorData().then(function(dataset){
 
-    console.log(dataset);
+
     $.each(dataset, function(index, item){
 
         $(".colors").append(
@@ -143,7 +143,6 @@ function init(){
 
 
     sessionStorage.removeItem("product_id");
-    console.log(fromData);
  
 }
 
