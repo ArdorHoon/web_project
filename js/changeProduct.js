@@ -1,5 +1,6 @@
 const fromData = sessionStorage.getItem('product_id');
-   
+
+
 $(".changeProduct").click(function(){
 
     const productKind = document.querySelector(".product-kind"); //product_kind.options[target.selectedIndex].value
@@ -36,7 +37,7 @@ $(".changeProduct").click(function(){
 
         
         
-        $.post("http://13.209.181.48:3000/product/modify", { _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
+        $.post("http://13.209.181.48:3000/product/modify", {_id : fromData,  _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
         _bp : wholesalesPrice,  _thumb : "exam" , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
             console.log(data);
     
@@ -89,6 +90,7 @@ function getAllCategoryData(){
 
 function inputProductData(data){
     
+
     $(".product-kind").val(data[0].product_type).prop("selected", true);
     $(".product-name").val(data[0].product_name); //이름
     $(".product-brand").val(data[0].product_brand); //브랜드
