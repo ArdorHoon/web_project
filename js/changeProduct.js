@@ -1,5 +1,56 @@
 const fromData = sessionStorage.getItem('product_id');
    
+$(".changeProduct").click(function(){
+
+    const productKind = document.querySelector(".product-kind"); //product_kind.options[target.selectedIndex].value
+        const productKindContent = productKind.options[productKind.selectedIndex].value;
+        const productBrand = document.querySelector(".product-brand").value;
+        const productName = document.querySelector(".product-name").value;  //product_name.value
+        const originPrice = document.querySelector(".origin-price").value;
+        const salesPrice = document.querySelector(".sales-price").value;
+        const wholesalesPrice = document.querySelector(".wholesales-price").value;
+        const productState = document.querySelector('input[name="product-state"]:checked').value;
+        const productDescription = document.querySelector(".product-description").value;
+
+
+        const productCateNum = document.getElementsByName("category").length;
+        const productColorNum = document.getElementsByName("color").length;
+        let productCate = "";
+        let productColor = "";
+
+        for (var i=0; i<productCateNum; i++) {
+            if (document.getElementsByName("category")[i].checked == true) {
+
+                productCate = productCate+document.getElementsByName("category")[i].value+",";
+            }
+        }
+
+        for (var i=0; i<productColorNum; i++) {
+            if (document.getElementsByName("color")[i].checked == true) {
+
+                productColor = productColor+document.getElementsByName("color")[i].value+",";
+            }
+        }
+
+        //addFile(albumBucketName);
+
+        
+        
+        $.post("http://13.209.181.48:3000/product/modify", { _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
+        _bp : wholesalesPrice,  _thumb : "exam" , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
+            console.log(data);
+    
+            if(data.result === "complete"){
+                
+               location.href ="product.html";
+                
+            }
+        });
+        
+
+
+
+});
 
 $(".backProduct").click(function(){
 
@@ -8,6 +59,7 @@ $(".backProduct").click(function(){
     
    
 });
+
 
 function getAllColorData(){
 

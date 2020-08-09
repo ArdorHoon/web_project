@@ -36,6 +36,14 @@ html, body{
 
 /*button(logout, addproduct)*/
 
+
+.changeProduct{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+
+}
 .backProduct{
 
     margin-right: 20px ;
