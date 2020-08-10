@@ -1,5 +1,5 @@
 const login = document.querySelector(".form-signin");
-  
+
 
 
 function login_admin() {
@@ -35,8 +35,8 @@ function login_admin() {
         xhr.open("POST", "http://13.209.181.48:3000/user/login");
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send("_id="+id+"&_pass="+password);
+    
     });
-
 
 }
 

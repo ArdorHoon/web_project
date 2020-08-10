@@ -2,6 +2,10 @@ const albumBucketName = 'andbox-thumbnail';
 const bucketRegion = 'ap-northeast-2'; //true
 const IdentityPoolId = 'ap-northeast-2:c1e6a0d3-64ba-4aa9-aff1-6d74d0444fdb';
 
+
+let sel_files = []; //이미지 정보 담을 배열
+let index = 0; //이미지 최대 갯수
+
 //<!-- AWS 연결 -->
 AWS.config.update({
         region: bucketRegion,
@@ -16,17 +20,22 @@ AWS.config.update({
     });
 
 //<!-- 파일 추가 -->
-function addFile(albumName) {
-        var files = document.getElementById('host_file').files;
+function addFile(albumName, files) {
+
+        console.log(files);
 
         if (!files.length) {
+
             return alert('업로드할 파일을 선택해주세요.');
         }
-        var file = files[0];
-        var fileName = file.name;
-        document.getElementById('file_name').value = fileName;
+
+        const file = files[0];
+        const fileName = file.name;
+
+        console.log(file.name);
+        
         // fileName = document.getElementById('host_id').value;
-        var photoKey = fileName;
+        const photoKey = fileName;
         s3.upload({
             Key: photoKey,
             Body: file,
@@ -36,45 +45,50 @@ function addFile(albumName) {
                 return alert('파일 업로드 실패: ', err, data);
                 console.log(err, data);
             }
-            alert('파일 업로드 성공');
+           
         });
+        
     }
 
 
 //이미지 업로드
-function readInputFile(e){
-    let sel_files = [];
+function readInputFile(event){
     
-    var files = e.target.files;
+   
+    var files = event.target.files;
     var fileArr = Array.prototype.slice.call(files);
-    var index = 0;
-    
+
+    if(index < 5){
     fileArr.forEach(function(f){
 
+        console.log(f);
     	if(!f.type.match("image/.*")){
         	alert("이미지 확장자만 업로드 가능합니다.");
             return;
         }
 
-        console.log(f);
-        if(files.length < 5){
-            const imgFile = f;
-        	sel_files.push(imgFile);
+        sel_files.push(f.name);
+
+        console.log(index);
             var reader = new FileReader();
             reader.onload = function(e){
+                index++;
                 let html = `<img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" id=img_id_${index} data-file=${f.name} /></a>`;
                 $('#image_container').append(html);
-                index++;
+                addFile(albumBucketName, files);
+                
             };
             reader.readAsDataURL(f);
-        }
+        
+        
     });
-    if(files.length > 5){
-    	alert("최대 5장까지 업로드 할 수 있습니다.");
+    } else {
+
+        alert("이미지는 5장까지 업로드 가능합니다.");
     }
 
-    console.log(fileArr);
     console.log(sel_files);
+
 }
 
 
@@ -118,12 +132,9 @@ $(".regProduct").click(function(){
             }
         }
 
-        //addFile(albumBucketName);
-
-        
-        
+                
         $.post("http://13.209.181.48:3000/product/apply", { _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
-        _bp : wholesalesPrice,  _thumb : "exam" , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
+        _bp : wholesalesPrice,  _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] ,  _thumb5 : sel_files[4]  , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
             console.log(data);
     
             if(data.result === "complete"){
@@ -134,8 +145,6 @@ $(".regProduct").click(function(){
         });
         
         
-
-    
 
 });
 
@@ -187,7 +196,7 @@ function init(){
 
         $(".colors").append(
 
-            `<label><input type="checkbox" name="color" value="${item._color}"> ${item._color}</label><br>`
+            `<label ><input type="checkbox" name="color" value="${item._color}"> ${item._color}</label><br>`
         );
        
         

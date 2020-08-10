@@ -1,6 +1,4 @@
 
-
-
 //변경하기 버튼 클릭 시
 function clickChangeBtn(product_id){
 
@@ -30,7 +28,7 @@ function classifyType(){
     }
 }
 
-//modal click 시 상품 이름 상단에 노출
+//modal click 시 상품 이름 상단에 노출 
 $("#productModal").on('show.bs.modal', function(event){
 
     const button = $(event.relatedTarget); // Button that triggered the modal
@@ -64,6 +62,7 @@ $(".deleteBtn").on("click", function(event){
 
 });
 
+//Primoise object 
 function getAllProductData(){
 
     return new Promise(function(resolve, reject){

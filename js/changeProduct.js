@@ -75,6 +75,8 @@ function getAllColorData(){
 }
 
 
+
+
 function getAllCategoryData(){
 
     return new Promise(function(resolve, reject){
@@ -99,6 +101,8 @@ function inputProductData(data){
     $(".wholesales-price").val(data[0].product_bp);
     $(".product-description").val(data[0].product_summary);
     $(`input:radio[name=product-state]:input[value=${data[0].product_state}]`).prop("checked", true);
+   
+
 
 }
 
@@ -118,6 +122,18 @@ function init(){
            
             
         });
+   }).then(function(){
+
+    $.post('http://13.209.181.48:3000/product/category' , { _id : fromData} , function(data) {
+
+        $.each(data, function(index, item){
+
+            $(`input:checkbox[name=category]:input[value='${item._category}']`).prop("checked", true);
+            
+        });
+    
+    });
+
    });
 
    getAllColorData().then(function(dataset){
@@ -132,13 +148,29 @@ function init(){
        
         
     });
+}).then(function(){
+
+ 
+    $.post('http://13.209.181.48:3000/product/color' , { _id : fromData} , function(data) {
+
+        $.each(data, function(index, item){
+
+            $(`input:checkbox[name=color]:input[value='${item._color}']`).prop("checked", true);
+            
+        });
+    
+    });
+
 });
+
+
 
     $.post('http://13.209.181.48:3000/product/info' , { _id : fromData} , function(data) {
         console.log(data);
         inputProductData(data);
     
     });
+
 
 
 
