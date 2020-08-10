@@ -6,6 +6,7 @@ const IdentityPoolId = 'ap-northeast-2:c1e6a0d3-64ba-4aa9-aff1-6d74d0444fdb';
 let sel_files = []; //이미지 정보 담을 배열
 let index = 0; //이미지 최대 갯수
 
+
 //<!-- AWS 연결 -->
 AWS.config.update({
         region: bucketRegion,
@@ -73,7 +74,7 @@ function readInputFile(event){
             var reader = new FileReader();
             reader.onload = function(e){
                 index++;
-                let html = `<img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" id=img_id_${index} data-file=${f.name} /></a>`;
+                let html = `<img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" data-file=${f.name} /></a>`;
                 $('#image_container').append(html);
                 addFile(albumBucketName, files);
                 
