@@ -63,6 +63,7 @@ html, body{
     border : none;
     background-color: #fff;
 }
+.change_color,
 .change_category,
 .change_product{
 
@@ -73,7 +74,7 @@ html, body{
    
 
 }
-
+.delete_color,
 .delete_category,
 .delete_product{
 
@@ -106,7 +107,7 @@ html, body{
     border : none;
     background-color: #fff;
 }
-
+.addColor,
 .addCategory,
 .addProduct{
 
@@ -233,13 +234,14 @@ html, body{
 }
 
 
-/*category section*/
+/*category & color section*/
 
 .numbering{
    
     width: 7%;
 }
 
+.color_name,
 .category_name{
 
     width: 30%;
