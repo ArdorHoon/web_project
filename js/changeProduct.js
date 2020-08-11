@@ -140,7 +140,7 @@ $(".changeProduct").click(function(){
     
             if(data.result === "complete"){
                 
-               location.href ="product.html";
+               location.href ="/product.html";
                 
             }
         });
@@ -300,7 +300,7 @@ function init(){
 
 
 
-    sessionStorage.removeItem("product_id");
+    //sessionStorage.removeItem("product_id");
  
 }
 

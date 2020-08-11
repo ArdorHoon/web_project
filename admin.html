@@ -24,7 +24,7 @@
         </button>
         <ui class="navbar-nav px-3">
           <li class="nav-item text-nowrap">
-            <button class="logout"><img src="imgs/logout.png"></button>
+            <button class="logout"><img src="/imgs/logout.png"></button>
           </li>
         </ul>
       </nav>
@@ -71,10 +71,7 @@
                     <a href="#CustomerSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle submenu-title">고객</a>
                     <ul class="collapse list-unstyled" id="CustomerSubmenu">
                         <li class="submenu-list">
-                            <a href="#">전체</a>
-                        </li>
-                        <li class="submenu-list">
-                            <a href="#">패키징</a>
+                            <a href="/customer.html">전체</a>
                         </li>
                     </ul>
                 </li>
@@ -85,33 +82,63 @@
         <div class="page-content-wrapper">
             <div class="container-fluid" id="page-contents">
               <div class="row">
-
+                <div class="col">
                 <div class = "order-card shadow card-boarding">
+                    <div class="row">
+                    <img src="/imgs/order_icon.png"/>
+                    <p style="font-size: 24px; padding: 20px 0; margin : 0">주문</p> 
+                </div>
+                    <hr>
+                    
+                    <div style="color : #616161 ;" > <p>주문 현황</p></div> 
+                    <div> <p><img src="/imgs/wait.png" style="width : 24px;"> 결제 대기</p></div>
+                    <div> <p><img src="/imgs/pay.png" style="width : 24px;"> 결제 완료</p></div>
+                    <div> <p><img src="/imgs/gift.png" style="width : 24px;"> 상품 제작 중</p></div>
+                    <div> <p><img src="/imgs/tracking.png" style="width : 24px;"> 배송 중</p></div>
 
-                    <p>주문</p> <hr>
+                    <hr>
+
+                     <div style="color : #616161 ;"> <p>취소/반품요청</p></div>
+                     <div> <p><img src="/imgs/end.png" style="width : 24px;"> 취소 요청</p></div>
+                     <div> <p><img src="/imgs/return.png" style="width : 24px;"> 반품 요청</p></div>
+                    <hr>
+                     <div style="color : #BE1717"> <p><img src="/imgs/fail.png" style="width : 24px;"> 결제 실패</p> </div>
+
+
                 </div>
 
-
-
-                <div class = "rounded shadow order-card card-boarding">
-
-                    <p>상품</p> <hr>
+            </div>
+            <div class="col">
+                <div class = "product-card shadow card-boarding">
+                    <div class="row">
+                    <img src="/imgs/product_icon.png"/>
+                    <p style="font-size: 24px; padding: 20px 0; margin : 0">상품</p> 
+                </div>
+                    <hr>
+                    
+                    <div style="color : #616161 ;" > <p>상태</p></div> 
+                    <div> <p><img src="/imgs/gift.png" style="width : 24px;"> 판매 중</p></div>
+                    <div> <p><img src="/imgs/end.png" style="width : 24px;">  판매 중지</p></div>
+                    <div> <p><img src="/imgs/end.png" style="width : 24px;">  품절</p></div>
+    
 
                 </div>
-
-
-
-
-                <div class = "rounded  shadow order-card card-boarding">
-
-                    <p>고객</p> <hr>
+            </div>
+                <div class="col">
+                <div class = "customer-card shadow card-boarding">
+                    <div class="row">
+                    <img src="/imgs/customer_icon.png"/>
+                    <p style="font-size: 24px; padding: 20px 0; margin : 0">고객</p> 
                 </div>
+                    <hr>
+                    
+                    <div style="color : #616161 ;" > <p>고객 현황</p></div> 
+                    <div> <p><img src="/imgs/customer.png" style="width : 24px;"> 전체</p></div>
+          
 
 
-             
-        
-              
-
+                </div>
+            </div>
 
             </div>
         </div>

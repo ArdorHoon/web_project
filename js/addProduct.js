@@ -141,7 +141,7 @@ $(".regProduct").click(function(){
     
             if(data.result === "complete"){
                 
-               location.href ="product.html";
+               location.href ="/product.html";
                 
             }
         });

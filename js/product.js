@@ -120,4 +120,7 @@ function init(){
 
 }
 
-init();
+$(document).ready(function() {
+    // 모두 로딩되었을때
+    init();
+}); 
