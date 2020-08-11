@@ -200,14 +200,19 @@ html, body{
 
 /*product table*/
 
+.count_product{
+
+ width : 7%;
+
+}
 .coloring{
-    width: 7%;
+    width: 5%;
 
 }
 
 .product_name{
 
-    width: 45%;
+    width: 40%;
 }
 
 .list_price{

@@ -81,6 +81,7 @@ function init(){
         
         $.each(dataset, function(index, item){
 
+        
             let state;
             let color = "#883EFF";
 
@@ -102,6 +103,7 @@ function init(){
                 <td><img src=${item.product_thumbnail === "exam" ? "/imgs/exam.png"  : item.product_thumbnail} class="rounded" style="width : 56px; height : 56px; margin-right : 8px;"/> ${item.product_name}</td>
                 <td>${item.product_op}</td>
                 <td>${item.product_sp}</td>
+                <td>${item.product_count}</td>  
                 <td style ="color : ${color};">${state}</td>
                 <td><div class="row">
                     <button class="change_product" onclick="clickChangeBtn(${item.product_id})"><img src="/imgs/chage_btn.png"/></button> 
