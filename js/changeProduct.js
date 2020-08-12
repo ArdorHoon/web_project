@@ -133,9 +133,8 @@ $(".changeProduct").click(function(){
         }
 
      
-        
-        
-        $.post("http://13.209.181.48:3000/product/modify", { _garde : productGrade, _count : productCount ,_id : fromData,  _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
+           
+        $.post("http://13.209.181.48:3000/product/modify", { _grade : productGrade, _count : productCount ,_id : fromData,  _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
         _bp : wholesalesPrice,   _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] ,  _thumb5 : sel_files[4] , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
          
     
@@ -194,10 +193,10 @@ function inputProductData(data){
     $(".product-kind").val(data[0].product_type).prop("selected", true);
     $(".product-name").val(data[0].product_name); //이름
     $(".product-brand").val(data[0].product_brand); //브랜드
-    $(".origin-price").val(data[0].product_op);
-    $(".sales-price").val(data[0].product_sp);
+    $(".origin-price").val(data[0].product_origin_price);
+    $(".sales-price").val(data[0].product_sales_price);
     $(".product-count").val(data[0].product_count);
-    $(".wholesales-price").val(data[0].product_bp);
+    $(".wholesales-price").val(data[0].product_buying_price);
     $(".product-description").val(data[0].product_summary);
     $(`input:radio[name=product-state]:input[value=${data[0].product_state}]`).prop("checked", true);
     $(`input:radio[name=product-grade]:input[value=${data[0].product_grade}]`).prop("checked", true);

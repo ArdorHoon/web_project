@@ -35,19 +35,17 @@ function init(){
 
     getAdminProduct().then(function(data){
 
-     
-
         let sale;
         let soldout;
         let stop;
-
+    
         $.each(data, function(index, item){
 
-                if(item.product_state ==="stop")
+                if(item._states ==="stop")
                     stop = `<div class="d-flex justify-content-between"> <p><img src="/imgs/end.png" style="width : 24px;">  판매 중지</p> <p style="color : #883EFF;">${item.product_cnt} <span style="color :#3B3B3B;">개</span></p></div>`;
-                if(item.product_state === "soldout")
+                if(item._states === "soldout")
                  soldout =  `<div class="d-flex justify-content-between"> <p><img src="/imgs/end.png" style="width : 24px;">  품절</p>  <p style="color : #883EFF;">${item.product_cnt} <span style="color :#3B3B3B;">개</span></p></div>`;
-                if(item.product_state ==="sale")
+                if(item._states ==="sale")
                     sale = `<div class="d-flex justify-content-between"> <p><img src="/imgs/gift.png" style="width : 24px;"> 판매 중</p> <p style="color : #883EFF;">${item.product_cnt} <span style="color :#3B3B3B;">개</span></p></div>`;
         });
 
