@@ -110,6 +110,7 @@ $(".changeProduct").click(function(){
         const wholesalesPrice = document.querySelector(".wholesales-price").value;
         const productState = document.querySelector('input[name="product-state"]:checked').value;
         const productDescription = document.querySelector(".product-description").value;
+        const productGrade = document.querySelector('input[name="product-grade"]:checked').value;
 
 
         const productCateNum = document.getElementsByName("category").length;
@@ -134,7 +135,7 @@ $(".changeProduct").click(function(){
      
         
         
-        $.post("http://13.209.181.48:3000/product/modify", { _count : productCount ,_id : fromData,  _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
+        $.post("http://13.209.181.48:3000/product/modify", { _garde : productGrade, _count : productCount ,_id : fromData,  _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
         _bp : wholesalesPrice,   _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] ,  _thumb5 : sel_files[4] , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
          
     
@@ -199,6 +200,8 @@ function inputProductData(data){
     $(".wholesales-price").val(data[0].product_bp);
     $(".product-description").val(data[0].product_summary);
     $(`input:radio[name=product-state]:input[value=${data[0].product_state}]`).prop("checked", true);
+    $(`input:radio[name=product-grade]:input[value=${data[0].product_grade}]`).prop("checked", true);
+    
     
     if(parseImg(data[0].product_thumbnail) !== "undefined"){
         
