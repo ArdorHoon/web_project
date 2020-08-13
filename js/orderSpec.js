@@ -56,7 +56,7 @@ $(".changeOrderInfo").click(function(){
     $.post("http://13.209.181.48:3000/order/modify/host", { _id : orderId, _state : state, _devco : company, _devno : com_num , _devmemo : del_memo,
     _memo : memo , _name : name , _post : postcode , _addr : addr1 , _sub : addr2 , _phone : phone }, function(data){
          
-        console.log(data);
+    
             if(data.result === "complete"){
                 
                location.href ="/order/allOrder.html";
@@ -106,12 +106,12 @@ $(".orderhistory").click(function(e){
 
     getHistory().then(function(data){
   
-        console.log(data);
+        
         $.each(data, function(index, item){
 
             const date = (item.order_date).split("T");
            
-            console.log(date);
+            
             $(".history-list").append(
 
                 `<tr>
@@ -192,7 +192,7 @@ function init(){
 
     getAllOrderData().then(function(data){
 
-        console.log(data);
+      
 
         for(let i =0 ; i< data.length ; i++){
 
