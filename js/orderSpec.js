@@ -1,4 +1,12 @@
 const orderId = sessionStorage.getItem("order_id"); 
+let box_length; 
+
+const card = {
+
+    0 : "XOXO 카드!"
+
+};
+
 
 const state = {
 
@@ -92,7 +100,7 @@ function getAllOrderData(){
 
 function InputOrderData(data){
 
-    console.log(data);
+    box_length = data.length;
     const date = data[0].order_date.split("T");
     const total = data[0].order_totalprice.split(",");
     const dprice = data[0].billing_dprice.split(",");
@@ -105,7 +113,13 @@ function InputOrderData(data){
     dprice.forEach(e=>{
         dp +=e;
     });
-    let totalprice = String(Number(price) + Number(dp));
+    let delivery = String(Number(dp)*box_length);
+    let totalprice = String(Number(price) - delivery);
+
+    $(".allCost").text(`  ${AddComma(totalprice)}원`);
+    $(".deliveryCost").text(`  ${AddComma(delivery)}원`);
+    $(".totalCost").text(`  ${data[0].order_totalprice}원`);
+
 
     $(".orderUsename").text(data[0].user_name); //주문자 이름
     $(".orderNumber").text(data[0].order_id); //주문 번호
@@ -124,9 +138,9 @@ function InputOrderData(data){
     $("#name").val(data[0].user_name); //주문자 이름 
     $("#phoneNum").val(data[0].user_phone); // 주문자 휴대폰번호
     $("#staticEmail").val(data[0].order_user); //주문자 이메일
-    $("#totalPrice").val(`${data[0].order_totalprice}원`); //상품 합계
-    $("#deliveryCount").val(`${data[0].billing_dprice}원`); //배송비
-    $("#payMoney").val(`${AddComma(totalprice)}원`);
+    $("#totalPrice").val(`${AddComma(totalprice)}원`); //상품 합계
+    $("#deliveryCount").val(`${AddComma(delivery)}원`); //배송비
+    $("#payMoney").val(`${data[0].order_totalprice}원`);
     $("#payMethod").val(`${checkPay[data[0].billing_type]}`); //결제 방법
 
 }
@@ -134,22 +148,62 @@ function InputOrderData(data){
 
 function init(){
     
-    let cart_id;
+    let cart_id = [];
 
     getAllOrderData().then(function(data){
 
-        cart_id = data[0].cart_id;
-  
+        console.log(data);
+
+        for(let i =0 ; i< data.length ; i++){
+
+            cart_id.push(data[i].cart_id);
+
+        }
+
+        //표생성 
+        $.each(data, function(index, item){
+        
+            $(".order-product-list").append(
+
+                `<tr>
+                <td>
+                    <div class="row">
+                        <div class="col-4"><img src="${item.cart_thumbnail}"></div>
+                        <div class="col-8">
+                            <p><strong>${item.cart_name}</strong><br> ${item.cart_subname}</p>
+                            <p><strong>${card[item.cart_cardtype]}</strong><br> 카드 내용/${item.cart_cardmsg === "" ? '없음' : item.cart_cardmsg }</p>
+                            <p><strong >담은 선물</strong>
+                                <span class="${item.cart_id}"> </span>
+                            </p>
+                        </div>
+                    </div>
+                </td>
+                <td>${item.cart_num}</td>
+                <td>${item.cart_totalprice}원</td>
+                <td>${item.billing_dprice}원</td>
+              </tr>`
+
+            );
+        
+        });
+       
         InputOrderData(data);
 
     }).then(function() {
         
+        for(let value of cart_id){
 
-        $.post('http://13.209.181.48:3000/order/info/cart', { _id : cart_id } , function(data){
-          console.log(data);
-        });
+            
+            $.post('http://13.209.181.48:3000/order/info/cart', { _id : value } , function(data){
+                 
+                    $.each(data, function(index, item){
 
+                        $(`.${value}`).append(`<br> [${item.product_brand}] ${item.product_name}`);
+                                    
+                });
+            });
 
+        }
     });
 
     
