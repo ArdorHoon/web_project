@@ -78,6 +78,10 @@
                                         <option value="dev_comp">배송완료</option>
                                       </select>
                                 </div>
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9">
+                                <button class="orderhistory text-right"  data-toggle="modal" data-target ="#historyModal">주문상태내역 ></button>
+                              </div>
                               </div>  <hr>
                               <!--주문 상태-->
                             <div class="form-group row">
@@ -194,14 +198,43 @@
                   </div>
                     
                </div>
-            </div>
+               <!--history modal-->
+
+               <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">주문 상태 내역</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                   
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col"  >일시</th>
+                            <th scope="col" >상태</th>
+                                   
+                          </tr>
+                        </thead>
+
+                        <tbody class="history-list">
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+       
+       
+    </div>
     
-    </div>
-
-     
-
-    </div>
-
+             
+  
+        
 
 </body>
     <!--/#wrapper-->

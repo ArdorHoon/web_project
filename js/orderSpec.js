@@ -86,6 +86,45 @@ function DaumPostcode() {
     }).open();
 }
 
+function getHistory(){
+
+    return new Promise(function(resolve, reject){
+
+        $.post('http://13.209.181.48:3000/order/history', { _id : orderId } , function(response){
+            resolve(response);
+        });
+    });
+}
+
+
+
+$(".orderhistory").click(function(e){
+
+    e.preventDefault();
+
+    $(".history-list").empty("tr");
+
+    getHistory().then(function(data){
+  
+        console.log(data);
+        $.each(data, function(index, item){
+
+            const date = (item.order_date).split("T");
+           
+            console.log(date);
+            $(".history-list").append(
+
+                `<tr>
+                <td>${date[0]} ${date[1].substring(0,8)}</td>
+                <td>${state[item.order_history]}</td>
+                </tr>
+                `
+            );
+
+        });
+    });
+
+});
 //Primoise object 
 function getAllOrderData(){
 
@@ -93,6 +132,7 @@ function getAllOrderData(){
 
         $.post('http://13.209.181.48:3000/order/info', { _id : orderId } , function(response){
             resolve(response);
+            
         });
     });
 
