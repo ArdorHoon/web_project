@@ -17,8 +17,8 @@
 <body>
     
     <div class="container" style= " margin-top :100px; ">
-        <p style="margin-bottom: 10px; font-size : 35px;"><strong><span class="orderUsename" style="color : #883EFF" >People</span></strong> 님의 <br>주문 상세 정보</p> 
-        <p>주문번호 : <span class="orderNumber">24343325235235</span></p>
+        <p style="margin-bottom: 10px; font-size : 35px;"><strong><span class="orderUsename" style="color : #883EFF" ></span></strong> 님의 <br>주문 상세 정보</p> 
+        <p>주문번호 : <span class="orderNumber"></span></p>
 
         <table class="table">
             <thead>
@@ -68,12 +68,12 @@
                     <p style="font-weight: bold;">주문 정보</p>
                       <form>
                           <div class="form-group row">
-                            <label for="postcode" class="col-sm-2 col-form-label">우편 번호</label>
+                            <label for="postcode" class="col-sm-2 col-form-label">주문 번호</label>
                             <div class="col-sm-10">
-                              <input type="text" readonly class="form-control-plaintext" id="postcode" >
+                              <input type="text" readonly class="form-control-plaintext" id="ordercode" >
                             </div>
                           </div>  <hr>
-                            <!--우편 번호 -->
+                            <!--주문 번호 -->
                           <div class="form-group row">
                               <label for="orderDay" class="col-sm-2 col-form-label">주문 일자</label>
                               <div class="col-sm-10">
@@ -85,16 +85,16 @@
                                 <label for="orderState" class="col-sm-3 col-form-label">주문 상태</label>
                                 <div class="col-sm-9">
                                     <select class="form-control" id="orderState">
-                                        <option value="1">입급 대기</option>
-                                        <option value="2">결제 완료</option>
-                                        <option value="3">결제 실패</option>
-                                        <option value="4">상품 제작 중</option>
-                                        <option value="5">취소 요청</option>
-                                        <option value="6">취소 완료</option>
-                                        <option value="7">반품 요청</option>
-                                        <option value="8">반품 완료</option>
-                                        <option value="9">배송중</option>
-                                        <option value="10">배송완료</option>
+                                        <option value="pay">결제 대기</option>
+                                        <option value="paid">결제 완료</option>
+                                        <option value="failed">결제 실패</option>
+                                        <option value="making">상품 제작 중</option>
+                                        <option value="req_can">취소 요청</option>
+                                        <option value="can_comp">취소 완료</option>
+                                        <option value="req_ref">반품 요청</option>
+                                        <option value="ref_comp">반품 완료</option>
+                                        <option value="delivery">배송중</option>
+                                        <option value="dev_comp">배송완료</option>
                                       </select>
                                 </div>
                               </div>  <hr>
@@ -115,7 +115,7 @@
                                 </div>
                               </div>
                             <!--메모-->
-                            <p style="font-weight: bold;">주문자 정보</p>
+                            <p style="font-weight: bold;">수령인 정보</p>
                             <div class="form-group row">
                                 <label for="username" class="col-sm-3 col-form-label">이름</label>
                                 <div class="col-sm-9">
@@ -147,12 +147,6 @@
                                 </div>
                               </div>
                               <!--phone-->
-                              <div class="form-group row">
-                                <label for="userEmail" class="col-sm-3 col-form-label">이메일</label>
-                                <div class="col-sm-9">
-                                  <input type="text" class="form-control" id="userEmail"> 
-                                </div>
-                              </div>
                               <div class ="col text-center" style="margin-bottom: 280px; margin-top: 50px;">
                                 <button type="button" class="changeOrderInfo"><img src="/imgs/usersave.png"> </button>
                             </div>
@@ -166,8 +160,8 @@
                     <p style="font-weight: bold;">주문자</p>
                       <form>
                           <div class="form-group row">
-                            <label for="name" class="col-sm-2 col-form-label">이름</label>
-                            <div class="col-sm-10">
+                            <label for="name" class="col-sm-3 col-form-label">이름</label>
+                            <div class="col-sm-9">
                               <input type="text" readonly class="form-control-plaintext" id="name" >
                             </div>
                           </div> <hr>
@@ -178,8 +172,8 @@
                             </div>
                              </div> <hr>
                           <div class="form-group row">
-                              <label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
-                              <div class="col-sm-10">
+                              <label for="staticEmail" class="col-sm-3 col-form-label">이메일</label>
+                              <div class="col-sm-9">
                                 <input type="text" readonly class="form-control-plaintext" id="staticEmail">
                               </div>
                          </div>
@@ -188,60 +182,33 @@
                         <p style="font-weight: bold;">결제 정보</p>
 
                         <div class="form-group row">
-                            <label for="totalPrice" class="col-sm-2 col-form-label">상품 합계</label>
-                            <div class="col-sm-10">
+                            <label for="totalPrice" class="col-sm-4 col-form-label">상품 합계</label>
+                            <div class="col-sm-8">
                               <input type="text" readonly class="form-control-plaintext" id="totalPrice" >
                             </div>
                           </div> <hr>
                           <div class="form-group row">
-                            <label for="deliveryCount" class="col-sm-3 col-form-label">배송비</label>
-                            <div class="col-sm-9">
+                            <label for="deliveryCount" class="col-sm-4 col-form-label">배송비</label>
+                            <div class="col-sm-8">
                               <input type="text" readonly class="form-control-plaintext" id="deliveryCount">
                             </div>
                              </div> <hr>
                           <div class="form-group row">
-                              <label for="payMoney" class="col-sm-2 col-form-label">결제 금액</label>
-                              <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="payMoney"">
+                              <label for="payMoney" class="col-sm-4 col-form-label">결제 금액</label>
+                              <div class="col-sm-8">
+                                <input type="text" readonly class="form-control-plaintext" id="payMoney">
                               </div>
                          </div><hr>
                          <div class="form-group row">
-                            <label for="payMethod" class="col-sm-2 col-form-label">결제 방법</label>
-                            <div class="col-sm-10">
+                            <label for="payMethod" class="col-sm-4 col-form-label">결제 방법</label>
+                            <div class="col-sm-8">
                               <input type="text" readonly class="form-control-plaintext" id="payMethod" >
                             </div>
                           </div> <hr>
-                          <div class="form-group row">
-                            <label for="account" class="col-sm-3 col-form-label">입금 계좌</label>
-                            <div class="col-sm-9">
-                              <input type="text" readonly class="form-control-plaintext" id="account">
-                            </div>
-                             </div> <hr>
-                          <div class="form-group row">
-                              <label for="deadline" class="col-sm-2 col-form-label">입금 기한</label>
-                              <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="deadline">
-                              </div>
-                         </div><hr>
-                         <div class="form-group row">
-                            <label for="inputuser" class="col-sm-3 col-form-label">입금자</label>
-                            <div class="col-sm-9">
-                              <input type="text" readonly class="form-control-plaintext" id="inputuser">
-                            </div>
-                             </div> <hr>
-                          <div class="form-group row">
-                              <label for="refundAcc" class="col-sm-2 col-form-label">환불계좌</label>
-                              <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="refundAcc">
-                              </div>
-                         </div>
-                       
-  
-                         <div class="d-flex justify-content-between"> <p>현금 영수증</p> <p><span class="recipe">건</span></p></div>
-                         <div class="d-flex justify-content-between"> <p>종류</p> <p><span class="recipe-kind" >건</span></p></div>
-                         <div class="d-flex justify-content-between"> <p>번호</p> <p><span class="recipe-num">건</span></p></div>
+                 
                   
-      
+
+  
                         </form>     
                   </div>
                     
@@ -263,7 +230,5 @@
     <script src="/js/admin.js"></script>
     <script src="/js/orderSpec.js"></script>
    
-   
-   
-  
+
 </html>
