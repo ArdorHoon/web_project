@@ -62,9 +62,9 @@ function previewFile(event){
     var fileArr = Array.prototype.slice.call(files);
 
     if(index < 5){
-    fileArr.forEach(function(f){
+      fileArr.forEach(function(f){
 
-        console.log(f);
+
     	if(!f.type.match("image/.*")){
         	alert("이미지 확장자만 업로드 가능합니다.");
             return;
@@ -75,11 +75,11 @@ function previewFile(event){
             sel_files.push(f.name);
         }
 
-        console.log(index);
+  
             var reader = new FileReader();
             reader.onload = function(e){
                 index++;
-                let html = `<img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" id=img_id_${index} data-file=${f.name} /></a>`;
+                let html = `<div style="display: flex; flex-direction: column; width:56px;"><img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" id=img_id_${index} data-file=${f.name}/><button id=${f.name} class="deleteimgbtn" type="button"  onclick="deleteimg(this);" ><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`;
                 $('#image_container').append(html);
                 addFile(albumBucketName, files);
                 
@@ -95,6 +95,17 @@ function previewFile(event){
 
     console.log(sel_files);
 
+}
+
+function deleteimg(event){
+
+    const idx = sel_files.indexOf(event.id); //sel_file에서 삭제 
+
+    if(idx > -1)
+        sel_files.splice(idx,1);
+
+    const ths = $(event).parents("div"); //이미지 미리보기 삭제
+    $(ths[0]).remove();
 }
 
 
@@ -204,33 +215,33 @@ function inputProductData(data){
     
     if(parseImg(data[0].product_thumbnail) !== "undefined"){
         
-        $('#image_container').append(`<img src=${data[0].product_thumbnail} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail)} /></a>`);
+        $('#image_container').append(`<div style="display: flex; flex-direction: column; width:56px;"><img src=${data[0].product_thumbnail} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail)} /><button id=${parseImg(data[0].product_thumbnail)} class="deleteimgbtn" type="button" onclick="deleteimg(this);" ><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`);
         sel_files.push(parseImg(data[0].product_thumbnail));
     
     }
     if(parseImg(data[0].product_thumbnail_2) !== "undefined"){
         
-        $('#image_container').append(`<img src=${data[0].product_thumbnail_2} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail_2)} /></a>`);
+        $('#image_container').append(`<div style="display: flex; flex-direction: column; width:56px; margin:0;"><img src=${data[0].product_thumbnail_2} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail_2)} /><button id=${parseImg(data[0].product_thumbnail_2)} class="deleteimgbtn" type="button" onclick="deleteimg(this);" ><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`);
         sel_files.push(parseImg(data[0].product_thumbnail_2));
     }
     if(parseImg(data[0].product_thumbnail_3) !== "undefined"){
         
-        $('#image_container').append(`<img src=${data[0].product_thumbnail_3} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail_3)} /></a>`);
+        $('#image_container').append(`<div style="display: flex; flex-direction: column; width:56px;"><img src=${data[0].product_thumbnail_3} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail_3)} /><button id=${parseImg(data[0].product_thumbnail_3)}  class="deleteimgbtn" type="button" onclick="deleteimg(this);" ><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`);
         sel_files.push(parseImg(data[0].product_thumbnail_3));
     }  
     if(parseImg(data[0].product_thumbnail_4) !== "undefined"){
         
-        $('#image_container').append(`<img src=${data[0].product_thumbnail_4} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail_4)} /></a>`);
+        $('#image_container').append(`<div style="display: flex; flex-direction: column; width:56px; margin:0;"><img src=${data[0].product_thumbnail_4} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail_4)}/> <button id=${parseImg(data[0].product_thumbnail_4)} class="deleteimgbtn" type="button" onclick="deleteimg(this);" ><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`);
         sel_files.push(parseImg(data[0].product_thumbnail_4));
     }  
     if(parseImg(data[0].product_thumbnail_5) !== "undefined"){
         
-        $('#image_container').append(`<img src=${data[0].product_thumbnail_5} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail_5)} /></a>`);
+        $('#image_container').append(`<div style="display: flex; flex-direction: column; width:56px; margin:0;"><img src=${data[0].product_thumbnail_5} class="rounded" style ="width : 56px; height: 56px;" data-file=${parseImg(data[0].product_thumbnail_5)} /><button id=${parseImg(data[0].product_thumbnail_5)} class="deleteimgbtn" type="button" onclick="deleteimg(this);" ><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`);
         sel_files.push(parseImg(data[0].product_thumbnail_5));
     }  
     
    
-    console.log(sel_files);
+    console.log(sel_files, "dist");
 
 }
 

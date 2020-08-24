@@ -74,7 +74,7 @@ function readInputFile(event){
             var reader = new FileReader();
             reader.onload = function(e){
                 index++;
-                let html = `<img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" data-file=${f.name} /></a>`;
+                let html = `<div style="display: flex; flex-direction: column; width:56px;"><img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" data-file=${f.name} /><button id = ${f.name} class="deleteimgbtn" type="button" onclick="deleteimg(this);"><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`;
                 $('#image_container').append(html);
                 addFile(albumBucketName, files);
                 
@@ -91,6 +91,19 @@ function readInputFile(event){
     console.log(sel_files);
 
 }
+
+function deleteimg(event){
+
+    const idx = sel_files.indexOf(event.id); //sel_file에서 삭제 
+
+    if(idx > -1)
+        sel_files.splice(idx,1);
+
+
+    const ths = $(event).parents("div"); //이미지 미리보기 삭제
+    $(ths[0]).remove();
+}
+
 
 
 $(".backProduct").click(function(){

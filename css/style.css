@@ -55,7 +55,7 @@ html, body{
 
 /*button(logout, addproduct)*/
 
-
+.deleteimgbtn,
 .changeProduct{
 
     text-decoration: none;
@@ -78,6 +78,7 @@ html, body{
     padding-right: 0;
     color : #590098;
 }
+
 
 .changeOrderInfo,
 .changeUserInfo,
