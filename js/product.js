@@ -1,3 +1,7 @@
+let displayMap = new Map();
+let rmap = [];
+
+
 //변경하기 버튼 클릭 시
 function clickChangeBtn(product_id){
 
@@ -6,6 +10,38 @@ function clickChangeBtn(product_id){
     location.href = "/changeProduct.html";
 }
 
+function classifyType2(){
+
+  
+    const type = $(".classify-type2 option:selected").val();
+  
+
+    console.log(displayMap);
+    
+    if(type==="display"){
+
+        $(".all-product-list").empty();
+
+        displayMap.forEach(function(value, key) {
+            
+            $(".all-product-list").append(value);
+          });
+
+    }
+    
+    if(type ==="register"){
+
+        $(".all-product-list").empty();
+
+        for(let value of rmap){
+            $(".all-product-list").append(displayMap.get(value));
+        }
+
+    }
+    
+
+
+}
 
 
 function classifyType(){
@@ -81,7 +117,7 @@ function init(){
         
         $.each(dataset, function(index, item){
 
-        
+           
             let state;
             let color = "#883EFF";
 
@@ -98,7 +134,7 @@ function init(){
             }
 
             $(".all-product-list").append(
-                `<tr class="${item.product_type}">
+                `<tr class="${item.product_type}" id=${item.product_id}>
                 <th class="item_id" scope="row">${item.product_id}</th>
                 <td><img src=${item.product_thumbnail === "exam" ? "/imgs/exam.png"  : item.product_thumbnail} class="rounded" style="width : 56px; height : 56px; margin-right : 8px;"/> ${item.product_name}</td>
                 <td>${item.product_op}</td>
@@ -113,12 +149,35 @@ function init(){
             );
             
         });
-   });
+   
+   
+   
+    }).then(function(){
+
+        const rows = $("#product-table tbody tr").get();
+
+        $.each(rows, function(index, row){
+            
+            const a = $(row).attr("id");
+            displayMap.set(Number(a), row);
+
+        });
+        
+        displayMap.forEach(function(value, key) {       
+            rmap.push(key);
+          
+        });
+        
+        rmap.sort(compare);
+
+    });
 
 
-
+   
 
 }
+
+function compare ( a , b ) {   return a - b;   } 
 
 $(document).ready(function() {
     // 모두 로딩되었을때
