@@ -170,6 +170,15 @@ function init(){
         
         rmap.sort(compare);
 
+
+        $(".all-product-list").empty();
+
+        for(let value of rmap){
+            $(".all-product-list").append(displayMap.get(value));
+        }
+
+
+
     });
 
 
@@ -182,4 +191,5 @@ function compare ( a , b ) {   return a - b;   }
 $(document).ready(function() {
     // 모두 로딩되었을때
     init();
+    
 }); 
