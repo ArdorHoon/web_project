@@ -102,7 +102,7 @@ function getAllProductData(){
 
     return new Promise(function(resolve, reject){
 
-        $.get('http://13.209.181.48:3000/product/list' , function(response){
+        $.get('http://13.209.181.48:3000/product/list/admin' , function(response){
             resolve(response);
         });
     });
