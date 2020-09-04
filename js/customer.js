@@ -38,7 +38,7 @@ function init(){
                 <td>${item.user_phone}</td>
                 <td>${item.user_point}</td>
                 <td>${item.user_total}</td>
-                <td>${item.user_totalprice}</td>
+                <td>${item.user_tp}</td>
               </tr> `
             );
 

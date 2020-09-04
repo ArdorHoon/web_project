@@ -104,6 +104,7 @@ function getAllProductData(){
 
         $.get('http://13.209.181.48:3000/product/list/admin' , function(response){
             resolve(response);
+            console.log(response);
         });
     });
 
@@ -114,6 +115,7 @@ function init(){
 
    getAllProductData().then(function(dataset){
 
+ 
         
         $.each(dataset, function(index, item){
 
@@ -154,6 +156,7 @@ function init(){
    
     }).then(function(){
 
+        
         const rows = $("#product-table tbody tr").get();
 
         $.each(rows, function(index, row){
