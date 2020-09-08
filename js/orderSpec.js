@@ -92,6 +92,7 @@ function getHistory(){
 
         $.post('http://13.209.181.48:3000/order/history', { _id : orderId } , function(response){
             resolve(response);
+
         });
     });
 }
@@ -132,6 +133,7 @@ function getAllOrderData(){
 
         $.post('http://13.209.181.48:3000/order/info', { _id : orderId } , function(response){
             resolve(response);
+        
             
         });
     });

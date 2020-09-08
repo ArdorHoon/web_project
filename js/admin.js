@@ -1,7 +1,5 @@
 
 
-const logout = document.querySelector(".logout");
-
 //session check
 function checkSession(){
 
@@ -12,17 +10,21 @@ function checkSession(){
 
 }
 
-//logout
+window.onload = function(){
 
 $(".logout").click(function(){
 
-    sessionStorage.clear();
-    location.href = "index.html";
+  sessionStorage.clear();
+  location.href = "/index.html";
 
 });
 
+};
+
+
 
 function includeHTML(callback) {
+
     var z, i, elmnt, file, xhr;
     /*loop through a collection of all HTML elements:*/
     z = document.getElementsByTagName("*");
@@ -59,13 +61,16 @@ function includeHTML(callback) {
   }
 
 
+
 function init(){
-
-    checkSession();
     includeHTML();
-
+    checkSession();
 
 }
 
-
 init();
+
+
+
+
+
