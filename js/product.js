@@ -16,7 +16,6 @@ function classifyType2(){
     const type = $(".classify-type2 option:selected").val();
   
 
-    console.log(displayMap);
     
     if(type==="display"){
 
@@ -84,7 +83,7 @@ function getAllProductData(){
 
         $.get('http://13.209.181.48:3000/product/list/admin' , function(response){
             resolve(response);
-            console.log(response);
+            
         });
     });
 

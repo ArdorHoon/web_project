@@ -34,117 +34,121 @@
      <!-- side navi-->
      <div class="d-flex wrapper">
         <!-- Sidebar -->
-        <nav id="addSidebar" class="sidebar-wrapper" >
-            <form>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">▶ 상품</label>
-                    <select class="form-control product-kind" id="exampleFormControlSelect1">
-                      <option value="normal">일반</option>
-                      <option value="package">패키지</option>
-                    </select>
-                  </div>
-                <!--상품 form-->
-              
-                <div class="form-group">
-                  <label for="formGroupExampleInput2">▶ 등급</label>
-                  <br>
-                  <label>
-                      <input type="radio" name="product-grade" id="optionsRadios1" value="A" checked>
-                      A
-                  </label>
-                  <label>
-                      <input type="radio" name="product-grade" id="optionsRadios1" value="B" checked>
-                      B
-                  </label>
-                  <label>
-                      <input  type="radio" name="product-grade" id="optionsRadios1" value="C" checked>
-                      C
-                  </label>
-                  <input  type="radio" name="product-grade" id="optionsRadios1" value="D" checked>
-                  D
-              </label>
-                </div>  
-
-                 <!--등급 form-->
-                <div class="form-group">
-                  <label for="formGroupExampleInput2">▶ 이름</label>
-                  <input type="text" class="form-control product-name" id="formGroupExampleInput2" placeholder="이름을 입력해주세요.">
-                </div>
-                <!--이름 form-->
-                <div class="form-group">
-                  <label for="formGroupExampleInput2">▶ 브랜드</label>
-                  <input type="text" class="form-control product-brand" id="formGroupExampleInput2" placeholder="이름을 입력해주세요.">
-                </div>
-                <!--이름 form-->
-                <div class="form-group">
-                  <label for="formGroupExampleInput2">▶ 수량</label>
-                  <input type="text" class="form-control product-count" id="formGroupExampleInput2" placeholder="수량을 입력해주세요.">
-                </div>
-                <!--수령 form-->
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">▶ 원가<span style="font-size: 11px ;"> (소비자가)</span></label>
-                    <input type="text" class="form-control origin-price" id="formGroupExampleInput2" placeholder="원(숫자만 입력)">
+        <div class="container" style ="margin-top: 60px;">
+          <h1 style="font-size : 24px; font-weight: bold; margin-bottom: 40px;">제품 정보</h1>
+              <form>
+                <div class="row">
+                  <div class="col">
+             
+             
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2">▶ 등급</label>
+                    <br>
+                    <label>
+                        <input type="radio" name="product-grade" id="optionsRadios1" value="A" checked>
+                        A
+                    </label>
+                    <label>
+                        <input type="radio" name="product-grade" id="optionsRadios1" value="B" checked>
+                        B
+                    </label>
+                    <label>
+                        <input  type="radio" name="product-grade" id="optionsRadios1" value="C" checked>
+                        C
+                    </label>
+                    <input  type="radio" name="product-grade" id="optionsRadios1" value="D" checked>
+                    D
+                </label>
                   </div>  
-                   <!--정가 form-->
-                  <div class="form-group">
-                    <label for="formGroupExampleInput2">▶ 판매가</label>
-                    <input type="text" class="form-control sales-price" id="formGroupExampleInput2" placeholder="원(숫자만 입력)">
-                  </div>
-                   <!--할인가 form-->
-                  <div class="form-group">
-                    <label for="formGroupExampleInput2">▶ 구매가<span style="font-size: 11px ;"> (구매가)</span></label>
-                    <input type="text" class="form-control wholesales-price " id="formGroupExampleInput2" placeholder="원(숫자만 입력)">
-                  </div>
-                   <!--도매가 form-->
-                  <div class="form-group">
+  
+                   <!--등급 form-->
+                   <div class="form-group">
                     <label for="formGroupExampleInput2">▶ 대표 이미지</label>
                     <label for="file-input">
                         <img src="/imgs/addImage.png"/>
                     </label>
-                    <input type="file" name ="fileselect" id="file-input" style="display: none;" accept="image/*" onchange="previewFile(event);"/>
-                    <div id="image_container" style="margin-top : 10px; display: flex; flex-direction: row;"></div>
+                    <input type="file" name ="fileselect" id="file-input" style="display: none;" accept="image/*" onchange="readInputFile(event);"/>
+                    <div id="image_container"  style="margin-top : 10px; display: flex; flex-direction: row;"></div>
+  
+  
                     </div>
+                
                  <!--대표이미지 form-->
-                    <div class="form-group">
+  
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2">▶ 이름</label>
+                    <input type="text" class="form-control product-name" id="formGroupExampleInput2" placeholder="이름을 입력해주세요.">
+                  </div>
+                  <!--이름 form-->
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2">▶ 브랜드</label>
+                    <input type="text" class="form-control product-brand" id="formGroupExampleInput2" placeholder="이름을 입력해주세요.">
+                  </div>
+                  <!--브랜드 form-->
+                  <div class="form-group">
                     <label for="formGroupExampleInput2">▶ 요약설명</label>
                     <textarea class="form-control product-description" id="formGroupExampleInput2" rows="3" placeholder="100자 이내"></textarea>
                   </div>
                    <!--요약 설명 form-->
-                  <div class="form-group">
-                    <label for="formGroupExampleInput2">▶ 상태</label>
-                    <br>
-                    <label>
-                        <input type="radio" name="product-state" id="optionsRadios1" value="sale" checked>
-                        판매 중
-                    </label>
-                    <label>
-                        <input type="radio" name="product-state" id="optionsRadios1" value="stop" checked>
-                        판매 중지
-                    </label>
-                    <label>
-                        <input  type="radio" name="product-state" id="optionsRadios1" value="soldout" checked>
-                        품절
-                    </label>
-                  </div>  
-                   <!--상태 form-->
-                  <div class="form-group category">
-                    <label for="formGroupExampleInput2">▶ 카테고리</label><br>
-                   </div>
-                    <!--카테고리 form-->
-                    <div class="form-group colors">
-                        <label for="formGroupExampleInput2">▶ 색상</label><br>
-                       </div>
-                    <!-- 색상 form-->
-
+             
+                  </div>
+                  <div class="col">
+                     <!--도매가 form-->
+                
+                
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">▶ 상태</label>
+                      <br>
+                      <label>
+                          <input type="radio" name="product-state" id="optionsRadios1" value="sale" checked>
+                          판매 중
+                      </label>
+                      <label>
+                          <input type="radio" name="product-state" id="optionsRadios1" value="stop" checked>
+                          판매 중지
+                      </label>
+                      <label>
+                          <input  type="radio" name="product-state" id="optionsRadios1" value="soldout" checked>
+                          품절
+                      </label>
+                    </div> 
+                     <!--상태 form-->
+                     <div class="form-group">
+                      <label for="formGroupExampleInput2">▶ 수량</label>
+                      <input type="text" class="form-control product-count" id="formGroupExampleInput2" placeholder="수량을 입력해주세요.">
+                    </div>
+                    <!--수령 form-->
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">▶ 원가<span style="font-size: 11px ;"> (소비자가)</span></label>
+                        <input type="text" class="form-control origin-price" id="formGroupExampleInput2" placeholder="원(숫자만 입력)">
+                      </div>  
+                       <!--정가 form-->
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">▶ 판매가</label>
+                        <input type="text" class="form-control sales-price" id="formGroupExampleInput2" placeholder="원(숫자만 입력)">
+                      </div>
+                       <!--할인가 form-->
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">▶ 구매가<span style="font-size: 11px ;"> (구매가)</span></label>
+                        <input type="text" class="form-control wholesales-price " id="formGroupExampleInput2" placeholder="원(숫자만 입력)">
+                      </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group category">
+                      <label for="formGroupExampleInput2">▶ 카테고리</label><br>
+                     </div>
+                    </div>
+                     <div class="col">
+                      <!--카테고리 form-->
+                      <div class="form-group colors">
+                          <label for="formGroupExampleInput2">▶ 색상</label><br>
+                         </div>
+                      <!-- 색상 form-->
+                    </div>
+                    </div>
               </form>
-        </nav>
-        <!-- Page Content -->
-        <div class="page-content-wrapper-addproduct">
-            <div class="container-fluid" id="page-contents">
-              <h1>Editor 들어갈 곳</h1>
-            </div>
-        </div>
-        <!--/#page-content-wrapper-->
+          </div>
+      
     </div>
 
 

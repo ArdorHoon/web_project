@@ -93,7 +93,7 @@ function previewFile(event){
         alert("이미지는 5장까지 업로드 가능합니다.");
     }
 
-    console.log(sel_files);
+   
 
 }
 
@@ -111,8 +111,7 @@ function deleteimg(event){
 
 $(".changeProduct").click(function(){
 
-    const productKind = document.querySelector(".product-kind"); //product_kind.options[target.selectedIndex].value
-        const productKindContent = productKind.options[productKind.selectedIndex].value;
+ 
         const productBrand = document.querySelector(".product-brand").value;
         const productName = document.querySelector(".product-name").value;  //product_name.value
         const originPrice = document.querySelector(".origin-price").value;
@@ -145,7 +144,7 @@ $(".changeProduct").click(function(){
 
      
            
-        $.post("http://13.209.181.48:3000/product/modify", { _grade : productGrade, _count : productCount ,_id : fromData,  _state : productState, _type : productKindContent ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
+        $.post("http://13.209.181.48:3000/product/modify", { _grade : productGrade, _count : productCount ,_id : fromData,  _state : productState, _type : "normal" ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
         _bp : wholesalesPrice,   _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] ,  _thumb5 : sel_files[4] , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
          
     
@@ -200,8 +199,6 @@ function parseImg(data){
 
 function inputProductData(data){
     
-
-    $(".product-kind").val(data[0].product_type).prop("selected", true);
     $(".product-name").val(data[0].product_name); //이름
     $(".product-brand").val(data[0].product_brand); //브랜드
     $(".origin-price").val(data[0].product_origin_price);
@@ -241,7 +238,6 @@ function inputProductData(data){
     }  
     
    
-    console.log(sel_files, "dist");
 
 }
 
@@ -305,16 +301,11 @@ function init(){
 
 
     $.post('http://13.209.181.48:3000/product/info' , { _id : fromData} , function(data) {
-        console.log(data);
+       
         inputProductData(data);
     
     });
 
-
-
-
-    //sessionStorage.removeItem("product_id");
- 
 }
 
 init();
