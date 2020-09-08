@@ -43,26 +43,6 @@ function classifyType2(){
 
 }
 
-
-function classifyType(){
-
-    const type = $(".classify-type option:selected").val();
-   
-    if(type ==="normal"){
-            $(".normal").show();
-            $(".package").hide();
-        
-    } else if(type ==="package"){
-        $(".normal").hide();
-        $(".package").show();
-
-   
-    } else{
-        $(".normal").show();
-        $(".package").show();
-    }
-}
-
 //modal click 시 상품 이름 상단에 노출 
 $("#productModal").on('show.bs.modal', function(event){
 

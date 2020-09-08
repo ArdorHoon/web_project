@@ -35,7 +35,7 @@ $(".changeUserInfo").on("click", function(evnet){
 
         if(data.result === "complete"){
             
-           location.href ="/customer.html";
+           location.href ="/customer/customer.html";
             
         }
     });
@@ -51,7 +51,7 @@ $(".deleteBtn").on("click", function(event){
       
         if(data.result === "complete"){
 
-              location.href="/customer.html";
+              location.href="/customer/customer.html";
 
         }
     });

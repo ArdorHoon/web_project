@@ -5,7 +5,7 @@ console.log(user_id);
 
 sessionStorage.setItem("user_id", user_id);
 
-location.href = "/customerInfo.html";
+location.href = "/customer/customerInfo.html";
 
 }
 function getAllUserData(){
