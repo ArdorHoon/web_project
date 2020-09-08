@@ -10,18 +10,6 @@ function checkSession(){
 
 }
 
-window.onload = function(){
-
-$(".logout").click(function(){
-
-  sessionStorage.clear();
-  location.href = "/index.html";
-
-});
-
-};
-
-
 
 function includeHTML(callback) {
 
@@ -65,6 +53,28 @@ function includeHTML(callback) {
 function init(){
     includeHTML();
     checkSession();
+
+    const para = document.location.href;
+
+    if(!para.includes("order")){
+
+     
+      window.onload = function(){
+
+        $(".logout").click(function(){
+        
+          sessionStorage.clear();
+          location.href = "/index.html";
+        
+        });
+        
+      };
+
+      
+    }
+
+  
+ 
 
 }
 

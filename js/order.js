@@ -42,6 +42,7 @@ function init(keyword){
     
     getOrderList().then(function(data){
 
+      
         let date ="";
 
         $.each(data, function(index, item){
@@ -78,6 +79,13 @@ function init(keyword){
                     );
             }
         });
+    });
+
+    $(".logout").click(function(){
+        
+        sessionStorage.clear();
+        location.href = "/index.html";
+      
     });
 }
 
