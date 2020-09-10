@@ -1,10 +1,9 @@
 const orderId = sessionStorage.getItem("order_id"); 
 let box_length; 
 
-const card = {
+let card = {
 
-    0 : "XOXO 카드!"
-
+   
 };
 
 
@@ -28,7 +27,7 @@ const checkPay = {
     "card" : "카드",
     "bank" : "실시간 계좌이체",
     "vbank" : "가상계좌",
-    undefined : "undefined!"
+    "" : "error"
 };
 
 function AddComma(data_value) {
@@ -67,6 +66,18 @@ $(".changeOrderInfo").click(function(){
         
 
 });
+
+function getCardList(){
+
+    return new Promise(function(resolve, reject){
+
+        $.get('http://13.209.181.48:3000/card/list', function(response){
+            resolve(response);
+
+        });
+    });
+
+}
 
 
 function DaumPostcode() {
@@ -133,7 +144,7 @@ function getAllOrderData(){
 
         $.post('http://13.209.181.48:3000/order/info', { _id : orderId } , function(response){
             resolve(response);
-        
+   
             
         });
     });
@@ -142,24 +153,18 @@ function getAllOrderData(){
 
 function InputOrderData(data){
 
+    
     box_length = data.length;
+    
     const date = data[0].order_date.split("T");
-    const total = data[0].order_totalprice.split(",");
-    const dprice = data[0].billing_dprice.split(",");
-    let price = "";
-    let dp ="";
+    const total = data[0].order_price;
+    const dprice = data[0].order_dprice;
   
-    total.forEach(e => {
-        price += e
-    });
-    dprice.forEach(e=>{
-        dp +=e;
-    });
-    let delivery = String(Number(dp)*box_length);
-    let totalprice = String(Number(price) - delivery);
+    let delivery = String(Number(dprice)*box_length);
+    let totalprice = String(Number(total) - delivery);
 
-    $(".allCost").text(`  ${AddComma(totalprice)}원`);
-    $(".deliveryCost").text(`  ${AddComma(delivery)}원`);
+    $(".allCost").text(`${AddComma(totalprice)}원`);
+    $(".deliveryCost").text(`${AddComma(delivery)}원`);
     $(".totalCost").text(`  ${data[0].order_totalprice}원`);
 
 
@@ -192,6 +197,16 @@ function init(){
     
     let cart_id = [];
 
+    getCardList().then(function(data){
+
+        $.each(data, function(index, item){
+
+                card[item.card_id] = item.card_name;
+
+        });
+
+    }).then(function(){
+    
     getAllOrderData().then(function(data){
 
       
@@ -204,16 +219,18 @@ function init(){
 
         //표생성 
         $.each(data, function(index, item){
-        
+           
             $(".order-product-list").append(
 
                 `<tr>
                 <td>
                     <div class="row">
-                        <div class="col-4"><img src="${item.cart_thumbnail}"></div>
+                        <div class="col-4"><img src="${item.cart_thumbnail}" style="width : 200px;"></div>
                         <div class="col-8">
                             <p><strong>${item.cart_name}</strong><br> ${item.cart_subname}</p>
-                            <p><strong>${card[item.cart_cardtype]}</strong><br> 카드 내용/${item.cart_cardmsg === "" ? '없음' : item.cart_cardmsg }</p>
+                            <p><strong>${card[Number(item.cart_cardtype)]}</strong>
+                            <br>to : ${item.cart_cardto} <br> from : ${item.cart_cardfrom}
+                             <br>카드 내용/${item.cart_cardmsg === "" ? '없음' : item.cart_cardmsg }</p>
                             <p><strong >담은 선물</strong>
                                 <span class="${item.cart_id}"> </span>
                             </p>
@@ -221,8 +238,8 @@ function init(){
                     </div>
                 </td>
                 <td>${item.cart_num}</td>
-                <td>${item.cart_totalprice}원</td>
-                <td>${item.billing_dprice}원</td>
+                <td>${AddComma(String(item.cart_totalprice))}원</td>
+                <td>${AddComma(item.order_dprice)}원</td>
               </tr>`
 
             );
@@ -247,7 +264,7 @@ function init(){
 
         }
     });
-
+});
     
 }
 

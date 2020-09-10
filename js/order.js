@@ -17,7 +17,8 @@ const checkPay = {
 
     "card" : "카드",
     "bank" : "실시간 계좌이체",
-    "vbank" : "가상계좌"
+    "vbank" : "가상계좌",
+    "" : "error"
 };
 
 function orderShowBtn(data){
@@ -33,6 +34,7 @@ function getOrderList(){
 
         $.get('http://13.209.181.48:3000/order/list' , function(response){
             resolve(response);
+           
         });
     });
 }
@@ -42,8 +44,9 @@ function init(keyword){
     
     getOrderList().then(function(data){
 
-      
+       
         let date ="";
+       
 
         $.each(data, function(index, item){
             
