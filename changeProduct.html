@@ -147,6 +147,21 @@
                     </div>
                     </div>
               </form>
+
+              <h1 style="font-size : 24px; font-weight: bold; margin-bottom: 40px;">제품필수표기정보</h1>
+              <form>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">이미지 삽입</label>
+                  <label for="img-input">
+                      <img src="/imgs/addImage.png"/>
+                  </label>
+                  <input type="file" name ="fileselect" id="img-input" style="display: none;" accept="image/*" onchange="productInfo(event);"/>
+                  <div id="pImage_container"  style="margin-top : 10px; display: flex; flex-direction: row;"></div>
+  
+  
+                  </div>
+  
+              </form>
           </div>
       
     </div>

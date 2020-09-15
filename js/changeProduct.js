@@ -9,6 +9,8 @@ let sel_files = []; //이미지 정보 담을 배열
 
 let index = 0; //이미지 최대 갯수
 
+let img_file =""; //제품표기정보
+
 
 //<!-- AWS 연결 -->
 AWS.config.update({
@@ -53,6 +55,41 @@ function addFile(albumName, files) {
         
     }
 
+//제품 표기정보 이미지 업로드
+
+function productInfo(event){
+
+   
+    $( 'img' ).remove( '.pd_img' );
+
+    let files = event.target.files;
+    let fileArr = Array.prototype.slice.call(files);
+
+    fileArr.forEach(function(f){
+
+       
+    	if(!f.type.match("image/.*")){
+        	alert("이미지 확장자만 업로드 가능합니다.");
+            return;
+        }
+
+        img_file = f.name;
+
+            var reader = new FileReader();
+            reader.onload = function(e){
+                let html = `<img class="pd_img" src=${e.target.result} class="rounded" style="max-width : 800px; height : auto;" data-file=${f.name} />`;
+                $('#pImage_container').append(html);
+                addFile(albumBucketName, files);
+                
+            };
+            reader.readAsDataURL(f);
+        
+        
+    });
+    
+
+    
+}    
 
 //이미지 업로드
 function previewFile(event){
@@ -145,7 +182,7 @@ $(".changeProduct").click(function(){
      
            
         $.post("http://13.209.181.48:3000/product/modify", { _grade : productGrade, _count : productCount ,_id : fromData,  _state : productState, _type : "normal" ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
-        _bp : wholesalesPrice,   _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] ,  _thumb5 : sel_files[4] , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
+        _bp : wholesalesPrice,   _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] , _info : img_file , _thumb5 : sel_files[4] , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
          
     
             if(data.result === "complete"){
@@ -155,7 +192,6 @@ $(".changeProduct").click(function(){
             }
         });
         
-
 
 
 });
@@ -209,6 +245,12 @@ function inputProductData(data){
     $(`input:radio[name=product-state]:input[value=${data[0].product_state}]`).prop("checked", true);
     $(`input:radio[name=product-grade]:input[value=${data[0].product_grade}]`).prop("checked", true);
     
+    
+    if(parseImg(data[0].product_info)!=="undefined"){
+        $('#pImage_container').append(`<img class="pd_img" src=${data[0].product_info} class="rounded" style="max-width : 800px; height : auto;" data-file=data-file=${parseImg(data[0].product_info)}/>`);
+        img_file = parseImg(data[0].product_info);
+
+    }
     
     if(parseImg(data[0].product_thumbnail) !== "undefined"){
         
@@ -301,6 +343,7 @@ function init(){
 
 
     $.post('http://13.209.181.48:3000/product/info' , { _id : fromData} , function(data) {
+
        
         inputProductData(data);
     

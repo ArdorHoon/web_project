@@ -6,6 +6,8 @@ const IdentityPoolId = 'ap-northeast-2:c1e6a0d3-64ba-4aa9-aff1-6d74d0444fdb';
 let sel_files = []; //이미지 정보 담을 배열
 let index = 0; //이미지 최대 갯수
 
+let img_file =""; //제품표기정보
+
 
 //<!-- AWS 연결 -->
 AWS.config.update({
@@ -51,8 +53,45 @@ function addFile(albumName, files) {
         
     }
 
+//제품 표기정보 이미지 업로드
 
-//이미지 업로드
+function productInfo(event){
+
+   
+    $( 'img' ).remove( '.pd_img' );
+
+    let files = event.target.files;
+    let fileArr = Array.prototype.slice.call(files);
+
+    fileArr.forEach(function(f){
+
+       
+    	if(!f.type.match("image/.*")){
+        	alert("이미지 확장자만 업로드 가능합니다.");
+            return;
+        }
+
+        img_file = f.name;
+
+            var reader = new FileReader();
+            reader.onload = function(e){
+                let html = `<img class="pd_img" src=${e.target.result} class="rounded" style="max-width : 800px; height : auto;" data-file=${f.name} />`;
+                $('#pImage_container').append(html);
+                addFile(albumBucketName, files);
+                
+            };
+            reader.readAsDataURL(f);
+        
+        
+    });
+    
+
+    console.log(img_file);
+}
+
+
+
+//제품 이미지 업로드
 function readInputFile(event){
     
    
@@ -88,7 +127,6 @@ function readInputFile(event){
         alert("이미지는 5장까지 업로드 가능합니다.");
     }
 
-    console.log(sel_files);
 
 }
 
@@ -148,7 +186,7 @@ $(".regProduct").click(function(){
 
                 
         $.post("http://13.209.181.48:3000/product/apply", { _grade : productGrade ,_count : productCount ,_state : productState, _type : "normal" ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
-        _bp : wholesalesPrice,  _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] ,  _thumb5 : sel_files[4]  , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
+        _bp : wholesalesPrice,  _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] ,  _thumb5 : sel_files[4], _info : img_file  , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
             console.log(data);
     
             if(data.result === "complete"){
