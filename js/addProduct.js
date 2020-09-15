@@ -75,7 +75,7 @@ function productInfo(event){
 
             var reader = new FileReader();
             reader.onload = function(e){
-                let html = `<img class="pd_img" src=${e.target.result} class="rounded" style="max-width : 800px; height : auto;" data-file=${f.name} />`;
+                let html = `<img class="pd_img rounded" src=${e.target.result} style="max-width : 800px; height : auto;" data-file=${f.name} />`;
                 $('#pImage_container').append(html);
                 addFile(albumBucketName, files);
                 

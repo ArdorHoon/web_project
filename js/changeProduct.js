@@ -245,11 +245,13 @@ function inputProductData(data){
     $(`input:radio[name=product-state]:input[value=${data[0].product_state}]`).prop("checked", true);
     $(`input:radio[name=product-grade]:input[value=${data[0].product_grade}]`).prop("checked", true);
     
-    
-    if(parseImg(data[0].product_info)!=="undefined"){
-        $('#pImage_container').append(`<img class="pd_img" src=${data[0].product_info} class="rounded" style="max-width : 800px; height : auto;" data-file=data-file=${parseImg(data[0].product_info)}/>`);
+
+    if(parseImg(data[0].product_info)!== "undefined"){
+        $('#pImage_container').append(`<img class="pd_img rouunded" src="${data[0].product_info}" style="max-width : 800px; height : auto;" data-file=data-file=${parseImg(data[0].product_info)}/>`);
         img_file = parseImg(data[0].product_info);
 
+    }else{
+        
     }
     
     if(parseImg(data[0].product_thumbnail) !== "undefined"){
@@ -344,7 +346,7 @@ function init(){
 
     $.post('http://13.209.181.48:3000/product/info' , { _id : fromData} , function(data) {
 
-       
+       console.log(data);
         inputProductData(data);
     
     });
