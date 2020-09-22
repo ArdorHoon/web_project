@@ -106,7 +106,6 @@ function getAllColorData(){
 
 function init(){
 
-
     getAllColorData().then(function(dataset){
 
         console.log(dataset);

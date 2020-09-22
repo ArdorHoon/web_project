@@ -126,6 +126,7 @@ html, body{
     border : none;
     background-color: #fff;
 }
+.addCoupon,
 .addColor,
 .addCategory,
 .addProduct{
@@ -258,12 +259,14 @@ html, body{
 }
 
 
+
 /*category & color section*/
 
 .numbering{
    
     width: 7%;
 }
+
 
 .color_name,
 .category_name{
@@ -274,6 +277,30 @@ html, body{
 .connect_list{
 
     width: 30%;
+}
+
+
+/*coupon*/
+.coupon_code{
+
+    width: 30%;
+}
+
+.coupon_name{
+
+    width : 30%;
+}
+
+.discount{
+
+
+    width: 20%;
+
+}
+
+.leastday{
+
+    width : 20%;
 }
 
 /*order card*/

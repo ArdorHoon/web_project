@@ -44,6 +44,7 @@ function init(keyword){
     
     getOrderList().then(function(data){
 
+        console.log(data);
        
         let date ="";
        
