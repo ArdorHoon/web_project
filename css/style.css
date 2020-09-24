@@ -283,7 +283,7 @@ html, body{
 /*coupon*/
 .coupon_code{
 
-    width: 30%;
+    width: 25%;
 }
 
 .coupon_name{
@@ -294,13 +294,17 @@ html, body{
 .discount{
 
 
-    width: 20%;
+    width: 10%;
 
 }
 
 .leastday{
 
     width : 20%;
+}
+.coupon_owner{
+
+    width : 10%;
 }
 
 /*order card*/
