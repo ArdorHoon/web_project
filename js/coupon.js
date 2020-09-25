@@ -6,26 +6,29 @@ $(".couponCreateBtn").on("click", function(event){
 
     const name = $("#AddCouponname").val();
     const type = document.querySelector('input[name="coupon-type"]:checked').value;
-    const cost = $("#couponPrice").val();
+    const price = $("#couponPrice").val();
     const max = $("#limitmax").val();
     const limit = $("#limitdate").val();
+    const count = $("#couponcount").val();
 
 
-    if(regexp.test(cost) && regexp.test(max)&& date_pattern.test(limit)){
+    if(regexp.test(price) && regexp.test(max)&& date_pattern.test(limit)&&  regexp.test(count)){
 
-    console.log(`name : ${name},Type: ${type}, price: ${cost}, max: ${max} , limit:  ${limit}`);
-    
-    $.post("http://13.209.181.48:3000/coupon/add", { _name : name, _type : type, _price : cost, _max : max, _limit : limit }, function(data){
+    $.post("http://13.209.181.48:3000/coupon/add", { _name : name, _type : type, _price : price, _max : max, _limit : limit , _count : count }, function(data){
       
-        console.log(data);
+         console.log(data);
         if(data.result === "complete"){
 
-                $("tbody").empty("tr");
-                init(); //다시 그림 
-                $("#AddCouponname").val("");
-                $("#couponPrice").val("");
-                $("#limitmax").val("");
-                $("#limitdate").val("");
+
+            $("tbody").empty("tr");
+            init(); //다시 그림 
+
+            $("#AddCouponname").val("");
+            $("#couponPrice").val("");
+            $("#limitmax").val("");
+            $("#limitdate").val("");
+            $("#couponcount").val("");
+            
 
         }
     });
