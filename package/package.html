@@ -25,7 +25,7 @@
         <!-- Page Content -->
         <div class="page-content-wrapper">
             <div class="container-fluid" id="page-contents">
-                <h1 class="submenu-minititle">전체 상품</h1>
+                <h1 class="submenu-minititle">전체 패키지</h1>
 
                 <div class="row justify-content-between">
                 <div class="form-group col-sm" style="max-width: 200px;">
@@ -37,23 +37,21 @@
                   </select>
                 </div>
                 <div class="col-sm">
-                <button class="addProduct" onclick="location.href ='/addPackage.html'"><img src="/imgs/addproduct.png"/></button>
+                <button class="addProduct" onclick="location.href ='/package/addPackage.html'"><img src="/imgs/addproduct.png"/></button>
                 </div>
                 </div>
                 
-                <table class="table" id="product-table">
+                <table class="table" id="package-table">
                     <thead>
                       <tr>
-                        <th scope="col" class="coloring">번호</th>
-                        <th scope="col" class="product_name">상품 이름</th>
-                        <th scope="col" class="list_price">원가</th>
-                        <th scope="col" class="price">판매가</th>
-                        <th scope="col" class ="count_product">수량</th>
-                        <th scope="col" class="status">상태</th>
-                        <th scope="col" class="change_button"></th>
+                        <th scope="col" class="package_numbering">번호</th>
+                        <th scope="col" class="package_name">패키지 이름</th>
+                        <th scope="col" class="p_price">판매가</th>
+                        <th scope="col" class="p_status">상태</th>
+                        <th scope="col" class="p_change_button"></th>
                       </tr>
                     </thead>
-                    <tbody class="all-product-list">
+                    <tbody class="all-pakcage-list">
                       
                     </tbody>
                   </table>

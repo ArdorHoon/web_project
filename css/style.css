@@ -121,6 +121,7 @@ html, body{
 
 }
 
+.addPackageItem,
 .regProduct{
     text-decoration: none;
     border : none;
@@ -215,9 +216,38 @@ html, body{
     width : 100%;
 
 }
+/*package table*/
+
+.package_numbering{
+
+    width : 10%;
+
+}
 
 
+.package_name{
 
+    width : 40%;
+
+}
+
+.p_price{
+
+    width : 15%;
+}
+
+.p_status{
+
+    width : 15%;
+
+}
+
+.p_change_button{
+
+    width : 20%;
+
+
+}
 /*product table*/
 
 .count_product{
