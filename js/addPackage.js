@@ -23,7 +23,6 @@ var s3 = new AWS.S3({
 //<!-- 파일 추가 -->
 function addFile(albumName, files) {
 
-    console.log(files);
 
     if (!files.length) {
 
@@ -33,7 +32,7 @@ function addFile(albumName, files) {
     const file = files[0];
     const fileName = file.name;
 
-    console.log(file.name);
+  
     
     // fileName = document.getElementById('host_id').value;
     const photoKey = fileName;
@@ -61,7 +60,6 @@ function readInputFile(event){
     if(index < 5){
     fileArr.forEach(function(f){
 
-        console.log(f);
     	if(!f.type.match("image/.*")){
         	alert("이미지 확장자만 업로드 가능합니다.");
             return;
@@ -73,7 +71,7 @@ function readInputFile(event){
             var reader = new FileReader();
             reader.onload = function(e){
                 index++;
-                let html = `<div style="display: flex; flex-direction: column; width:56px;"><img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" data-file=${f.name} /><button id = ${f.name} class="deleteimgbtn" type="button" onclick="deleteimg(this);"><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`;
+                let html = `<div style="display: flex; flex-direction: column; width:56px;"><img id="packImage"  src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" data-file=${f.name} /><button id = ${f.name} class="deleteimgbtn" type="button" onclick="deleteimg(this);"><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`;
                 $('#image_container').append(html);
                 addFile(albumBucketName, files);
                 
@@ -106,7 +104,7 @@ function inputProductImg(event, a){
             var reader = new FileReader();
             reader.onload = function(e){
             
-                let html = `<div style="display: flex; flex-direction: column; width:56px;"><img src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" data-file=${f.name} /><button id = ${f.name} class="deleteimgbtn" type="button" onclick="deleteimg(this);"><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`;
+                let html = `<div style="display: flex; flex-direction: column; width:56px;"><img id="productImg" src=${e.target.result} class="rounded" style ="width : 56px; height: 56px;" data-file=${f.name} /><button id = ${f.name} class="deleteimgbtn" type="button" onclick="deleteimg(this);"><img src="/imgs/delete_img.png" style="width: 20px;"/></button></div>`;
                 $(`.item_image${a}`).append(html);
                 addFile(albumBucketName, files);
                 
@@ -139,7 +137,7 @@ function productInfo(event, item_index){
 
             var reader = new FileReader();
             reader.onload = function(e){
-                let html = `<img class="pd_img${item_index} rounded" src=${e.target.result} style="max-width : 800px; height : auto;" data-file=${f.name} />`;
+                let html = `<img id = "Iimage" class="pd_img${item_index} rounded" src=${e.target.result} style="max-width : 800px; height : auto;" data-file=${f.name} />`;
                 $(`.pImage${item_index}`).append(html);
                 addFile(albumBucketName, files);
                 
@@ -200,7 +198,7 @@ $(".package-item").append(
     </div>
     <div class="form-group">
     <label for="formGroupExampleInput2">▶ 브랜드</label>
-    <input type="text" class="form-control product-brand" id="formGroupExampleInput2" placeholder="수량을 입력해주세요.">
+    <input type="text" class="form-control product-brand" id="formGroupExampleInput2" placeholder="브랜드 입력해주세요.">
     </div>
     <div class="form-group">
     <label for="formGroupExampleInput2">▶ 설명</label>
@@ -225,6 +223,76 @@ $(".package-item").append(
 $('html, body').animate({scrollTop : $(document).height()}, 400);
 
 item_index++;
+
+});
+
+
+$(".regProduct").click(function(){
+
+    let list=[];
+    let pi_list = [];
+
+    const packageImage = document.querySelectorAll("#packImage");
+    const packageName= document.querySelector(".package-name").value;
+    const firstPrice= document.querySelector(".first-price").value;
+    const salesPrice =document.querySelector(".sales-price").value;
+    const packageSummary = document.querySelector(".package-summary").value;
+    const packageDescription = document.querySelector(".package-description").value;
+
+    for(let i  = 0 ; i <packageImage.length ; i++){
+
+        pi_list.push(packageImage[i].dataset.file);
+    }
+    
+    const items = document.querySelectorAll(".item");
+    for(let i = 0 ; i<items.length ; i++){
+
+        let obj = {};
+        let p_list  = [];
+
+        const detail = items[i].querySelector("#Iimage");
+        const pImg = items[i].querySelectorAll("#productImg");
+
+        for(let i  = 0 ; i < pImg.length ; i++){
+
+            p_list.push( pImg[i].dataset.file);
+        }
+
+        obj["_name"] = items[i].querySelector(".product-name").value;
+        obj["_brand"] = items[i].querySelector(".product-brand").value;
+        obj["_summary"] = items[i].querySelector(".product-description").value;
+        obj["_thumb"] = p_list[0];
+        obj["_thumb2"] = p_list[1];
+        obj["_thumb3"] = p_list[2];
+        obj["_thumb4"] = p_list[3];
+        obj["_thumb5"] = p_list[4];
+        obj["_detail"] = detail.dataset.file;
+
+
+        list.push(obj);
+      
+    }
+
+   
+    if(items.length !== 0){
+
+
+
+    $.post("http://13.209.181.48:3000/package/apply", { _name : packageName , _oprice : firstPrice , _sprice : salesPrice, _summary : packageSummary 
+    , _desc : packageDescription , _thumb : pi_list[0] , _thumb2 : pi_list[1] , _thumb3 : pi_list[2] , _thumb4 : pi_list[3] , _thumb5 : pi_list[4] , _items : list }, function(data){
+        console.log(data);
+
+        if(data.result === "complete"){
+            
+           location.href ="/package/package.html";
+            
+        }
+    });
+
+}
+else{
+    alert("구성하는 상품을 등록하세요!");
+}
 
 });
 
