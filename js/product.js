@@ -95,10 +95,8 @@ function init(){
    getAllProductData().then(function(dataset){
 
  
-        
         $.each(dataset, function(index, item){
 
-           
             let state;
             let color = "#883EFF";
 
@@ -117,7 +115,7 @@ function init(){
             $(".all-product-list").append(
                 `<tr class="${item.product_type}" id=${item.product_id}>
                 <th class="item_id" scope="row">${item.product_id}</th>
-                <td><img src=${item.product_thumbnail === "exam" ? "/imgs/exam.png"  : item.product_thumbnail} class="rounded" style="width : 56px; height : 56px; margin-right : 8px;"/> ${item.product_name}</td>
+                <td><img src=${item.product_thumbnail === "exam" ? "/imgs/exam.png"  : item.product_thumbnail} class="rounded" style="width : 56px; height : 56px; margin-right : 8px;"/> <a href="${item.product_link}" target="_blank"> ${item.product_name} </a></td>
                 <td>${item.product_op}</td>
                 <td>${item.product_sp}</td>
                 <td>${item.product_count}</td>  

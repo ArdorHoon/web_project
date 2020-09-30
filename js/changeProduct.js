@@ -28,7 +28,7 @@ AWS.config.update({
 //<!-- 파일 추가 -->
 function addFile(albumName, files) {
 
-        console.log(files);
+       
 
         if (!files.length) {
 
@@ -38,7 +38,7 @@ function addFile(albumName, files) {
         const file = files[0];
         const fileName = file.name;
 
-        console.log(file.name);
+        
 
         const photoKey = fileName;
         s3.upload({
@@ -155,6 +155,7 @@ $(".changeProduct").click(function(){
         const productCount = document.querySelector(".product-count").value;
         const salesPrice = document.querySelector(".sales-price").value;
         const wholesalesPrice = document.querySelector(".wholesales-price").value;
+        const plink = document.querySelector(".p_link").value;
         const productState = document.querySelector('input[name="product-state"]:checked').value;
         const productDescription = document.querySelector(".product-description").value;
         const productGrade = document.querySelector('input[name="product-grade"]:checked').value;
@@ -181,7 +182,7 @@ $(".changeProduct").click(function(){
 
      
            
-        $.post("http://13.209.181.48:3000/product/modify", { _grade : productGrade, _count : productCount ,_id : fromData,  _state : productState, _type : "normal" ,_name : productName, _brand : productBrand , _op : originPrice , _sp : salesPrice, 
+        $.post("http://13.209.181.48:3000/product/modify", { _grade : productGrade, _count : productCount ,_id : fromData,  _state : productState, _type : "normal" ,_name : productName, _brand : productBrand , _link : plink , _op : originPrice , _sp : salesPrice, 
         _bp : wholesalesPrice,   _thumb : sel_files[0] , _thumb2 : sel_files[1],  _thumb3 : sel_files[2] , _thumb4 : sel_files[3] , _info : img_file , _thumb5 : sel_files[4] , _summary : productDescription , _category : productCate , _color : productColor }, function(data){
          
     
@@ -239,6 +240,7 @@ function inputProductData(data){
     $(".product-brand").val(data[0].product_brand); //브랜드
     $(".origin-price").val(data[0].product_origin_price);
     $(".sales-price").val(data[0].product_sales_price);
+    $(".p_link").val(data[0].product_link);
     $(".product-count").val(data[0].product_count);
     $(".wholesales-price").val(data[0].product_buying_price);
     $(".product-description").val(data[0].product_summary);
@@ -346,7 +348,6 @@ function init(){
 
     $.post('http://13.209.181.48:3000/product/info' , { _id : fromData} , function(data) {
 
-       console.log(data);
         inputProductData(data);
     
     });
