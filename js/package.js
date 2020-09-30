@@ -3,6 +3,15 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+//변경하기 버튼 클릭 시
+function clickChangeBtn(product_id){
+
+    
+    sessionStorage.setItem('package_id', product_id);
+    location.href = "/package/changePackage.html";
+}
+
+
 //modal click 시 상품 이름 상단에 노출 
 $("#packageModal").on('show.bs.modal', function(event){
 
