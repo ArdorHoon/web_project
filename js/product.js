@@ -1,6 +1,10 @@
 let displayMap = new Map();
 let rmap = [];
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 
 //변경하기 버튼 클릭 시
 function clickChangeBtn(product_id){
@@ -96,7 +100,7 @@ function init(){
 
  
         $.each(dataset, function(index, item){
-
+        
             let state;
             let color = "#883EFF";
 
@@ -116,8 +120,8 @@ function init(){
                 `<tr class="${item.product_type}" id=${item.product_id}>
                 <th class="item_id" scope="row">${item.product_id}</th>
                 <td><img src=${item.product_thumbnail === "exam" ? "/imgs/exam.png"  : item.product_thumbnail} class="rounded" style="width : 56px; height : 56px; margin-right : 8px;"/> <a href="${item.product_link}" target="_blank"> ${item.product_name} </a></td>
-                <td>${item.product_op}</td>
-                <td>${item.product_sp}</td>
+                <td>${numberWithCommas(item.product_buying_price)}원</td>
+                <td>${numberWithCommas(item.product_sales_price)}원</td>
                 <td>${item.product_count}</td>  
                 <td style ="color : ${color};">${state}</td>
                 <td><div class="row">
