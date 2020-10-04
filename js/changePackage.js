@@ -183,6 +183,8 @@ function parseImg(data){
 
 function inputData(data){
 
+ 
+
     $(".package-name").val(data.package._name);
     $(".first-price").val(data.package._oprice);
     $(".sales-price").val(data.package._sprice);
@@ -254,15 +256,15 @@ function inputProduct(data){
             </div>
             <div class="form-group">
             <label for="formGroupExampleInput2">▶ 상품이름</label>
-            <input type="text" class="form-control product-name" id="formGroupExampleInput2" placeholder="이름을 입력해주세요.">
+            <input type="text" class="form-control product-name pn${item_index}" id="formGroupExampleInput2" placeholder="이름을 입력해주세요.">
             </div>
             <div class="form-group">
             <label for="formGroupExampleInput2">▶ 브랜드</label>
-            <input type="text" class="form-control product-brand" id="formGroupExampleInput2" placeholder="브랜드 입력해주세요.">
+            <input type="text" class="form-control product-brand pb${item_index}" id="formGroupExampleInput2" placeholder="브랜드 입력해주세요.">
             </div>
             <div class="form-group">
             <label for="formGroupExampleInput2">▶ 설명</label>
-            <textarea class="form-control product-description" id="formGroupExampleInput2" rows="3" placeholder="100자 이내"></textarea>
+            <textarea class="form-control product-description pd${item_index}" id="formGroupExampleInput2" rows="3" placeholder="100자 이내"></textarea>
             </div>
             
             <label for="formGroupExampleInput2">▶ 제품 표기정보</label>
@@ -280,9 +282,10 @@ function inputProduct(data){
           </form> `
         );
 
-        $(".product-name").val(data[i]._name);
-        $(".product-brand").val(data[i]._brand);
-        $(".product-description").val(data[i]._summary);
+     
+        $(`.pn${item_index}`).val(data[i]._name);
+        $(`.pb${item_index}`).val(data[i]._brand);
+        $(`.pd${item_index}`).val(data[i]._summary);
 
         if(parseImg(data[i]._thumbnail) !== "undefined"){
         
@@ -381,11 +384,12 @@ $(".regProduct").click(function(){
 
     $.post("http://13.209.181.48:3000/package/apply", { _id : fromData , _name : packageName , _oprice : firstPrice , _sprice : salesPrice, _summary : packageSummary 
     , _desc : packageDescription , _thumb : pi_list[0] , _thumb2 : pi_list[1] , _thumb3 : pi_list[2] , _thumb4 : pi_list[3] , _thumb5 : pi_list[4] , _items : list }, function(data){
-       
+        
+        
 
         if(data.result === "complete"){
             
-           location.href ="/package/package.html";
+         location.href ="/package/package.html";
             
         }
     });
@@ -458,7 +462,7 @@ function init(){
 
     $.post('http://13.209.181.48:3000/package/info' , { _id : fromData} , function(data) {
 
-        console.log(data.items, data.package);
+      
         inputData(data);
     
     });
