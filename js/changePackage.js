@@ -399,6 +399,58 @@ else{
 
 
 
+$(".addPackageItem").click(function(){
+
+    $(".package-item").append(
+    
+        `
+        <form class="item"> 
+        <div class="form-group">
+        <div class="card">
+        <div class="card-body">
+        <div class="form-group">
+        <label for="formGroupExampleInput2">▶ 상품 이미지 (5장)</label>
+        <label for="pimage-input${item_index}">
+            <img src="/imgs/addImage.png"/>
+        </label>
+        <input type="file" name ="fileselect" id="pimage-input${item_index}" style="display: none;" accept="image/*" onchange="inputProductImg(event, ${item_index});"/>
+        <div id="cimage_container" class="item_image${item_index}" style="margin-top : 10px; display: flex; flex-direction: row;"></div>
+    
+        </div>
+        <div class="form-group">
+        <label for="formGroupExampleInput2">▶ 상품이름</label>
+        <input type="text" class="form-control product-name" id="formGroupExampleInput2" placeholder="이름을 입력해주세요.">
+        </div>
+        <div class="form-group">
+        <label for="formGroupExampleInput2">▶ 브랜드</label>
+        <input type="text" class="form-control product-brand" id="formGroupExampleInput2" placeholder="브랜드 입력해주세요.">
+        </div>
+        <div class="form-group">
+        <label for="formGroupExampleInput2">▶ 설명</label>
+        <textarea class="form-control product-description" id="formGroupExampleInput2" rows="3" placeholder="100자 이내"></textarea>
+        </div>
+        
+        <label for="formGroupExampleInput2">▶ 제품 표기정보</label>
+        <label for="img-input${item_index}">
+            <img src="/imgs/addImage.png"/>
+        </label>
+        <input type="file" name ="fileselect" id="img-input${item_index}" style="display: none;" accept="image/*" onchange="productInfo(event, ${item_index});"/>
+        <div id="pImage_container" class="pImage${item_index}" style="margin-top : 10px; display: flex; flex-direction: row;"></div>
+        <button type="button" class="btn btn-danger float-right  delete_p_item" onclick="delete_item(event)">상품 삭제</button>
+        
+        </div>
+      </div>
+          </div>
+    
+      </form> `
+    );
+    
+    $('html, body').animate({scrollTop : $(document).height()}, 400);
+    
+    item_index++;
+    
+    });
+    
 
 function init(){
 
