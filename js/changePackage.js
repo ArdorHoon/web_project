@@ -190,6 +190,7 @@ function inputData(data){
     $(".sales-price").val(data.package._sprice);
     $(".package-summary").val(data.package._summary);
     $(".package-description").val(data.package._description); 
+    $(`input:radio[name=package-state]:input[value=${data.package._status}]`).prop("checked", true);
 
     if(parseImg(data.package._thumbnail) !== "undefined"){
         
@@ -342,6 +343,7 @@ $(".regProduct").click(function(){
     const salesPrice =document.querySelector(".sales-price").value;
     const packageSummary = document.querySelector(".package-summary").value;
     const packageDescription = document.querySelector(".package-description").value;
+    const packageState = document.querySelector('input[name="package-state"]:checked').value;
 
     for(let i  = 0 ; i <packageImage.length ; i++){
 
@@ -382,7 +384,7 @@ $(".regProduct").click(function(){
 
 
 
-    $.post("http://13.209.181.48:3000/package/apply", { _id : fromData , _name : packageName , _oprice : firstPrice , _sprice : salesPrice, _summary : packageSummary 
+    $.post("http://13.209.181.48:3000/package/apply", { _id : fromData , _name : packageName , _oprice : firstPrice , _sprice : salesPrice, _summary : packageSummary, _status : packageState
     , _desc : packageDescription , _thumb : pi_list[0] , _thumb2 : pi_list[1] , _thumb3 : pi_list[2] , _thumb4 : pi_list[3] , _thumb5 : pi_list[4] , _items : list }, function(data){
         
         

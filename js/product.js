@@ -8,7 +8,6 @@ function numberWithCommas(x) {
 
 //변경하기 버튼 클릭 시
 function clickChangeBtn(product_id){
-
     
     sessionStorage.setItem('product_id', product_id);
     location.href = "/changeProduct.html";

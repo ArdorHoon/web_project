@@ -227,7 +227,7 @@ html, body{
 
 .package_name{
 
-    width : 43%;
+    width : 35%;
 
 }
 
@@ -238,8 +238,14 @@ html, body{
 
 .p_status{
 
-    width : 15%;
+    width : 11%;
 
+}
+
+.p_state{
+
+
+    width: 12%;
 }
 
 .p_change_button{

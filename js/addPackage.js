@@ -237,6 +237,7 @@ $(".regProduct").click(function(){
     const firstPrice= document.querySelector(".first-price").value;
     const salesPrice =document.querySelector(".sales-price").value;
     const packageSummary = document.querySelector(".package-summary").value;
+    const packageState = document.querySelector('input[name="package-state"]:checked').value;
     const packageDescription = document.querySelector(".package-description").value;
 
     for(let i  = 0 ; i <packageImage.length ; i++){
@@ -278,7 +279,7 @@ $(".regProduct").click(function(){
 
 
 
-    $.post("http://13.209.181.48:3000/package/apply", { _name : packageName , _oprice : firstPrice , _sprice : salesPrice, _summary : packageSummary 
+    $.post("http://13.209.181.48:3000/package/apply", { _name : packageName , _oprice : firstPrice , _sprice : salesPrice, _summary : packageSummary, _status : packageState 
     , _desc : packageDescription , _thumb : pi_list[0] , _thumb2 : pi_list[1] , _thumb3 : pi_list[2] , _thumb4 : pi_list[3] , _thumb5 : pi_list[4] , _items : list }, function(data){
         console.log(data);
 
