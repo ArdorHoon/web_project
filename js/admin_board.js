@@ -55,7 +55,7 @@ function init(){
 
     getAdminUser().then(function(data){
 
-
+    
         $(".user_list").append(
             `<div  class="d-flex justify-content-between"> <p><img src="/imgs/customer.png" style="width : 24px;"> 전체</p> <p style="color : #883EFF;">${data[0].user_cnt} <span style="color :#3B3B3B;">명</span></p></div>`
         );

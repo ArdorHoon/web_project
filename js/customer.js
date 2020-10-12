@@ -24,14 +24,13 @@ function init(){
 
     getAllUserData().then(function(dataset){
 
-        console.log(dataset);
+        
         $.each(dataset, function(index, item){
 
-            
+           if(item.user_type !== "host"){ 
             $(".all-user-list").append(
                 
             `
-           
             <tr  id = ${item.user_id} onclick = "getCustomerInfo(event)" style ="cursor : pointer;" >
                 <td>${item.user_name}</td>
                 <td>${item.user_id}</td>
@@ -41,7 +40,7 @@ function init(){
                 <td>${item.user_tp}</td>
               </tr> `
             );
-
+            }
             
         });
    });
