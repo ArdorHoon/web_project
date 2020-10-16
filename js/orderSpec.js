@@ -214,7 +214,13 @@ function InputOrderData(data){
     $("#totalPrice").val(`${AddComma(totalprice)}원`); //상품 합계
     $("#deliveryCount").val(`${AddComma(delivery)}원`); //배송비
     $("#payMoney").val(`${data[0].order_totalprice}원`);
+    if(data[0].order_coupon !== ""){
     $("#payCoupon").val(`${data[0].order_coupon}`);
+    } else{
+
+        $("#payCoupon").val(`사용안함`);
+    }
+
     $("#payPoint").val(`${data[0].order_point}p 사용`);
     $("#payMethod").val(`${checkPay[data[0].billing_type]}`); //결제 방법
 
