@@ -39,6 +39,7 @@
                <p>상품 합계 :<span style="padding-left: 10px ;" class ="allCost"></span></p> 
                 <p>배송비 :<span style="padding-left: 10px ;"class ="deliveryCost"></span></p>
                 <p>TOTAL상품가격 + 배송비 = <span class="totalCost"></span></p>
+                <p style="font-size: 12px; color: #3d3d3d">(자세한 결제 정보는 아래 참고 - 포인트, 쿠폰 사용 여부)</p>
                 
             </div>
       
@@ -178,6 +179,18 @@
                               <input type="text" readonly class="form-control-plaintext" id="deliveryCount">
                             </div>
                              </div> <hr>
+                             <div class="form-group row">
+                              <label for="payMoney" class="col-sm-4 col-form-label">쿠폰</label>
+                              <div class="col-sm-8">
+                                <input type="text" readonly class="form-control-plaintext" id="payCoupon">
+                              </div>
+                         </div><hr>
+                         <div class="form-group row">
+                          <label for="payMoney" class="col-sm-4 col-form-label">포인트</label>
+                          <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="payPoint">
+                          </div>
+                     </div><hr>
                           <div class="form-group row">
                               <label for="payMoney" class="col-sm-4 col-form-label">결제 금액</label>
                               <div class="col-sm-8">
