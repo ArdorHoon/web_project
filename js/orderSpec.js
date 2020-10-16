@@ -50,15 +50,41 @@ $(".changeOrderInfo").click(function(){
     const addr1 = $("#userAddress").val(); //도로명 주소
     const addr2 = $("#userAddress2").val(); //상세 주소
     const phone = $("#phonenumber").val(); //연락처 
+    const ordername = $(".ordername").val(); //주문자 이름
+
+    const alladdr = `(${postcode}) ${addr1} ${addr2}`; //전체 주소
+    const cphone = phone.replace(/-/gi, ""); //-제거
+    const paymoney = $("#payMoney").val();    
+
+        
+    if(state === "delivery"){
+
+        $.post("http://13.209.181.48:3000/alert/deli", {order_id : orderId, _phone : cphone, _name : ordername, _company : company , _delinum :  com_num, _addr : alladdr  }, function(data){
+
+
+        });
+
+
+    }
+
+    if(state === "paid"){
+
+        $.post("http://13.209.181.48:3000/alert/comp", {order_id : orderId, _phone : cphone, _addr : alladdr, _price : paymoney  }, function(data){
+
+
+        });
+
+    }
 
     
     $.post("http://13.209.181.48:3000/order/modify/host", { _id : orderId, _state : state, _devco : company, _devno : com_num , _devmemo : del_memo,
     _memo : memo , _name : name , _post : postcode , _addr : addr1 , _sub : addr2 , _phone : phone }, function(data){
-         
+            
+          
     
             if(data.result === "complete"){
                 
-               location.href ="/order/allOrder.html";
+              location.href ="/order/allOrder.html";
                 
             }
     });
