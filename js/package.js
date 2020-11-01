@@ -52,7 +52,7 @@ function getAllPackageData(){
 
     return new Promise(function(resolve, reject){
 
-        $.get('http://13.209.181.48:3000/package/list' , function(response){
+        $.get('http://13.209.181.48:3000/package/list/host' , function(response){
             resolve(response);
             
         });
