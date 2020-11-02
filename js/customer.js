@@ -24,10 +24,11 @@ function init(){
 
     getAllUserData().then(function(dataset){
 
-        
+        console.log(dataset);
         $.each(dataset, function(index, item){
 
            if(item.user_type !== "host"){ 
+
             $(".all-user-list").append(
                 
             `
@@ -37,7 +38,7 @@ function init(){
                 <td>${item.user_phone}</td>
                 <td>${item.user_point}</td>
                 <td>${item.user_total}</td>
-                <td>${item.user_tp}</td>
+                <td>${item.user_tp =item.user_tp !== null ? item.user_tp : 0 }원</td>
               </tr> `
             );
             }

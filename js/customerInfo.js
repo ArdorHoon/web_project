@@ -71,7 +71,7 @@ function inputInfo(data){
     $("#userAddress").val(data[0].user_address); //도로명 주소
     $("#leastlogin").val(data[0].user_recentdate); //최근 로그인
     $("#userAddress2").val(data[0].user_subaddress);
-    $("#totalprice").val(`${data[0].user_totalprice}원`); //구매금액
+    $("#totalprice").val(`${data[0].user_tp}원`); //구매금액
     $("#totalnum").val(`${data[0].user_total}회`); //구매금액
     $("#refundBank").val(data[0].user_refund_bank);
     $("#refundOwner").val(data[0].user_refund_owner);
