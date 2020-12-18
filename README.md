@@ -1,6 +1,6 @@
-# uandBox-admin
+# uandbox-admin-page
 
-uandBox의 admin page 
+
 
 
 <img src="/imgs/Home.png"  width="600">
