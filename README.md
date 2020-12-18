@@ -2,7 +2,9 @@
 
 uandBox의 admin page 
 
-![Home](/imgs/Home.png)
+
+<img src="/imgs/Home.png"  width="600">
+
 
 ## 기능 명세
 
