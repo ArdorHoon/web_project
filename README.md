@@ -3,7 +3,7 @@
 
 
 
-<img src="/imgs/Home.png"  width="600">
+<img src="/imgs/Home.png"  width="900">
 
 
 ## 기능 명세
