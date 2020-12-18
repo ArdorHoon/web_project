@@ -2,6 +2,8 @@
 
 uandBox의 admin page 
 
+![Home](/imgs/Home.png)
+
 ## 기능 명세
 
 - [x] 상품/세트 등록 및 관리
