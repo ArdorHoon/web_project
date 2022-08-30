@@ -1,0 +1,358 @@
+html, body{
+
+    height: 100%;
+}
+
+
+
+.card-boarding{
+
+    min-width: 300px;
+    padding-left: 43px;
+    padding-right: 43px;
+    padding-top : 20px;
+    padding-bottom: 20px;
+    min-height: 600px;
+
+    border-radius: 30px;
+    
+ 
+
+
+
+}
+/*login */
+.login-body{
+
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+
+}
+.form-signin{
+
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+/*top navi */
+
+
+.admin-navi p {
+
+    font-size: 16px;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-top : 5px;
+}
+
+
+/*button(logout, addproduct)*/
+
+.deleteimgbtn,
+.changeProduct{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+
+}
+.backProduct{
+
+    margin-right: 20px ;
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+}
+.orderhistory{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+    padding-right: 0;
+    color : #590098;
+}
+
+
+.changeOrderInfo,
+.changeUserInfo,
+.change_color,
+.change_category,
+.change_product{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+    padding-right: 0;
+   
+
+}
+.delete_color,
+.delete_category,
+.delete_product{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+    padding-left: 1px;
+   
+
+}
+
+.logout{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+
+}
+
+.addImage{
+
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+
+}
+
+.addPackageItem,
+.regProduct{
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+}
+.addCoupon,
+.addColor,
+.addCategory,
+.addProduct{
+
+
+    float: right;
+    text-decoration: none;
+    border : none;
+    background-color: #fff;
+    margin-bottom: 20px;;
+
+}
+/*add Product*/
+
+#addSidebar{
+
+    position: relative;
+    background: white;
+    color: black;
+    transition: all 0.3s;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 450px; 
+    padding-top : 30px; 
+    padding-right: 20px;
+    padding-left: 40px; 
+
+}
+
+.page-content-wrapper-addproduct{
+
+    margin: 0;
+    width : 100%;
+}
+
+/*side bar*/
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+.sidebar-header{
+    margin-top:  20px;
+}
+
+.home-font{
+
+    color : #883EFF;
+    font-weight: bold;
+    font-size : 20px;
+}
+
+
+
+#sidebar {
+    padding-left: 40px;
+    width: 250px;
+    position: fixed;
+    top: 62;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: white;
+    color: black;
+    transition: all 0.3s;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+}
+.submenu-title{
+
+    font-size : 20px;
+}
+
+.submenu-minititle{
+
+    font-size : 24px;
+    margin-bottom: 50px;
+}
+.submenu-list{
+
+    padding-left: 15px;
+}
+
+.page-content-wrapper{
+
+    margin-left: 280px;
+    margin-top : 100px;
+    width : 100%;
+
+}
+/*package table*/
+
+.package_numbering{
+
+    width : 7%;
+
+}
+
+
+.package_name{
+
+    width : 35%;
+
+}
+
+.p_price{
+
+    width : 15%;
+}
+
+.p_status{
+
+    width : 11%;
+
+}
+
+.p_state{
+
+
+    width: 12%;
+}
+
+.p_change_button{
+
+    width : 20%;
+
+
+}
+/*product table*/
+
+.count_product{
+
+ width : 7%;
+
+}
+.coloring{
+    width: 5%;
+
+}
+
+.product_name{
+
+    width: 40%;
+}
+
+.list_price{
+
+    width : 10%
+
+}
+
+.price {
+    
+    width : 10%
+}
+
+.status{
+
+    width : 10%
+
+}
+
+.chage_button{
+
+    width: 33%;
+
+}
+
+
+
+/*category & color section*/
+
+.numbering{
+   
+    width: 7%;
+}
+
+
+.color_name,
+.category_name{
+
+    width: 30%;
+}
+
+.connect_list{
+
+    width: 30%;
+}
+
+
+/*coupon*/
+.coupon_code{
+
+    width: 25%;
+}
+
+.coupon_name{
+
+    width : 30%;
+}
+
+.discount{
+
+
+    width: 10%;
+
+}
+
+.leastday{
+
+    width : 20%;
+}
+.coupon_owner{
+
+    width : 10%;
+}
+
+/*order card*/
+
+
+/*move top*/
+#moveTop{
+
+    position: fixed;
+    right : 2%;
+    bottom: 50px;
+    display: none;
+    z-index : 999;
+
+}
