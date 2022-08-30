@@ -1,0 +1,190 @@
+html{
+    font-family: 'Noto Sans KR', sans-serif;
+   
+}
+
+body{
+    background-color: #999999;
+    color : #fff;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h1,h2, h3, h4 {
+
+    margin : 0;
+}
+
+ul{
+
+    list-style: none;
+    padding : 0;
+}
+
+button {
+
+    border : 0;
+    outline : 0;
+
+}
+
+.img-button{
+
+   width : 10px;
+   cursor: pointer;
+}
+
+.img-button:hover{
+
+
+    opacity: 0.2;
+}
+
+.main{
+    
+    padding-top: 160px;
+
+}
+
+.js-title{
+    text-align: center;
+    font-size : 100px;
+}
+
+.form,
+.greetings {
+
+    text-align: center;
+    display: none;
+    font-size : 32px;
+}
+
+.showing{
+
+    display: block;
+}
+
+.js-toDoForm,
+.js-toDoList{
+
+
+    text-align: center;
+}
+
+/*search bar*/
+
+.js-navi-box{
+
+    display : flex;
+    float: left;
+    width : 100%;
+
+    
+}
+
+.js-search-icon {
+
+    cursor: pointer;
+}
+
+.part1{
+
+    width : 50%;
+    float: left;
+    
+}
+
+.part2{
+
+    width : 50%;
+    text-align: right;
+}
+
+.js-search input{
+
+    width: 150px;
+    padding-top: 4px;
+    background: 0;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    font-size : 20px;
+    font-weight: 500;
+    outline: 0;
+    text-align: center;
+    transition: border-color .2s ease;
+
+}
+
+.opacity {
+
+    opacity: 0;
+
+}
+
+.unopacity {
+
+    opacity: 0.4;
+}
+
+.do_opacity { /*클릭시 투명도 1*/
+
+    opacity: 1;
+
+}
+
+
+
+
+/*input box design*/
+
+
+.js-form input,
+.js-toDoForm input {
+   
+    width: 300px;
+    padding-top: 4px;
+    background: 0;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    font-size : 32px;
+    font-weight: 500;
+    outline: 0;
+    text-align: center;
+    transition: border-color .2s ease;
+
+  
+}
+input::placeholder{
+
+    color : #fff;
+
+}
+
+
+
+@keyframes fadeIn{
+    from {
+     opacity: 0;
+    
+    } 
+    to{
+        opacity: 1;
+    
+    }
+    
+}
+
+.bgImage{
+
+    position: absolute;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height:  100%;
+    z-index : -1;
+    animation: fadeIn 0.5s linear;
+}
+
