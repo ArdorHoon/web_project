@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css\home_login_css.css">   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">
+    function doDisplay(){
+		var con1 = document.getElementById("MyInfo");
+		var con2 = document.getElementById("MyInfo_line");
+		if(con1.style.display=='none'){
+			con1.style.display = 'block';
+			con2.style.display = 'block';
+		}else{
+			con1.style.display = 'none';
+			con2.style.display = 'none';
+		}
+	}
+</script>
+<title>홈-로그인</title>
+</head>
+<body>
+<div id="homepage">
+   <nav id = "NavigationBar" style="background-color: white;">
+      <div id="BOX" style="left: -290px; top: 20px; width: 87px; font-size: 32px;">
+         <span>&BOX</span>
+      </div>
+      <div id="font_menu" style="left: -190px; width: 106px; top: 25px;">
+         <span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">Build a Box</span>   
+      </div>
+      <div id="font_menu" style="left: -140px; width: 58px; top: 25px;">
+         <span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">About</span>
+      </div>
+      <div id="font_menu" style="left: -90px; width: 44px; top: 25px;">
+         <span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">Q&A</span>
+      </div>
+      <div id="MyInfo" style="display:none">
+		<svg class="MyInfo_line" viewBox="0 0 203 1">
+			<path id="MyInfo_line" d="M 0 0 L 203 0">
+			</path>
+		</svg>
+		<span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">마이페이지</span><br><br><br>
+		<span onclick="location.href='https://www.naver.com'" style="cursor: pointer;">로그아웃</span>
+	</div>
+	<div id="login_name" onclick="location.href='javascript:doDisplay();'" style="top: 10px; left: 255px; cursor: pointer;">
+		<span>김수진</span>
+	</div>
+	<div id="hello" style="top: 10px; left: 250px;">
+		<span>님 안녕하세요:)</span>
+	</div>
+	<div id ="Img_button" style="top: 20px; left: 260px;">
+		<img src="img\user.png" onclick="location.href='https://www.naver.com'" style="top: 20px; left: 500px; cursor: pointer;">
+		<img src="img\cart.png" onclick="location.href='https://www.naver.com'" style="top: 20px; left: 500px; cursor: pointer;">
+	</div>
+   </nav>
+   <div class="background">
+      <img id="banner" src="img\banner.png" style="left: 0px; right: 0px;  width: 943px; height: 500px;" srcset="img\banner.png 1x, img\banner@2x.png 2x">
+   </div>
+   <div id="middle_text">
+      <span>이럴 때, 앤드박스를 사용해보세요</span>
+   </div>
+   <center>
+   <div id="icon">
+      <img src="img\ID006-gift_box.png" srcset="img\ID006-gift_box.png 1x, img\ID006-gift_box@2x.png 2x">
+      <h3>남들과는 다른 선물을 원할 때</h3>
+      <span>개개인마다 다른 맞춤포장으로<br/>세상에 단 하나뿐인 선물이 가능합니다.</span>
+   </div>
+   <div id="icon">
+      <img src="img\ID029-cupcake.png" srcset="img\ID029-cupcake.png 1x, img\ID029-cupcake@2x.png 2x">
+      <h3>선물 뭐 줄까 고민될 때</h3>
+      <span>앤드팀이 약 2만개의 제품 중 엄선한 제품을<br/>고르기만 하면 선물 걱정 끝! </span>
+   </div>
+   <div id="icon">
+      <img src="img\ID026-crown.png" srcset="img\ID026-crown.png 1x, img\ID026-crown@2x.png 2x">
+      <h3>선물이 필요할 때 언제든지!</h3>
+      <span>다양한 테마의 선물이 준비되어 있어<br/>상황에 맞게 선물하실 수 있습니다.</span>
+   </div>
+   </center>
+
+   <div id="middle_text" style="top: 400px;">
+      <span>#AndBox 포토리뷰</span><br>
+      <span style="font-weight: normal; font-size: 16px;">앤드박스의 유저분들이 인스타그램에 올린 사진입니다.</span>
+   </div>
+   <div id ="Img_Insta">
+      <img src="img\ID0004.png" srcset="img\ID0004.png 1x, img\ID0004@2x.png 2x" style="margin: 8px; width: 210px; height: 200px;">
+      <img src="img\ID0008.png" srcset="img\ID0008.png 1x, img\ID0008@2x.png 2x" style="margin: 8px; width: 210px; height: 200px;">
+      <img src="img\ID0001.png" srcset="img\ID0001.png 1x, img\ID0001@2x.png 2x" style="margin: 8px; width: 210px; height: 200px;">
+      <img src="img\ID0002.png" srcset="img\ID0002.png 1x, img\ID0002@2x.png 2x" style="margin: 8px; width: 210px; height: 200px;">
+      <img src="img\ID0003.png" srcset="img\ID0003.png 1x, img\ID0003@2x.png 2x" style="margin: 8px; width: 210px; height: 200px;">
+   </div>
+</div>
+
+<footer id = "footer_div">
+</footer>  
+</body>
+</html>
+
+
